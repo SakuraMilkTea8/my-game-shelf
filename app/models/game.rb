@@ -5,8 +5,6 @@ class Game < ApplicationRecord
   validates :title, presence: true
   validates :name, uniqueness: true
   validates :genre, presence: true
-  validates :developer, presence: true
   validates :console, presence: true
-  validates :price, presence: true
   validates :release_date, presence: true
 end
