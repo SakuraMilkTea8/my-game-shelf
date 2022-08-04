@@ -10,8 +10,11 @@ require 'open-uri'
 
 if ENV['minimal'] == 'yes'
   Game.destroy_all
+  List.destroy_all
+  User.destroy_all
 
-  url = "https://api.rawg.io/api/games?key=#{ENV[RAWG_API]}"
+
+  url = "https://api.rawg.io/api/games?key=#{ENV['RAWG_API']}"
   doc = URI.parse(url).open.read
   response = JSON.parse(doc)
   games = response['results']
