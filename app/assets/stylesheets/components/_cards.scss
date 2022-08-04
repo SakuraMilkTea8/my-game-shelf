@@ -1,0 +1,33 @@
+.game-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  row-gap: 16px;
+  flex-wrap: wrap;
+}
+
+.game-card {
+  border-radius: 10px;
+  background-color: $middle;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.5);
+}
+
+.game-card img {
+  margin: 4px;
+  width: 90%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.game-card h3 {
+  text-align: center;
+  color: $slate;
+  text-decoration: none;
+}
