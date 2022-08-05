@@ -1,15 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-8">
+    <div class="col-lg-8 col-md-4">
       <%= image_tag @game.image_url, width: "100%", class: "border shadow mb-5" %>
+    </div>
+
+
+    <div class="col-4">
+      <div class="card p-4">
+      <h1> User rating</h1>
+        <h1><%= '⭐️' * @rating %>/5</h1>
+      </div>
+        </div>
 
     <div class="col-12">
       <div class="card p-4">
         <h1><%= @game.title %></h1>
-        <p class="fst-italic"><%= @game.genre %></p>
-        <p class="fst-italic"><%= @game.developer %></p>
-        <p class="fst-italic"><%= @game.console %></p>
+        <p> <%= @game.genre %></p>
+        <p> <%= @game.developer %></p>
+        <p> <%= @game.console %></p>
+        <%= 	"The year is 2021, and Genoq has become a leading corporation in bio-medical research. However the tower, some 90 stories high, is not all that it seems. Somewhere within the tower, highly illegal bio-weapons research has been conducted in secret. June 26th, disaster strikes and the lethal organic weapons have escaped and threaten not only the staff members stranded in the tower, but the world itself.\nYou arrive on the 80th floor with an urgent package addressed to Derrida, the lead scientist at Genoq working on the bio-weapons research. Set back from your goal, you must climb the tower, assisting those in need or focusing solely on your task at hand, and stopping the virus from escaping the tower and threatening all life on the planet.\nWill you help the stranded survivors or hinder them? Can you deliver the package to Derrida in time? Can you prevent the impending catastrophe and escape with your life?\nKey Features\nNew high res graphics\nNew music by Mark 'TDK' Knight\nNew control menu\nCan save at any point in the game\nLeaderboards\nAchievements\nSame great gameplay" %>
       </div>
+    </div>
 
       <div class="reviews card p-4">
       <h3>Reviews for <%= @game.title %></h3>
@@ -18,7 +29,6 @@
         <!--partial for the list of reviews -->
         <%= render 'reviews/review' %>
       </div>
-    </div>
     </div>
   </div>
 </div>
