@@ -1,2 +1,12 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <%= image_tag @game.image_url, width: "100%", class: "border shadow mb-5" %>
+      <h3>Reviews for <%= @game.title %></h3>
+      <!--add a data controller to reviews for ajax -->
+      <div class="reviews">
+        <%= render @game.reviews.order(created_at: :desc) %>
+      </div>
+    </div>
+  </div>
+</div>
