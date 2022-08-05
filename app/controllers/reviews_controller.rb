@@ -6,10 +6,8 @@ class ReviewsController < ApplicationController
     @review.game = @game
     @review.user = current_user
     if @review.save
-
       redirect_to game_path(@game)
     else
-
       render 'games/show'
     end
   end

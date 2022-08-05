@@ -12,6 +12,8 @@ class GamesController < ApplicationController
     @game.reviews.each do |review|
       ratings << review.rating
     end
-    @rating = ratings.sum / ratings.length
+    unless ratings.empty?
+      @rating = ratings.sum / ratings.length
+    end
   end
 end
