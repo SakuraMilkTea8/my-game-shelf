@@ -1,0 +1,14 @@
+@import "show";
+
+.banner {
+  height: 20vh;
+  background: $kinda-green-gradient;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-size: 48px;
+  padding: auto;
+  box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.1);
+}
