@@ -30,6 +30,7 @@ if ENV['minimal'] == 'yes'
     this.save
     p this.title
   end
+end
 
   # the following will do 21 api calls, please don't do until it's on heroku and we're not likely to put any more
   if ENV['detailed'] == 'yes'
@@ -59,6 +60,7 @@ if ENV['minimal'] == 'yes'
       this.save
       p this.title
   end
+end
 
 puts 'Makin that seedy boi'
 
