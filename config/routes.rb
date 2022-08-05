@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   end
 
   resources :games, only: [:index, :show] do
-    resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+    resources :reviews, only: [:new, :create, :edit, :update, :destroy, :show, :index]
   end
 end

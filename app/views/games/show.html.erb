@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12 col-md-8">
       <%= image_tag @game.image_url, width: "100%", class: "border shadow mb-5" %>
-      <h3>Reviews for <%= @game.title %></h3>
+
     <div class="col-12">
       <div class="card p-4">
         <h1><%= @game.title %></h1>
@@ -10,15 +10,15 @@
         <p class="fst-italic"><%= @game.developer %></p>
         <p class="fst-italic"><%= @game.console %></p>
       </div>
-      <div class="reviews">
+
+      <div class="reviews card p-4">
+      <h3>Reviews for <%= @game.title %></h3>
         <!--partial for the review form -->
           <%= render 'reviews/form', game: @game, review: @review %>
         <!--partial for the list of reviews -->
-        <%= render @game.reviews.order(created_at: :desc) %>
+        <%= render 'reviews/review' %>
       </div>
     </div>
-    <div></div>
-    <!--This card should be on the side of the picture -->
     </div>
   </div>
 </div>

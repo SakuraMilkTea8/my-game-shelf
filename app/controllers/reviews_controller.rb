@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+
   def create
     @game = Game.find(params[:game_id])
     @review = Review.new(review_params)
