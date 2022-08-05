@@ -1,8 +1,13 @@
 class ReviewsController < ApplicationController
-  def new
-  end
-
   def create
+    @game = Game.find(params[:game_id])
+    @review = Review.new(review_params)
+    @review.game = @game
+    if @review.save
+      redirect_to game_path(@game)
+    else
+      render 'games/show'
+    end
   end
 
   def edit

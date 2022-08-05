@@ -1,4 +1,4 @@
-<%= simple_form_for([game, review]), do |f| %>
-<%= f.input :content, as: :text, label: false %>
-<%= f.submit 'Submit' %>
+<%= simple_form_for([ @game, @review ]) do |f| %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
 <% end %>
