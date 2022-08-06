@@ -1,5 +1,6 @@
 <%= simple_form_for([ @game, @review ], remote: true ) do |f| %>
   <%= f.input :content, as: :text, label: false %>
+  <%= f.input :project_title, label: 'Project Title', :label_html => { :class => 'question-project' }, placeholder: 'A catchy, relevant title for your project', :input_html => {:style=> 'width: 650px', class: 'response-project'} %>
   <%= f.input :rating %>
   <%= f.button :submit, input_html: { style: "display: none"}, label_html: { class: "btn btn-primary"}%>
 <% end %>
