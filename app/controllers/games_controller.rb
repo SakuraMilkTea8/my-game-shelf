@@ -6,6 +6,8 @@ class GamesController < ApplicationController
     end
 
   def show
+    @list_game = ListGame.new
+    @lists = current_user.lists
     @game = Game.find(params[:id])
     # You need this to make a new review in the show page
     @review = Review.new
