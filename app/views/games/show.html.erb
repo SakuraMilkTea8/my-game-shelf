@@ -3,24 +3,26 @@
     <div class="col-lg-8 col-md-4">
       <%= image_tag @game.image_url, width: "100%", class: "border shadow mb-5" %>
     </div>
-
-
-  <div class="col-4">
-    <div class="card p-4 m-4">
+    <div class="col-4">
+      <div class="card p-4 m-4">
         <h1> User rating</h1>
         <h1><%= '⭐️' * @rating %>/5</h1>
-      <% if user_signed_in? %>
-      <!--adding games to users lists-->
-        <%= simple_form_for(@list_game) do |f| %>
-          <%= hidden_field_tag(:game, @game.id) %>
-          <%= f.association :list, collection: @lists %>
-          <%= f.button :submit %>
+        <% if user_signed_in? %>
+          <!--adding games to users lists-->
+          <%= simple_form_for(@list_game) do |f| %>
+            <%= hidden_field_tag(:game, @game.id) %>
+            <%= f.association :list, collection: @lists %>
+            <%= f.button :submit %>
+          <% end %>
+          <!--Checking status of game (make into a partial) -->
+          <!--persisted checks if it is saved -->
+          <% if @list_game.persisted? %>
+            <%= @list_game.list.name%>
+          <% end %>
         <% end %>
-      <% end %>
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col-12">
       <div class="card p-4">
@@ -31,14 +33,14 @@
         <%= @game.description %>
       </div>
     </div>
-
     <div class="reviews">
       <div class="reviews card p-4">
-      <% if user_signed_in? %>
-      <h3>Reviews for <%= @game.title %></h3>
-        <!--partial for the review form -->
+        <% if user_signed_in? %>
+          <h3>Reviews for <%= @game.title %></h3>
+          <!--partial for the review form -->
           <%= render 'reviews/form', game: @game, review: @review %>
-      <% end %>
+        <% else %>
+        <% end %>
         <!--partial for the list of reviews -->
         <%= render 'reviews/review' %>
       </div>

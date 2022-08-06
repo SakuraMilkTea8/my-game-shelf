@@ -8,7 +8,8 @@ class GamesController < ApplicationController
       @game = Game.find(params[:id])
     # if the user is not signed in they cannot add a game to a list
     if user_signed_in?
-      @list_game = ListGame.new
+      # list_game is either present with an id or not yet made
+      @list_game = current_user.list_games.find_by(game: @game) || ListGame.new
       @lists = current_user.lists
       # You need this to make a new review in the show page
     end

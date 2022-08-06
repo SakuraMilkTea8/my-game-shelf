@@ -3,7 +3,11 @@ class ListGamesController < ApplicationController
     @game = Game.find(params[:game].to_i)
     @list_game = ListGame.new(list_game_params)
     @list_game.game = @game
-    @list_game.save
+    if @list_game.save
+      redirect_to game_path(@game)
+    else
+      render 'games/show'
+    end
     authorize @list_game
   end
 
