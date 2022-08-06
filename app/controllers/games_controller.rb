@@ -4,11 +4,14 @@ class GamesController < ApplicationController
       @games = policy_scope(Game).order(created_at: :desc)
     end
 
-  def show
-    @list_game = ListGame.new
-    @lists = current_user.lists
-    @game = Game.find(params[:id])
-    # You need this to make a new review in the show page
+    def show
+      @game = Game.find(params[:id])
+    # if the user is not signed in they cannot add a game to a list
+    if user_signed_in?
+      @list_game = ListGame.new
+      @lists = current_user.lists
+      # You need this to make a new review in the show page
+    end
     @review = Review.new
     ratings = []
     @rating = 0

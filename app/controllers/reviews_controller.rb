@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
     else
       render 'games/show'
     end
+    authorize @review
   end
 
   def edit

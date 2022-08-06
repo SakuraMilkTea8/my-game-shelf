@@ -9,37 +9,39 @@
     <div class="card p-4 m-4">
         <h1> User rating</h1>
         <h1><%= '⭐️' * @rating %>/5</h1>
+      <% if user_signed_in? %>
       <!--adding games to users lists-->
-      <%= simple_form_for(@list_game) do |f| %>
-        <%= hidden_field_tag(:game, @game.id) %>
-        <%= f.association :list, collection: @lists %>
-        <%= f.button :submit %>
-          <% end %>
+        <%= simple_form_for(@list_game) do |f| %>
+          <%= hidden_field_tag(:game, @game.id) %>
+          <%= f.association :list, collection: @lists %>
+          <%= f.button :submit %>
+        <% end %>
+      <% end %>
       </div>
-        </div>
     </div>
   </div>
 
+  <div class="row">
     <div class="col-12">
       <div class="card p-4">
         <h1><%= @game.title %></h1>
         <p> <%= @game.genre %></p>
         <p> <%= @game.developer %></p>
         <p> <%= @game.console %></p>
-        <%= 	"The year is 2021, and Genoq has become a leading corporation in bio-medical research. However the tower, some 90 stories high, is not all that it seems. Somewhere within the tower, highly illegal bio-weapons research has been conducted in secret. June 26th, disaster strikes and the lethal organic weapons have escaped and threaten not only the staff members stranded in the tower, but the world itself.\nYou arrive on the 80th floor with an urgent package addressed to Derrida, the lead scientist at Genoq working on the bio-weapons research. Set back from your goal, you must climb the tower, assisting those in need or focusing solely on your task at hand, and stopping the virus from escaping the tower and threatening all life on the planet.\nWill you help the stranded survivors or hinder them? Can you deliver the package to Derrida in time? Can you prevent the impending catastrophe and escape with your life?\nKey Features\nNew high res graphics\nNew music by Mark 'TDK' Knight\nNew control menu\nCan save at any point in the game\nLeaderboards\nAchievements\nSame great gameplay" %>
+        <%= @game.description %>
       </div>
     </div>
-  </div>
 
     <div class="reviews">
       <div class="reviews card p-4">
+      <% if user_signed_in? %>
       <h3>Reviews for <%= @game.title %></h3>
         <!--partial for the review form -->
           <%= render 'reviews/form', game: @game, review: @review %>
+      <% end %>
         <!--partial for the list of reviews -->
         <%= render 'reviews/review' %>
       </div>
     </div>
   </div>
-</div>
 </div>
