@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :list_games
 
   validates :title, presence: true
