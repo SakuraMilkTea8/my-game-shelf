@@ -8,6 +8,7 @@
 require 'json'
 require 'open-uri'
 
+ListGame.destroy_all
 List.destroy_all
 User.destroy_all
 
