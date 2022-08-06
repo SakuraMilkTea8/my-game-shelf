@@ -9,6 +9,14 @@
     <div class="card p-4 m-4">
         <h1> User rating</h1>
         <h1><%= '⭐️' * @rating %>/5</h1>
+      <!--adding games to users lists-->
+      <%= simple_form_for(@list_game) do |f| %>
+        <%= hidden_field_tag(:game, @game.id) %>
+        <%= f.association :list, collection: @lists %>
+        <%= f.button :submit %>
+          <% end %>
+      </div>
+        </div>
     </div>
   </div>
 
