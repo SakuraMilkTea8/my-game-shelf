@@ -5,6 +5,7 @@
     <% @game.reviews.each do |review| %>
       <p class="reviewContent">"<%= review.content %>"</p>
       <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
+      <%= review.user.name %>
     <% end %>
   <% end %>
 </div>
