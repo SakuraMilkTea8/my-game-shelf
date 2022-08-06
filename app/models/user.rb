@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :lists, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :list_games, through: :lists
+  has_many :games, through: :list_games
   after_create :create_lists
 
   def create_lists
