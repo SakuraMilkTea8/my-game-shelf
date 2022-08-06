@@ -13,10 +13,8 @@ User.destroy_all
 
 if ENV['minimal'] == 'yes'
   Game.destroy_all
-  List.destroy_all
-  User.destroy_all
 
-
+  description_placeholder = 'Tennis for Two (also known as Computer Tennis) is a sports video game that simulates a game of tennis, and was one of the first games developed in the early history of video games. American physicist William Higinbotham designed the game in 1958 for display at the Brookhaven National Laboratory's annual public exhibition after learning that the government research institution's Donner Model 30 analog computer could simulate trajectories with wind resistance. He designed the game within a few hours, after which he and technician Robert V. Dvorak built it over a period of three weeks. The game was displayed on an oscilloscope and played with two custom aluminum controllers. Its visuals show a representation of a tennis court viewed from the side, and players adjust the angle of their shots with a knob on their controller and try to hit the ball over the net by pressing a button.'
   url = "https://api.rawg.io/api/games?key=#{ENV['RAWG_API']}"
   doc = URI.parse(url).open.read
   response = JSON.parse(doc)
@@ -26,7 +24,7 @@ if ENV['minimal'] == 'yes'
     game['genres'].each { |hash| genres << hash['name'] }
     platforms = []
     game['platforms'].each { |hash| platforms << hash['platform']['name'] }
-    this = Game.new(title: game['name'], genre: genres.join(" "), developer: "Hamish Liu", console: platforms.join(" "), price: 3.5, release_date: game['released'], image_url: game['background_image'])
+    this = Game.new(title: game['name'], genre: genres.join(","), developer: "Hamish Liu", console: platforms.join(","), description: description_placeholder, price: 3.5, release_date: game['released'], image_url: game['background_image'])
     this.save
     p this.title
   end
@@ -68,7 +66,3 @@ seedyboi = User.new(email: 'seedy@seed.com', password: '123456', name: 'Seedy Se
 seedyboi.save!
 
 p seedyboi.name
-
-List.create(name: 'completed', user_id: seedyboi.id)
-List.create(name: 'currently playing', user_id: seedyboi.id)
-List.create(name: 'want to play', user_id: seedyboi.id)
