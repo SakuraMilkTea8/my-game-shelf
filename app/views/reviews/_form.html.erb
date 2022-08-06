@@ -1,5 +1,5 @@
 <%= simple_form_for([ @game, @review ], remote: true ) do |f| %>
-  <%= f.input :content %>
+  <%= f.input :content, as: :text, label: false %>
   <%= f.input :rating %>
-  <%= f.button :submit %>
+  <%= f.button :submit, input_html: { style: "display: none"}, label_html: { class: "btn btn-primary"}%>
 <% end %>

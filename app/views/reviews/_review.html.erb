@@ -3,7 +3,8 @@
     Be the first to leave a review for <%= @game.title %>
   <% else %>
     <% @game.reviews.each do |review| %>
-      <p><%= review.content %></p>
+      <p class="reviewContent">"<%= review.content %>"</p>
+      <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
     <% end %>
   <% end %>
 </div>
