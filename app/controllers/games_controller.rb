@@ -2,7 +2,6 @@ class GamesController < ApplicationController
   def index
       @games = Game.all
       @games = policy_scope(Game).order(created_at: :desc)
-      authorize @game
     end
 
   def show

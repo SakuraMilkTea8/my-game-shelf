@@ -13,8 +13,12 @@ Rails.application.routes.draw do
   get 'lists/edit'
   get 'lists/update'
   devise_for :users
+<<<<<<< HEAD
   root to: 'pages#home'
   resources :list_games, only: [:create, :destroy]
+=======
+  root to: 'games#index'
+>>>>>>> master
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # If we decide to have user created shelves we should add :new and :create
   resources :lists, only: [:edit, :update, :index, :show]
