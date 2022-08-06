@@ -1,0 +1,10 @@
+.main-btn {
+  border-radius: 5px;
+  padding: 16px 32px;
+  background-color: $dark-red;
+  box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.5);
+}
+
+.main-btn:hover {
+  background-color: $main-red;
+}

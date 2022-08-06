@@ -8,8 +8,8 @@
 }
 
 .game-card {
-  border-radius: 10px;
-  background-color: $middle;
+  border-radius: 4px;
+  background-color: $main-red;
   width: 300px;
   height: 300px;
   display: flex;
@@ -29,6 +29,6 @@
 
 .game-card h3 {
   text-align: center;
-  color: $slate;
+  color: black;
   text-decoration: none;
 }
