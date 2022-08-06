@@ -1,7 +1,9 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all
-  end
+      @games = Game.all
+      @games = policy_scope(Game).order(created_at: :desc)
+      authorize @game
+    end
 
   def show
     @game = Game.find(params[:id])
@@ -15,5 +17,6 @@ class GamesController < ApplicationController
     unless ratings.empty?
       @rating = ratings.sum / ratings.length
     end
+    authorize @game
   end
 end
