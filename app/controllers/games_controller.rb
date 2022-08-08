@@ -1,11 +1,11 @@
 class GamesController < ApplicationController
   def index
-      @games = Game.all
-      @games = policy_scope(Game).order(created_at: :desc)
-    end
+    @games = Game.all
+    @games = policy_scope(Game).order(created_at: :desc)
+  end
 
-    def show
-      @game = Game.find(params[:id])
+  def show
+    @game = Game.find(params[:id])
     # if the user is not signed in they cannot add a game to a list
     if user_signed_in?
       # list_game is either present with an id or not yet made
