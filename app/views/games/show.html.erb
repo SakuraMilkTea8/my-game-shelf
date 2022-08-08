@@ -27,6 +27,7 @@
     <div class="col-12">
       <div class="card p-4">
         <h1><%= @game.title %></h1>
+        <% game_title = @game.title %>
         <p> <%= @game.genre %></p>
         <% game_genre = @game.genre %>
         <p> <%= @game.developer %></p>
@@ -47,12 +48,14 @@
         <%= render 'reviews/review' %>
       </div>
     </div>
+    <!-- Recommends 3 games by genre -->
     <div class="col-12">
-      <div class="game-cards">
+      <h3>You may also like</h3>
+      <div class="recommended-game-cards">
         <% total = 0 %>
         <% @games.each do |game| %>
-          <% if game.genre == game_genre %>
-          <%= break if total == 3 %>
+          <% if game.genre == game_genre && game.title != game_title  %>
+            <%= break if total == 3 %>
             <% total += 1 %>
             <%= link_to game_path(game) do %>
               <div class="game-card">
