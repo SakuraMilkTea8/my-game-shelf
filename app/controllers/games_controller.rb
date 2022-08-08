@@ -5,6 +5,8 @@ class GamesController < ApplicationController
   end
 
   def show
+    # for the recommended games to appear in the show page
+    index
     @game = Game.find(params[:id])
     # if the user is not signed in they cannot add a game to a list
     if user_signed_in?
