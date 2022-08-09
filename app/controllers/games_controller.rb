@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+
+
   def index
     @games = Game.all
     @games = policy_scope(Game).order(created_at: :desc)
@@ -21,10 +23,9 @@ class GamesController < ApplicationController
   # end
 
   def show
-    # for the recommended games to appear in the show page
-    # recommended
-    index
+    @games = Game.all
     @game = Game.find(params[:id])
+
     # if the user is not signed in they cannot add a game to a list
     if user_signed_in?
       # list_game is either present with an id or not yet made
@@ -41,6 +42,32 @@ class GamesController < ApplicationController
     unless ratings.empty?
       @rating = ratings.sum / ratings.length
     end
+    total = 0
+    # can be done in sql
+    @three_games = []
+      @games.map do |element|
+      if @game.genre == element.genre && @game.title != element.title
+        break if total == 3
+        @three_games << element
+        total += 1
+      end
+    end
     authorize @game
   end
+
+  private
+
+  # def recommended(game, all_games)
+  #   total = 0
+  #   # can be done in sql
+  #     @three_games = @games.map do |element|
+  #     if game.genre == element.genre && game.title != element.title
+  #       break if total == 3
+
+  #       total += 1
+  #     end
+  #   end
+  #   return @three_games
+  #   raise
+  # end
 end
