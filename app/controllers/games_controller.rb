@@ -4,8 +4,25 @@ class GamesController < ApplicationController
     @games = policy_scope(Game).order(created_at: :desc)
   end
 
+  # def recommended
+  #   show
+  #   # @game.genre = game_genre
+  #   # @game.title = game_title
+  #   index
+  #   total = 0
+  #   @games.each do |game|
+  #     if game.genre == game_genre && game.title != game_title
+  #       break if total == 3
+
+  #       total += 1
+  #       link_to game_path(game)
+  #     end
+  #   end
+  # end
+
   def show
     # for the recommended games to appear in the show page
+    # recommended
     index
     @game = Game.find(params[:id])
     # if the user is not signed in they cannot add a game to a list
