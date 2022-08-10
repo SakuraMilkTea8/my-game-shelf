@@ -25,11 +25,11 @@ class GamesController < ApplicationController
     # recommended
     index
     @game = Game.find(params[:id])
+    authorize @game
     # if the user is not signed in they cannot add a game to a list
     if user_signed_in?
       # list_game is either present with an id or not yet made
-      @list_game = current_user.list_games.find_by(game: @game) || ListGame.new
-      @list = current_user.list
+      @shelf_game = current_user.list_games.find_by(game: @game) || ShelfGame.new
       # You need this to make a new review in the show page
     end
     @review = Review.new
@@ -41,6 +41,5 @@ class GamesController < ApplicationController
     unless ratings.empty?
       @rating = ratings.sum / ratings.length
     end
-    authorize @game
   end
 end
