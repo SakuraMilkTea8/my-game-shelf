@@ -8,8 +8,7 @@
 require 'json'
 require 'open-uri'
 
-ListGame.destroy_all
-List.destroy_all
+# ShelfGame.destroy_all
 User.destroy_all
 
 if ENV['minimal'] == 'yes'
@@ -67,3 +66,12 @@ seedyboi = User.new(email: 'seedy@seed.com', password: '123456', name: 'Seedy Se
 seedyboi.save!
 
 p seedyboi.name
+
+p 'Seedyboi is looking for a game to add to their shelf...'
+
+seedy_game = ShelfGame.new(category: 'want to play')
+seedy_game.user = seedyboi
+seedy_game.game = Game.first
+seedy_game.save!
+
+p "#{seedy_game.user.name} added #{seedy_game.game.title} to their shelf under #{seedy_game.category}"
