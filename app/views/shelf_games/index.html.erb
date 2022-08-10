@@ -1,0 +1,20 @@
+<div class="container">
+  <h3>
+    Want To Play
+  </h3>
+  <% @want_to_play.each do |game| %>
+    <%= game.title %>
+  <% end %>
+  <h3>
+    Now Playing
+  </h3>
+  <% @now_playing.each do |game| %>
+    <%= game.title %>
+  <% end %>
+  <h3>
+    Completed
+  </h3>
+  <% @completed.each do |game| %>
+    <%= game.title %>
+  <% end %>
+</div>

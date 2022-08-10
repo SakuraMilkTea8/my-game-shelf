@@ -8,16 +8,16 @@
         <h1> User rating</h1>
         <h1><%= '⭐️' * @rating %>/5</h1>
         <% if user_signed_in? %>
-          <!--adding games to users lists-->
-          <%= simple_form_for(@list_game) do |f| %>
+          <!--adding games to users' shelves-->
+          <%= simple_form_for(@shelf_game) do |f| %>
             <%= hidden_field_tag(:game, @game.id) %>
             <%= f.input :category, collection: ['want to play', 'now playing', 'completed'], default: 'want to play' %>
             <%= f.button :submit %>
           <% end %>
           <!--Checking status of game (make into a partial) -->
           <!--persisted checks if it is saved -->
-          <% if @list_game.persisted? %>
-            This game is on your shelf under <%= @list_game.category %>
+          <% if @shelf_game.persisted? %>
+            This game is on your shelf under <%= @shelf_game.category %>
           <% end %>
         <% end %>
       </div>
@@ -44,7 +44,7 @@
         <% else %>
         <% end %>
         <h1></h1>
-        <!--partial for the list of reviews -->
+        <!--partial for the shelf of reviews -->
         <%= render 'reviews/review' %>
       </div>
     </div>
