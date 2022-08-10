@@ -4,15 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :lists, dependent: :destroy
+  has_one :list, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :list_games, through: :lists
+  has_many :list_games, through: :list
   has_many :games, through: :list_games
-  after_create :create_lists
+  after_create :create_list
 
-  def create_lists
-    List.create(name: 'want to play', user: self)
-    List.create(name: 'now playing', user: self)
-    List.create(name: 'completed', user: self)
+  def create_list
+    List.create(user: self)
   end
 end

@@ -29,7 +29,7 @@ class GamesController < ApplicationController
     if user_signed_in?
       # list_game is either present with an id or not yet made
       @list_game = current_user.list_games.find_by(game: @game) || ListGame.new
-      @lists = current_user.lists
+      @list = current_user.list
       # You need this to make a new review in the show page
     end
     @review = Review.new
