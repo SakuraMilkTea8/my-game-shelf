@@ -48,13 +48,11 @@
         <%= render 'reviews/review' %>
       </div>
     </div>
-    <!-- Recommends (max) 3 games by genre not including current game -->
-    <!-- Tried to add this logic to show but my PC crashes everytime :(-->
     <div class="col-12">
       <h3>You may also like</h3>
       <div class="recommended-game-cards">
-        <% total = 0 %>
-        <%= @three_games.each do |game| %>
+        <!-- Recommends (max) 3 games by genre not including current game -->
+        <% @three_games.each do |game| %>
           <div class="game-card">
             <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
             <h3>
