@@ -12,7 +12,7 @@
           <%= simple_form_for(@shelf_game) do |f| %>
             <%= hidden_field_tag(:game, @game.id) %>
             <%= f.input :category, collection: ['want to play', 'now playing', 'completed'], default: 'want to play' %>
-            <%= f.button :submit %>
+            <%= f.submit 'Assign', class: "btn btn-default btn-secondary" %>
           <% end %>
           <!--Checking status of game (make into a partial) -->
           <!--persisted checks if it is saved -->

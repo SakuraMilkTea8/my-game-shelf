@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+P# frozen_string_literal: true
 #
 # Uncomment this and change the path if necessary to include your own
 # components.
