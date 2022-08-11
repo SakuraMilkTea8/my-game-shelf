@@ -24,3 +24,29 @@
  width: 600px;
  height: 320px;
 }
+
+.game-row {
+  padding: 32px;
+  background-color: #ffffff;
+  color: #252627;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 24px;
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.rounded-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  row-gap: 16px;
+  flex-wrap: wrap;
+  margin: 16px auto;
+}
