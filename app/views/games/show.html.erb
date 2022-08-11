@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-4">
-      <%= image_tag @game.image_url, width: "100%", class: "border shadow mb-5" %>
+      <%= image_tag @game.image_url, class: "show-game-image" %>
     </div>
     <div class="col-4">
       <div class="card p-4 m-4">
@@ -54,11 +54,13 @@
         <!-- Recommends (max) 3 games by genre not including current game -->
         <% @three_games.each do |game| %>
           <div class="game-card">
+            <%= link_to game_path(game) do %>
             <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
             <h3>
               <%= game.title %>
             </h3>
           </div>
+          <% end %>
         <% end %>
       </div>
     </div>
