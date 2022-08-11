@@ -8,3 +8,28 @@
 .main-btn:hover {
   background-color: $main-red;
 }
+
+.categories-container {
+  display: flex;
+  justify-items: center;
+  justify-self: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.category-btn {
+  font-family: $body-font;
+  background-color: $card-light-gray;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.category-btn:hover {
+  background-color: $hover-darker-gray;
+}
+
+.category-btn:active {
+  background-color: $hover-darker-gray;
+}

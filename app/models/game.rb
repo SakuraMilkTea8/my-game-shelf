@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
   has_many :reviews, dependent: :destroy
-  has_many :list_games
+  has_many :shelf_games, dependent: :destroy
 
   validates :title, presence: true
   validates :genre, presence: true
