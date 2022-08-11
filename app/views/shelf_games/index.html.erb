@@ -1,31 +1,81 @@
 <div class="container">
-  <div class="categories-container">
-    <div class="category-btn">
-      Want to play
+  <div data-controller="shelf-categories">
+    <div class="categories-container">
+      <div class="category-btn" data-action="click->shelf-categories#want" data-shelf-categories-target="want">
+        Want to play
+      </div>
+      <div class="category-btn" data-action="click->shelf-categories#playing" data-shelf-categories-target="playing">
+        Now Playing
+      </div>
+      <div class="category-btn" data-action="click->shelf-categories#completed" data-shelf-categories-target="complete">
+        Completed
+      </div>
     </div>
-    <div class="category-btn">
-      Now Playing
-    </div>
-    <div class="category-btn">
-      Completed
-    </div>
+      <div data-shelf-categories-target="wants" hidden>
+        <h3>
+          Want To Play
+        </h3>
+        <% @want_to_play.each do |game| %>
+          <%= game.title %>
+        <% end %>
+      </div>
+        <div data-shelf-categories-target="plays" hidden>
+        <h3>
+          Now Playing
+        </h3>
+        <% @now_playing.each do |game| %>
+          <%= game.title %>
+        <% end %>
+      </div>
+      <div data-shelf-categories-target="completes" hidden>
+        <h3>
+          Completed
+        </h3>
+        <% @completed.each do |game| %>
+          <%= game.title %>
+        <% end %>
+      </div>
   </div>
-  <h3>
-    Want To Play
-  </h3>
-  <% @want_to_play.each do |game| %>
-    <%= game.title %>
-  <% end %>
+</div>
+<!-- fuck bootstrap
+<ul class="nav nav-tabs categories-container" id="my-shelf" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active category-btn" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link category-btn" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link category-btn" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+    <h3>
+      Want To Play
+    </h3>
+    <% @want_to_play.each do |game| %>
+      <%= game.title %>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
   <h3>
     Now Playing
   </h3>
   <% @now_playing.each do |game| %>
     <%= game.title %>
   <% end %>
+  </div>
+  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
   <h3>
     Completed
   </h3>
   <% @completed.each do |game| %>
     <%= game.title %>
   <% end %>
+  </div>
+  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
+
+  </div>
 </div>
+-->
