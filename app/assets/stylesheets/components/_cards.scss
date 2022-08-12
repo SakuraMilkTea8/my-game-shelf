@@ -7,6 +7,11 @@
   margin: 16px auto;
 }
 
+.game-cards:after {
+  content: "";
+  flex: auto;
+}
+
 .game-card {
   border-radius: 4px;
   background-color: $card-light-gray;

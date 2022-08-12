@@ -1,5 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
+  align-items: center;
+  align-content: center;
   background: $red-but-not-nintendo;
   margin-bottom: 16px;
 }
@@ -32,4 +34,8 @@
   box-shadow: 1px 1px 10px rgb(138, 52, 40);
   margin-right: 15px;
   transition: 0.5s;
+}
+
+#navbarSupportedContent {
+  align-items: center;
 }

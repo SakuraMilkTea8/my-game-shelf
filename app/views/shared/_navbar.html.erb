@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "games_path", class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo2.png" %>
   <% end %>
 
@@ -20,16 +20,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <%= image_tag "full_heart.svg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <%= link_to 'My Shelf', shelf_games_path, class: "dropdown-item"  %>
-            <%= link_to "Twitch Extension", "#", class: "dropdown-item" %>
-            <%= link_to "My Amazon Wishlist", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-         <form class="form-inline">
+        <form class="form-inline">
           <div class="search-flex-container ">
           <%# form for the searchbar %>
             <%= form_tag games_path, method: :get do %>
@@ -38,6 +29,15 @@
             <%= submit_tag "Search", class: "btn my-2 my-sm-0" %>
            <%end%>
            </div>
+        <li class="nav-item dropdown">
+          <%= image_tag "full_heart.svg", class: "dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to 'My Shelf', shelf_games_path, class: "dropdown-item"  %>
+            <%= link_to "Twitch Extension", "#", class: "dropdown-item" %>
+            <%= link_to "My Amazon Wishlist", "#", class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
        <% else %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: 'btn my-2 my-sm-0' %>
