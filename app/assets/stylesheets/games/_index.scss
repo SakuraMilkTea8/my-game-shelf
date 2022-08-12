@@ -1,8 +1,9 @@
 @import "show";
 
 .banner {
-  height: 20vh;
-  background: $not-white-white;
+  height: 30vh;
+  background: $red-but-not-nintendo;
+  margin-top: -16px;
   margin-bottom: 16px;
   display: flex;
   justify-content: center;
@@ -11,6 +12,11 @@
   font-size: 48px;
   padding: auto;
   box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+// if we use an image
+.banner img {
+  height: 100%;
 }
 
 a {

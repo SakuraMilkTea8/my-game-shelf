@@ -1,29 +1,32 @@
 .game-cards {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 8px;
   row-gap: 16px;
   flex-wrap: wrap;
   margin: 16px auto;
 }
 
-.game-cards:after {
-  content: "";
-  justify-content: flex-start;
-  align-content: flex-start;
-}
+// kinda fixes last flex row issues but not really
+// .game-cards:after {
+//   content: "";
+//   justify-content: flex-start;
+//   align-content: flex-start;
+// }
 
 .game-card {
+  flex-grow: 1;
   border-radius: 4px;
   background-color: $card-light-gray;
   width: 300px;
   height: 300px;
   display: flex;
-  justify-content: center;
-  justify-items: center;
+  justify-content: space-between;
+  justify-items: space-between;
   align-items: center;
   flex-direction: column;
   box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.5);
+  margin: 8px auto;
 }
 
 .game-card:hover {
@@ -31,10 +34,15 @@
 }
 
 .game-card img {
-  margin: 4px;
-  width: 90%;
-  height: 200px;
+  margin-bottom: 4px;
+  width: 100%;
+  height: 220px;
+  top: 0;
   object-fit: cover;
+}
+
+.game-title {
+  flex-grow: 1;
 }
 
 .game-card h3 {

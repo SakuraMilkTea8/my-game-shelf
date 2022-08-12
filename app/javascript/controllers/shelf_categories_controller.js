@@ -31,6 +31,7 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("Hello from our first Stimulus controller")
+    this.wantTarget.classList.add('selected-category')
+    this.wantsTarget.removeAttribute('hidden')
   }
 }
