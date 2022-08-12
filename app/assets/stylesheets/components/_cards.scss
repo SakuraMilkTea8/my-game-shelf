@@ -1,6 +1,6 @@
 .game-cards {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 8px;
   row-gap: 16px;
   flex-wrap: wrap;
@@ -9,7 +9,8 @@
 
 .game-cards:after {
   content: "";
-  flex: auto;
+  justify-content: flex-start;
+  align-content: flex-start;
 }
 
 .game-card {
