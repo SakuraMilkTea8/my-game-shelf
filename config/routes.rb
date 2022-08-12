@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  # changed for user profiles to appear
+  devise_for :users, :path_prefix => 'd'
+  resources :users, :only => [:show]
 
-  devise_for :users
   resources :shelf_games, only: [:index, :create, :destroy]
   root to: 'games#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
