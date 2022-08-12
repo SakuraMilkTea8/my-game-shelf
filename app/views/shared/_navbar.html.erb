@@ -8,6 +8,15 @@
   </button>
 
 
+
+
+
+
+
+
+
+
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
@@ -20,11 +29,21 @@
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
-      <% else %>
+         <form class="form-inline">
+          <div class="search-flex-container ">
+          <%# form for the searchbar %>
+            <%= form_tag games_path, method: :get do %>
+              <%= text_field_tag :query,
+              params[:query], placeholder: "Find a game"%>
+            <%= submit_tag "Search", class: "btn my-2 my-sm-0" %>
+           <%end%>
+           </div>
+       <% else %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: 'btn my-2 my-sm-0' %>
         </li>
       <% end %>
+      </form>
     </ul>
   </div>
 </div>
