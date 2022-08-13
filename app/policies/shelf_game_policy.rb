@@ -1,15 +1,15 @@
 class ShelfGamePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user: user)
     end
   end
 
-  def index?
+  def create?
     return true
   end
 
-  def create?
+  def update?
     return true
   end
 end

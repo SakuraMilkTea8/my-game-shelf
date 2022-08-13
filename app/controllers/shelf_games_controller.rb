@@ -1,6 +1,5 @@
 class ShelfGamesController < ApplicationController
   def index
-    shelf_games = current_user.shelf_games
     shelf_games = policy_scope(ShelfGame).includes(:game).order(created_at: :desc)
     @want_to_play = []
     @now_playing = []
@@ -14,9 +13,6 @@ class ShelfGamesController < ApplicationController
         @completed << shelf_game.game
       end
     end
-    # authorize @want_to_play
-    # authorize @now_playing
-    # authorize @completed
   end
 
   def create
