@@ -1,31 +1,75 @@
 <div class="container">
-  <div class="categories-container">
-    <div class="category-btn">
-      Want to play
+  <div data-controller="shelf-categories">
+    <div class="categories-container">
+      <div class="category-btn" data-action="click->shelf-categories#want" data-shelf-categories-target="want">
+        Want to play
+      </div>
+      <div class="category-btn" data-action="click->shelf-categories#playing" data-shelf-categories-target="playing">
+        Now Playing
+      </div>
+      <div class="category-btn" data-action="click->shelf-categories#completed" data-shelf-categories-target="complete">
+        Completed
+      </div>
     </div>
-    <div class="category-btn">
-      Now Playing
-    </div>
-    <div class="category-btn">
-      Completed
-    </div>
+      <div data-shelf-categories-target="wants" hidden>
+        <%# <div class="game-cards"> %>
+        <div class="row">
+          <% @want_to_play.each do |game| %>
+            <div class="col-md-4 col-sm-6">
+              <%= link_to game_path(game) do %>
+                <div class="game-card">
+                  <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
+                  <div class="game-title">
+                    <h3>
+                      <%= game.title %>
+                    </h3>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <%# </div> %>
+      </div>
+        <div data-shelf-categories-target="plays" hidden>
+        <%# <div class="game-cards"> %>
+        <div class="row">
+          <% @now_playing.each do |game| %>
+            <div class="col-md-4 col-sm-6">
+              <%= link_to game_path(game) do %>
+                <div class="game-card">
+                  <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
+                  <div class="game-title">
+                    <h3>
+                      <%= game.title %>
+                    </h3>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <%# </div> %>
+      </div>
+      <div data-shelf-categories-target="completes" hidden>
+        <%# <div class="game-cards"> %>
+        <div class="row">
+          <% @completed.each do |game| %>
+            <div class="col-md-4 col-sm-6">
+              <%= link_to game_path(game) do %>
+                <div class="game-card">
+                  <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
+                  <div class="game-title">
+                    <h3>
+                      <%= game.title %>
+                    </h3>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <%# </div> %>
+      </div>
   </div>
-  <h3>
-    Want To Play
-  </h3>
-  <% @want_to_play.each do |game| %>
-    <%= game.title %>
-  <% end %>
-  <h3>
-    Now Playing
-  </h3>
-  <% @now_playing.each do |game| %>
-    <%= game.title %>
-  <% end %>
-  <h3>
-    Completed
-  </h3>
-  <% @completed.each do |game| %>
-    <%= game.title %>
-  <% end %>
 </div>
