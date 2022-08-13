@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-4">
-      <%= image_tag @game.image_url, width: "100%", class: "border shadow mb-5" %>
+  <div class="game-row">
+    <div class="rounded-box col-lg-8 col-md-4">
+      <%= image_tag @game.image_url, class: "show-game-image" %>
     </div>
     <div class="col-4">
       <div class="card p-4 m-4">
@@ -12,7 +12,7 @@
           <%= simple_form_for(@shelf_game) do |f| %>
             <%= hidden_field_tag(:game, @game.id) %>
             <%= f.input :category, collection: ['want to play', 'now playing', 'completed'], default: 'want to play' %>
-            <%= f.button :submit %>
+            <%= f.submit 'Assign', class: "btn btn-default btn-secondary" %>
           <% end %>
           <!--Checking status of game (make into a partial) -->
           <!--persisted checks if it is saved -->
@@ -53,12 +53,14 @@
       <div class="recommended-game-cards">
         <!-- Recommends (max) 3 games by genre not including current game -->
         <% @three_games.each do |game| %>
+            <%= link_to game_path(game) do %>
           <div class="game-card">
             <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
             <h3>
               <%= game.title %>
             </h3>
           </div>
+          <% end %>
         <% end %>
       </div>
     </div>
