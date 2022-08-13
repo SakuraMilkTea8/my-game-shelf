@@ -26,7 +26,9 @@ class ShelfGamesController < ApplicationController
   end
 
   def update
-    @game = Game.find(params[:game].to_i)
+    @shelf_game = ShelfGame.find(params[:shelf_game].to_i)
+    @shelf_game.update(shelf_game_params)
+    @shelf_game.save
   end
 
   def destroy
