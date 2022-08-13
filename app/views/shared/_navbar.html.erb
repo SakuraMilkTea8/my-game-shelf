@@ -11,15 +11,16 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-    <form class="form-inline">
+
+    
     <div class="search-flex-container ">
-    <%# form for the searchbar %>
-      <%= form_tag games_path, method: :get do %>
+      <%= form_tag games_path, method: :get, class: "form-inline" do %>
         <%= text_field_tag :query,
         params[:query], placeholder: "Find a game"%>
         <%= submit_tag "Search", class: "btn my-2 my-sm-0" %>
       <%end%>
     </div>
+
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <%= image_tag "full_heart.svg", class: "dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -35,7 +36,6 @@
           <%= link_to "Login", new_user_session_path, class: 'btn my-2 my-sm-0' %>
         </li>
       <% end %>
-      </form>
     </ul>
   </div>
 </div>
