@@ -12,7 +12,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-    
+
     <div class="search-flex-container ">
       <%= form_tag games_path, method: :get, class: "form-inline" do %>
         <%= text_field_tag :query,
@@ -23,7 +23,7 @@
 
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
-          <%= image_tag "full_heart.svg", class: "dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= image_tag "avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%= link_to 'My Shelf', shelf_games_path, class: "dropdown-item"  %>
             <%= link_to "Twitch Extension", "#", class: "dropdown-item" %>
