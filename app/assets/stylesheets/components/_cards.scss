@@ -7,12 +7,27 @@
   margin: 16px auto;
 }
 
+
 // kinda fixes last flex row issues but not really
 // .game-cards:after {
 //   content: "";
 //   justify-content: flex-start;
 //   align-content: flex-start;
 // }
+
+.recommended-game-card {
+  border-radius: 4px;
+  background-color: $card-light-gray;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.5);
+}
+
 
 .game-card {
   flex-grow: 1;
