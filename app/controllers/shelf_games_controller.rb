@@ -26,7 +26,8 @@ class ShelfGamesController < ApplicationController
   end
 
   def update
-    @shelf_game = ShelfGame.find(params[:shelf_game].to_i)
+    @shelf_game = ShelfGame.find(params[:id].to_i)
+    authorize @shelf_game
     @shelf_game.update(shelf_game_params)
     @shelf_game.save
   end
