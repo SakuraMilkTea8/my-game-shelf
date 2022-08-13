@@ -7,28 +7,19 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
-
-
-
-
-
-
-
-
+  <form class="form-inline">
+    <div class="search-flex-container ">
+    <%# form for the searchbar %>
+      <%= form_tag games_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query], placeholder: "Find a game"%>
+        <%= submit_tag "Search", class: "btn my-2 my-sm-0" %>
+      <%end%>
+    </div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <form class="form-inline">
-          <div class="search-flex-container ">
-          <%# form for the searchbar %>
-            <%= form_tag games_path, method: :get do %>
-              <%= text_field_tag :query,
-              params[:query], placeholder: "Find a game"%>
-            <%= submit_tag "Search", class: "btn my-2 my-sm-0" %>
-           <%end%>
-           </div>
         <li class="nav-item dropdown">
           <%= image_tag "full_heart.svg", class: "dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
