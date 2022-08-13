@@ -54,7 +54,7 @@ end
       platforms = []
       game['platforms'].each { |platform| platforms << platform['platform']['name'] }
       # add   description: game['description_raw']    after migrating
-      this = Game.new(title: game['name'], genre: genres.join(","), developer: developers.join(','), console: platforms.join(","), price: 3.5, release_date: game['released'], image_url: game['background_image'])
+      this = Game.new(title: game['name'], description: game['description_raw'], genre: genres.join(","), developer: developers.join(','), console: platforms.join(","), price: 3.5, release_date: game['released'], image_url: game['background_image'])
       this.save
       p this.title
   end
