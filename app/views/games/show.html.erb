@@ -28,10 +28,10 @@
       <div class="card p-4">
         <h1><%= @game.title %></h1>
         <% game_title = @game.title %>
-        <p> <%= @game.genre %></p>
+        <p> <%= @game.genre.split(",").join(", ") %></p>
         <% game_genre = @game.genre %>
-        <p> <%= @game.developer %></p>
-        <p> <%= @game.console %></p>
+        <p> <%= @game.developer.split(",").join(", ") %></p>
+        <p> <%= @game.console.split(",").join(", ") %></p>
         <%= @game.description %>
       </div>
     </div>
