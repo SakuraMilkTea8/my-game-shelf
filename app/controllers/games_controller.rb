@@ -2,6 +2,9 @@ class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    # creates the link path to get the users show page
+    @user = current_user
+    # for the search bar
     if params[:query].present?
       @games = policy_scope(Game).search_by_title_and_genre(params[:query])
     else
