@@ -1,13 +1,14 @@
-<div id="reviews">
   <% if @game.reviews.blank? %>
     Be the first to leave a review for <%= @game.title %>
   <% else %>
+
     <% @game.reviews.each do |review| %>
+      <div class="rounded-box-reviews col-lg-12 col-md-4">
       <ul class="list-group list-group-flush">
-        <p class="reviewContent list-group-item-secondary"><%= review.content %></p>
-        <p class ="reviewTime list-group-item-secondary"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
-        <p class ="reviewTime"> <small><%= review.user.name %> </small></p>
+        <p class ="review-user"> <small><%= review.user.name %> </small></p>
+        <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
+        <p class="reviewContent"><%= review.content %></p>
       </ul>
+      </div>
     <% end %>
   <% end %>
-</div>

@@ -1,16 +1,21 @@
 .reviewContent {
-  font-size: 24px;
-  color: rgb(0, 0, 0);
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  margin: 0;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: normal;
+  margin: 0px 8px 8px;
 }
 
 .reviewTime {
-  font-size: 16px;
-  color: rgb(0, 0, 0);
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: .85rem;
+  font-weight: normal;
+  margin: 1px 10px 10px 10px
+}
+
+.review-user {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0px;
 }
 
 .recommended-game-cards {
@@ -20,9 +25,9 @@
 }
 
 .show-game-image {
- object-fit: cover;
- width: 600px;
- height: 320px;
+  object-fit: cover;
+  width: 600px;
+  height: 320px;
 }
 
 .game-row {
@@ -49,4 +54,16 @@
   row-gap: 16px;
   flex-wrap: wrap;
   margin: 16px auto;
+}
+
+.rounded-box-reviews {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  row-gap: 16px;
+  flex-wrap: wrap;
+  margin: 16px auto;
+  border-radius: 25px;
+  background: #ccc;
+  padding: 16px;
 }
