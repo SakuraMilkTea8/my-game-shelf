@@ -48,6 +48,12 @@
   background-color: $hover-darker-gray;
 }
 
+.game-card:hover img {
+  filter: brightness(80%);
+  // lower one increases contrast which looks cool on some images
+  // filter: contrast(120%);
+}
+
 .game-card img {
   margin-bottom: 4px;
   width: 100%;
