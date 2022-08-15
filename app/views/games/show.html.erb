@@ -6,7 +6,7 @@
     <div class="col-4">
       <div class="card p-4 m-4">
         <h1> User rating</h1>
-        <h1><%= '⭐️' * @rating %>/5</h1>
+        <h1><%= '⭐️' * @rating %></h1>
         <% if user_signed_in? %>
           <!--adding games to users' shelves-->
           <%= simple_form_for(@shelf_game) do |f| %>
