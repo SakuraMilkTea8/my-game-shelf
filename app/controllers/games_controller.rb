@@ -14,6 +14,8 @@ class GamesController < ApplicationController
   end
 
   def show
+    # creates the link path to get the users show page
+    @user = current_user
     @games = Game.all
     @game = Game.find(params[:id])
     authorize @game
