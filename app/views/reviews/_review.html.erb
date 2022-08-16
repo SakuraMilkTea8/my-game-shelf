@@ -5,7 +5,18 @@
     <% @game.reviews.each do |review| %>
       <div class="rounded-box-reviews col-lg-12 col-md-4">
       <ul class="list-group list-group-flush">
-        <p class ="review-user"> <%= image_tag "avatar.png", class: "avatar dropdown-toggle"%> <small><%= review.user.name %> </small> <%= '⭐️' * review.rating %></p>
+        <p class ="review-user">
+          <%= image_tag "avatar.png", class: "avatar dropdown-toggle"%>
+          <small>
+            <%= review.user.name %>
+          </small>
+          <% review.rating.times do %>
+            <%= image_tag('icons/star-full.svg', class: "review-star") %>
+          <% end %>
+          <% (5 - review.rating).times do %>
+            <%= image_tag('icons/star-empty.svg', class: "review-star") %>
+          <% end %>
+        </p>
         <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
         <p class="reviewContent"><%= review.content %></p>
       </ul>

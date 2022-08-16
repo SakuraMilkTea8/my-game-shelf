@@ -5,14 +5,35 @@
     </div>
     <div class="col-4">
       <div class="card p-4 m-4">
-        <h1> User rating</h1>
-        <h1><%= '⭐️' * @rating %></h1>
+        <h4> User rating</h4>
+        <div class="star-container">
+          <% @rating.times do %>
+            <%= image_tag('icons/star-full.svg', class: "star rating") %>
+          <% end %>
+          <% if @rating == 0 %>
+            <p class="rating-notification">
+              no user ratings yet
+            </p>
+            <% (5 - @rating).times do %>
+              <%= image_tag('icons/star-empty.svg', class:"star no-rating") %>
+            <% end %>
+          <% else %>
+            <% (5 - @rating).times do %>
+              <%= image_tag('icons/star-empty.svg', class: "star rating-remainder") %>
+            <% end %>
+          <% end %>
+        </div>
         <% if user_signed_in? %>
           <!--adding games to users' shelves-->
           <%= simple_form_for(@shelf_game) do |f| %>
             <%= hidden_field_tag(:game, @game.id) %>
-            <%= f.input :category, collection: ['want to play', 'now playing', 'completed'], default: 'want to play' %>
-            <%= f.submit 'Assign', class: "btn btn-default btn-secondary" %>
+            <%= f.label "Add to your game shelf" %>
+            <div class="shelf-select">
+              <%= f.input_field :category, collection: ['want to play', 'now playing', 'completed'], default: 'want to play' %>
+              <%= f.button :button do %>
+                <%= image_tag('icons/plus.svg') %>
+              <% end %>
+            </div>
           <% end %>
           <!--Checking status of game (make into a partial) -->
           <!--persisted checks if it is saved -->

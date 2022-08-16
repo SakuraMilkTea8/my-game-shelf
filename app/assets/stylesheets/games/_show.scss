@@ -12,6 +12,9 @@
 }
 
 .review-user {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   color: inherit;
   font-weight: bold;
   text-decoration: none;
@@ -70,4 +73,55 @@
   border-radius: 25px;
   background: #ccc;
   padding: 16px;
+}
+
+.shelf-select {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.shelf-select select {
+  width: 70%;
+  // flex-grow: 2;
+}
+
+.shelf-select img {
+  width: 16px;
+  height: 16px;
+}
+
+.shelf-select .btn {
+  border: none;
+}
+
+.shelf-select .btn:hover {
+  border: none;
+  opacity: 70%;
+}
+
+.star-container {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.star {
+  width: 32px;
+  height: 32px;
+}
+
+.no-rating {
+  opacity: 20%;
+}
+
+.rating-notification {
+  z-index: 1;
+  position: absolute;
+  padding: 0 8px;
+  font-size: 22px;
+}
+
+.review-star {
+  width: 16px;
+  height: 16px;
 }
