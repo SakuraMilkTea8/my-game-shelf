@@ -28,8 +28,12 @@
 
 .category-btn:hover {
   background-color: $hover-darker-gray;
+  font-weight: bold;
+  color: $not-white-white;
 }
 
 .selected-category {
-  background-color: $hover-darker-gray;
+  background-color: $raspberry;
+  font-weight: bold;
+  color: $not-white-white;
 }

@@ -45,7 +45,8 @@
 }
 
 .game-card:hover {
-  background-color: $hover-darker-gray;
+  box-shadow: 0px 0px 8px 6px $hover-darker-gray;
+  // background-color: $hover-darker-gray;
 }
 
 .game-card:hover img {
