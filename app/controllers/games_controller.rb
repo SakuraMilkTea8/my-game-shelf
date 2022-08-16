@@ -31,15 +31,12 @@ class GamesController < ApplicationController
     @game.reviews.each do |review|
       ratings << review.rating
     end
-    unless ratings.empty?
-      @rating = ratings.sum / ratings.length
-    end
+    @rating = ratings.sum / ratings.length unless ratings.empty?
 
-    total = 0
-    # sorted array has the best matches last so reversing it is best
-    recommended_games = recommended(@game).reverse
+
     # still not perfect but much better than before
-    @three_games = recommended_games.first(3)
+    recommended_games = recommended(@game)
+    @three_games = recommended_games.keys.first(3)
     # @games.map do |element|
     #   if @game.genre == element.genre && @game.title != element.title
     #     break if total == 3
@@ -53,9 +50,7 @@ class GamesController < ApplicationController
 
   private
 
-  # def recommended(game, all_games)
-  def recommended(game)
-    all_games = Game.all
+  def get_tags(game)
     game_tags = []
     game.genre.split(",").each do |genre|
       game_tags << genre
@@ -65,28 +60,25 @@ class GamesController < ApplicationController
       game_tags << dev
     end
     # <-- to here
+    return game_tags
+  end
+
+  def tally_recommendations(games_array)
+    # tallies the games into a hash and organizes it by highest tally first
+    return games_array.tally.sort_by { |_key, value| -value }.to_h
+  end
+
+  def recommended(game)
+    all_games = Game.all
+    game_tags = get_tags(game)
     recommended_games = []
     # check for each tag in each other game
     game_tags.each do |tag|
       all_games.each do |current_game|
-        tags = []
-        current_game.genre.split(",").each do |genre|
-          tags << genre
-        end
-        # comment out to test off heroku from here -->
-        current_game.developer.split(",").each do |dev|
-          tags << dev
-        end
-        # <-- to here
-        if tags.include?(tag) && current_game.title != game.title
-          recommended_games << current_game
-        end
+        tags = get_tags(current_game)
+        recommended_games << current_game if tags.include?(tag) && current_game.title != game.title
       end
     end
-    # tallies games by matches into a hash
-    tally = recommended_games.tally
-    # sorts by the times matched (higher values at the end) into an array
-    sorted = recommended_games.sort_by {|key, value| value }
-    return sorted
+    return tally_recommendations(recommended_games)
   end
 end
