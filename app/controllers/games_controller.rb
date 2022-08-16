@@ -37,9 +37,9 @@ class GamesController < ApplicationController
 
     total = 0
     # sorted array has the best matches last so reversing it is best
-    recommended_games = recommended(@game).reverse
+    recommended_games = recommended(@game)
     # still not perfect but much better than before
-    @three_games = recommended_games.first(3)
+    @three_games = recommended_games.keys.first(3)
     # @games.map do |element|
     #   if @game.genre == element.genre && @game.title != element.title
     #     break if total == 3
@@ -86,7 +86,7 @@ class GamesController < ApplicationController
     # tallies games by matches into a hash
     tally = recommended_games.tally
     # sorts by the times matched (higher values at the end) into an array
-    sorted = recommended_games.sort_by {|key, value| value }
+    sorted = tally.sort_by {|_key, value| -value }.to_h
     return sorted
   end
 end
