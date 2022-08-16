@@ -63,6 +63,11 @@ class GamesController < ApplicationController
     return game_tags
   end
 
+  def tally_recommendations(games_array)
+    # tallies the games into a hash and organizes it by highest tally first
+    return games_array.tally.sort_by { |_key, value| -value }.to_h
+  end
+
   def recommended(game)
     all_games = Game.all
     game_tags = get_tags(game)
@@ -74,10 +79,6 @@ class GamesController < ApplicationController
         recommended_games << current_game if tags.include?(tag) && current_game.title != game.title
       end
     end
-    # tallies games by matches into a hash
-    tally = recommended_games.tally
-    # sorts by the times matched (higher values at the end) into an array
-    sorted = tally.sort_by { |_key, value| -value }.to_h
-    return sorted
+    return tally_recommendations(recommended_games)
   end
 end
