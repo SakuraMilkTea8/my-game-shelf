@@ -12,6 +12,9 @@
 }
 
 .review-user {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   color: inherit;
   font-weight: bold;
   text-decoration: none;
@@ -116,4 +119,9 @@
   position: absolute;
   padding: 0 8px;
   font-size: 22px;
+}
+
+.review-star {
+  width: 16px;
+  height: 16px;
 }
