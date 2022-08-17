@@ -4,8 +4,15 @@ class UsersController < ApplicationController
 
   def show
     @games = Game.all
-    # users can find other users with this
+    # users can click on other users reviews with this
     @user = User.find(params[:id])
+
+    # users can follow other users
+    @users = User.all
+    # @users.each do |user|
+    #   user
+    # end
+    # raise
     authorize @user
   end
 end

@@ -8,7 +8,7 @@
         <p class ="review-user">
           <%= image_tag "avatar.png", class: "avatar dropdown-toggle"%>
           <small>
-          <%= @user = User.find(review.user.id) %>
+          <% @user = User.find(review.user.id) %>
             <%= link_to review.user.name, user_path(@user) %>
           </small>
           <% review.rating.times do %>

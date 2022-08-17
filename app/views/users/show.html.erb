@@ -19,4 +19,11 @@
         </h6>
     </div>
   </div>
+      <div class="rounded-box col-lg-8 col-md-4">
+      <% @users.each do |user| %>
+        <!-- this line needs to be put in the controller -->
+        <% @user = User.find(user.id) %>
+        <%= link_to user.name, user_path(@user) %>
+      <% end %>
+      </div>
 </div>
