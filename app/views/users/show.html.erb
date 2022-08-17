@@ -7,23 +7,33 @@
         <h1>My reviews</h1>
 
       <% @user.reviews.each do |review| %>
+    <div class="rounded-box-reviews col-lg-12 col-md-4">
       <ul class="list-group list-group-flush">
-      <!-- this line needs to be put in the controller -->
-      <% @game = Game.find(review.game.id) %>
-      <%= link_to review.game.title, game_path(@game) %>
-        <p class="reviewContent list-group-item-secondary"><%= review.content %>"</p>
-        <p class ="reviewTime list-group-item-secondary"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
-        <p class ="reviewTime"> <small><%= review.user.name %> </small></p>
+        <p class ="review-user">
+          <%= image_tag "avatar.png", class: "avatar dropdown-toggle"%>
+          <small>
+          <% @user = User.find(review.user.id) %>
+            <%= link_to review.user.name, user_path(@user) %>
+          </small>
+          <% review.rating.times do %>
+            <%= image_tag('icons/star-full.svg', class: "review-star") %>
+          <% end %>
+          <% (5 - review.rating).times do %>
+            <%= image_tag('icons/star-empty.svg', class: "review-star") %>
+          <% end %>
+        </p>
+        <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
+        <p class="reviewContent"><%= review.content %></p>
       </ul>
+      </div>
     <% end %>
-        </h6>
-    </div>
-  </div>
-      <div class="rounded-box col-lg-8 col-md-4">
+    <h1>Users</h1>
       <% @users.each do |user| %>
         <!-- this line needs to be put in the controller -->
         <% @user = User.find(user.id) %>
-        <%= link_to user.name, user_path(@user) %>
+        <li>
+          <ul>  <%= link_to user.name, user_path(@user) %> </ul>
+        </li>
       <% end %>
-      </div>
-</div>
+  </div>
+<div>
