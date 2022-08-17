@@ -8,6 +8,7 @@
 
       <% current_user.reviews.each do |review| %>
       <ul class="list-group list-group-flush">
+      <!-- this line needs to be put in the controller -->
       <% @game = Game.find(review.game.id) %>
       <%= link_to review.game.title, game_path(@game) %>
         <p class="reviewContent list-group-item-secondary"><%= review.content %>"</p>

@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   def show
     @games = Game.all
     @user = current_user
-    # @game = Game.find(params[:id])
     authorize @user
   end
 end
