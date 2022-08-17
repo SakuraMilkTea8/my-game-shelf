@@ -1,0 +1,21 @@
+<div class="tab-content p-0">
+<h1>Users</h1>
+          <div class="tab-pane fade active show" id="profile-friends">
+            <div class="m-b-10"><b>My game shelf users(<%= @users.count %>)</b></div>
+            <% @users.each do |user| %>
+              <!-- this line needs to be put in the controller -->
+              <% @user = User.find(user.id) %>
+              <div class="tab-pane fade active show" id="profile-friends">
+                <ul class="friend-list clearfix">
+                  <li>
+                    <%= link_to user_path(user) do %>
+                      <div class="friend-img"> <%= image_tag "avatar.png" %></div>
+                      <div class="friend-info">
+                        <h4><%= user.name %></h4>
+                      </div>
+                    </li>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
