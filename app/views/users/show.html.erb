@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-8">
+    <div class="col-6">
       <h1><%= @user.name %></h1>
         <h6>
         <div class="title"></div>
@@ -27,7 +27,9 @@
       </ul>
       </div>
     <% end %>
-    <h1>Users</h1>
+    </div>
+    <div class="col-6">
+    <h1>Other users</h1>
       <% @users.each do |user| %>
         <!-- this line needs to be put in the controller -->
         <% @user = User.find(user.id) %>
@@ -35,5 +37,6 @@
           <ul>  <%= link_to user.name, user_path(@user) %> </ul>
         </li>
       <% end %>
+      </div>
   </div>
-<div>
+</div>
