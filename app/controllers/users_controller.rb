@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @games = Game.all
-    @user = current_user
+    # users can find other users with this
+    @user = User.find(params[:id])
     authorize @user
   end
 end
