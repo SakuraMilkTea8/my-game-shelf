@@ -8,7 +8,8 @@
 
       <% current_user.reviews.each do |review| %>
       <ul class="list-group list-group-flush">
-      <%= review.game.title %>
+      <% @game = Game.find(review.game.id) %>
+      <%= link_to review.game.title, game_path(@game) %>
         <p class="reviewContent list-group-item-secondary"><%= review.content %>"</p>
         <p class ="reviewTime list-group-item-secondary"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
         <p class ="reviewTime"> <small><%= review.user.name %> </small></p>
