@@ -1,30 +1,32 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-6">
-      <h1><%= @user.name %></h1>
+      <h1><%= @user.name %>'s profile</h1>
         <h6>
         <div class="title"></div>
-        <h1>My reviews</h1>
+        <h1>Reviews</h1>
 
       <% @user.reviews.each do |review| %>
-    <div class="rounded-box-reviews col-lg-12 col-md-4">
-      <ul class="list-group list-group-flush">
-        <p class ="review-user">
-          <%= review.game.title %>
-          <% @game = Game.find(review.game.id) %>
-          <%= link_to "Visit", game_path(@game), class: 'btn btn-secondary btn-sm w-4px'  %>
-          <% review.rating.times do %>
-            <%= image_tag('icons/star-full.svg', class: "review-star") %>
+      <!-- this line needs to be put in the controller -->
+      <% @game = Game.find(review.game.id) %>
+          <div class="rounded-box-reviews col-lg-12 col-md-4">
+            <ul class="list-group list-group-flush col-6">
+              <p class ="review-user">
+                <%= review.game.title %>
+                <%= link_to "Visit", game_path(@game), class: 'btn btn-secondary btn-sm w-4px'  %>
+                <% review.rating.times do %>
+                  <%= image_tag('icons/star-full.svg', class: "review-star") %>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <%= image_tag('icons/star-empty.svg', class: "review-star") %>
+                <% end %>
+              </p>
+              <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
+              <p class="reviewContent">"<%= review.content %>"</p>
+            </ul>
+                <%= image_tag @game.image_url, class: "reviewImage" %>
+            </div>
           <% end %>
-          <% (5 - review.rating).times do %>
-            <%= image_tag('icons/star-empty.svg', class: "review-star") %>
-          <% end %>
-        </p>
-        <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
-        <p class="reviewContent">"<%= review.content %>"</p>
-      </ul>
-      </div>
-    <% end %>
     </div>
     <div class="col-6">
     <h1>Other users</h1>
@@ -35,6 +37,9 @@
           <ul>  <%= link_to user.name, user_path(@user) %> </ul>
         </li>
       <% end %>
+      <div>
+      <h1>My list</h1>
+      </div>
       </div>
   </div>
 </div>
