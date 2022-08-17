@@ -28,18 +28,27 @@
             </div>
           <% end %>
     </div>
-    <div class="col-6">
-    <h1>Other users</h1>
-      <% @users.each do |user| %>
-        <!-- this line needs to be put in the controller -->
-        <% @user = User.find(user.id) %>
-        <li>
-          <ul>  <%= link_to user.name, user_path(@user) %> </ul>
-        </li>
-      <% end %>
-      <div>
-      <h1>My list</h1>
-      </div>
-      </div>
+
+            <div class="col-6">
+                <div class="tab-content p-0">
+                    <div class="tab-pane fade active show" id="profile-friends">
+                        <div class="m-b-10"><b>Users (9)</b></div>
+                              <% @users.each do |user| %>
+                              <!-- this line needs to be put in the controller -->
+                              <% @user = User.find(user.id) %>
+                        <div class="tab-pane fade active show" id="profile-friends">
+                        <ul class="friend-list clearfix">
+                            <li>
+                                  <%= link_to user_path(user) do %>
+                                    <div class="friend-img"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" /></div>
+                                    <div class="friend-info">
+                                        <h4><%= user.name %></h4>
+                                    </div>
+                            </li>
+                            <% end %>
+                            <% end %>
+                          </div>
+                          </div>
+                        </div>
   </div>
 </div>

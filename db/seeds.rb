@@ -60,10 +60,19 @@ end
   end
 end
 
-puts 'Makin that seedy boi'
+puts 'adding users'
 
-seedyboi = User.new(email: 'seedy@seed.com', password: '123456', name: 'Seedy Seed Boi')
+# users!
+seedyboi = User.new(name: 'Seedy Seed Boi', email: 'seedy@seed.com', password: '123456')
 seedyboi.save!
+mike = User.new(name: 'mikeysnakes', email: 'mike@gmail.com', password: '123456')
+mike.save!
+marie = User.new(name: 'hayataroMama', email: 'marie@gmail.com', password: '123456')
+marie.save!
+hamish = User.new(name: 'hamtaro', email: 'hamish@gmail.com', password: '123456')
+hamish.save!
+ellie = User.new(name: 'poutineLuvr', email: 'ellie@gmail.com', password: '123456')
+ellie.save!
 
 p seedyboi.name
 

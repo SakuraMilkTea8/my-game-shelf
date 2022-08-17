@@ -1,0 +1,13 @@
+    <div class="col-6">
+    <h1>Other users</h1>
+      <% @users.each do |user| %>
+        <!-- this line needs to be put in the controller -->
+        <% @user = User.find(user.id) %>
+        <li>
+          <ul>  <%= link_to user.name, user_path(@user) %> </ul>
+        </li>
+      <% end %>
+      <div>
+      <h1>My list</h1>
+      </div>
+      </div>
