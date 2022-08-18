@@ -33,10 +33,12 @@
       </div>
 
 
-      <div class="col-6">
+      <div class="card-body col-6">
         <h1>My shelf</h1>
-        <%=@completed_count %>
-        <canvas id="barChart"></canvas>
+        <%= @completed_count %>
+        <!-- adding data attribute -->
+        <canvas id="myChart" width="400" height="400" data-page-views="<%= [5, 10, 15] %>"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       </div>
     </div>
 </div>
