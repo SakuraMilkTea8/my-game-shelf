@@ -31,8 +31,12 @@
         <!-- friends list partial-->
         <%= render 'users/friends' %>
       </div>
+
+
       <div class="col-6">
-      <h1>My shelf</h1>
-      <%= @user.shelf_games.completed %>
+        <h1>My shelf</h1>
+        <%=@completed_count %>
+        <canvas id="barChart"></canvas>
       </div>
     </div>
+</div>
