@@ -37,8 +37,9 @@
         <h1>My shelf</h1>
         <%= @completed_count %>
         <!-- adding data attribute -->
-        <canvas id="myChart" width="400" height="400" data-page-views="<%= [5, 10, 15] %>"></canvas>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <canvas id="myChart" width="400" height="400"
+        data-page-views="<%=@graph_array %>">
+        </canvas>
       </div>
     </div>
 </div>

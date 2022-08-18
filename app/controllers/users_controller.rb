@@ -16,13 +16,14 @@ class UsersController < ApplicationController
       if game.category == "completed"
           @completed << game.category
           @completed_count = @completed.count
-          @completed_json = @completed_count.to_json
       elsif game.category == "want to play"
           @want_to_play << game
           @want_to_play_count = @want_to_play.count
       else game.category == "now playing"
           @now_playing << game
           @now_playing_count = @now_playing.count
+          @graph_array = [@completed_count, @want_to_play_count, @now_playing_count]
+          # raise
       end
     end
       # raise
