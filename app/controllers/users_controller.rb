@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       else game.category == "now playing"
           @now_playing << game
           @now_playing_count = @now_playing.count
-          @graph_array = [@completed_count, @want_to_play_count, @now_playing_count]
+          @graph_array = [@completed_count, @now_playing_count, @want_to_play_count]
           # raise
       end
     end
