@@ -4,7 +4,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
 
 import "controllers"
@@ -19,7 +19,7 @@ var Chart = require('chart.js')
 //  add data attributes
 const ctx = document.getElementById('myChart');
 const myChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
         labels: ['Completed', 'Now playing', 'Want to play'],
         datasets: [{
