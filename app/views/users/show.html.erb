@@ -1,20 +1,44 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-8">
-      <h1><%= current_user.name %></h1>
-        <h6>
+    <div class="col-6">
+      <h1><%= @user.name %>'s profile</h1>
+      <h6>
         <div class="title"></div>
-        <h1>My reviews</h1>
+        <h1>Reviews</h1>
+        <% @user.reviews.each do |review| %>
+          <!-- this line needs to be put in the controller -->
+          <% @game = Game.find(review.game.id) %>
+          <div class="rounded-box-reviews col-lg-12 col-md-4">
+            <ul class="list-group list-group-flush col-6">
+              <p class ="review-user">
+                <%= review.game.title %>
+                <%= link_to "Visit", game_path(@game), class: 'btn btn-secondary btn-sm w-4px'  %>
+                <% review.rating.times do %>
+                  <%= image_tag('icons/star-full.svg', class: "review-star") %>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <%= image_tag('icons/star-empty.svg', class: "review-star") %>
+                <% end %>
+              </p>
+              <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
+              <p class="reviewContent">"<%= review.content %>"</p>
+            </ul>
+            <%= image_tag @game.image_url, class: "reviewImage" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-6">
+        <!-- friends list partial-->
+        <%= render 'users/friends' %>
+      </div>
 
-      <% current_user.reviews.each do |review| %>
-      <ul class="list-group list-group-flush">
-      <%= review.game.title %>
-        <p class="reviewContent list-group-item-secondary"><%= review.content %>"</p>
-        <p class ="reviewTime list-group-item-secondary"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
-        <p class ="reviewTime"> <small><%= review.user.name %> </small></p>
-      </ul>
-    <% end %>
-        </h6>
+
+      <div class="graph col-6">
+        <h1>My shelf data</h1>
+        <!-- adding data attribute -->
+        <canvas id="myChart" width="400" height="400"
+        data-page-views="<%=@graph_array %>">
+        </canvas>
+      </div>
     </div>
-  </div>
 </div>
