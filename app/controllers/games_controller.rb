@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+
+
   def index
     # creates the link path to get the users show page
     @user = current_user
@@ -49,6 +51,28 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def find_videos(keyword, after: 1.months.ago, before: Time.now)
+    service = Google::Apis::YoutubeV3::YouTubeService.new
+    service.key = GOOGLE_API_KEY
+    next_page_token = nil
+    opt = {
+      q: keyword,
+      type: 'video',
+      max_results: 2,
+      order: :date,
+      page_token: next_page_token,
+      published_after: after.iso8601,
+      published_before: before.iso8601
+    }
+    results = service.list_searches(:snippet, q: keyword)
+    results.items.each do |item|
+      id = item.id
+      snippet = item.snippet
+      puts "\"#{snippet.title}\" by #{snippet.channel_title} (id: #{id.video_id}) (#{snippet.published_at})"
+    end
+  end
+  find_videos('team fortress 2 trailer')
 
   def get_tags(game)
     game_tags = []
