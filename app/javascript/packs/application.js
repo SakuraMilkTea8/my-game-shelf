@@ -13,8 +13,7 @@ import "bootstrap"
 console.log('Hello from application.js')
 
 // require chart.js
-var Chart = require('chart.js')
-
+const Chart = require('chart.js')
 
 //  add data attributes
 const ctx = document.getElementById('myChart');
