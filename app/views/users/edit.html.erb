@@ -1,0 +1,13 @@
+<%= render :partial => 'shared/navbar' %>
+
+<div class="container-edit-form">
+  <h2>
+    Edit your profile
+  </h2>
+
+  <%= simple_form_for(current_user) do |f| %>
+    <%= f.input :name, maxlength: 21 %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit %>
+  <% end %>
+</div>
