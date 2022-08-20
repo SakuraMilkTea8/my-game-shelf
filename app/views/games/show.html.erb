@@ -41,6 +41,10 @@
             This game is on your shelf under <%= @shelf_game.category %>
           <% end %>
         <% end %>
+        <a href="https://www.twitch.tv/<%= @preview_stream['user_name'] %>" class="twitch_preview" target="_blank">
+          <%= @preview_stream['user_name'] %> is <%= @preview_stream['type'] %> streaming <%= @game.title %>
+        </a>
+        <%= image_tag(@thumbnail_url, class: 'preview-thumbnail') %>
       </div>
     </div>
   </div>
@@ -84,5 +88,4 @@
       </div>
     </div>
   </div>
-  <%= @preview_stream['user_name'] %> is <%= @preview_stream['type'] %> streaming <%= @game.title %> <%= image_tag(@thumbnail_url) %>
 </div>
