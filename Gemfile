@@ -73,6 +73,3 @@ gem 'pundit'
 gem 'pg_search', '~> 2.3.0'
 
 # gem 'google-api-client', '>0.7'
-
-# twitch api gem
-gem 'twitch-api'
