@@ -85,28 +85,29 @@ require 'open-uri'
 
 # p "#{seedy_game.user.name} added #{seedy_game.game.title} to their shelf under #{seedy_game.category}"
 
-require 'google/apis/youtube_v3'
-require 'active_support/all'
-GOOGLE_API_KEY="AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM"
+# require 'google/apis/youtube_v3'
+# require 'active_support/all'
+# GOOGLE_API_KEY="AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM"
 
-def find_videos(keyword, after: 1.months.ago, before: Time.now) #検索キーワードと検索範囲を変えれるように引数に値を取っています
-  service = Google::Apis::YoutubeV3::YouTubeService.new
-  service.key = GOOGLE_API_KEY
-  next_page_token = nil
-  opt = {
-    q: keyword,
-    type: 'video',
-    max_results: 2,
-    order: :date,
-    page_token: next_page_token,
-    published_after: after.iso8601,
-    published_before: before.iso8601
-  }
-  results = service.list_searches(:snippet, q: keyword)
-  results.items.each do |item|
-    id = item.id
-    snippet = item.snippet
-    puts "\"#{snippet.title}\" by #{snippet.channel_title} (id: #{id.video_id}) (#{snippet.published_at})"
-  end
-end
-find_videos('team fortress 2 trailer')
+# def find_videos(keyword, after: 1.months.ago, before: Time.now) #検索キーワードと検索範囲を変えれるように引数に値を取っています
+#   service = Google::Apis::YoutubeV3::YouTubeService.new
+#   service.key = GOOGLE_API_KEY
+#   next_page_token = nil
+#   opt = {
+#     q: keyword,
+#     type: 'video',
+#     max_results: 2,
+#     order: :date,
+#     page_token: next_page_token,
+#     published_after: after.iso8601,
+#     published_before: before.iso8601
+#   }
+#   results = service.list_searches(:snippet, q: keyword)
+#   results.items.each do |item|
+#     id = item.id
+#     snippet = item.snippet
+#     puts "\"#{snippet.title}\" by #{snippet.channel_title} (id: #{id.video_id}) (#{snippet.published_at})"
+#   end
+# end
+# find_videos('team fortress 2 trailer')
+# this returns what i want but the controller version does not return what i want
