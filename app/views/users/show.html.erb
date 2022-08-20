@@ -33,11 +33,13 @@
       </div>
       <div class="graph col-6">
         <h1>My shelf data</h1>
-        <!-- adding data attribute -->
-        <canvas id="myChart" width="400" height="400"
-        data-page-views="<%=@graph_array %>">
-        </canvas>
-        <p class="font-italic"><small>"If your graph is not showing please refresh your page or add games to your shelf"</small></p>
+        <p>"Please refresh your page or add games to view your graph"</p>
+        <span class="sr-only">Loading...</span>
       </div>
+      <!-- adding data attribute -->
+      <canvas id="myChart" width="400" height="400"
+        data-page-views="<%=@graph_array %>">
+      </canvas>
     </div>
   </div>
+</div>

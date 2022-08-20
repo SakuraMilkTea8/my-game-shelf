@@ -15,6 +15,7 @@ console.log('Hello from application.js')
 // require chart.js
 const Chart = require('chart.js')
 
+const createGraph = () => {
 //  add data attributes
 const ctx = document.getElementById('myChart');
 const myChart = new Chart(ctx, {
@@ -44,4 +45,11 @@ const myChart = new Chart(ctx, {
             }
         }
     }
+});
+}
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your functions here, e.g:
+  createGraph()
+  // initSelect2();
 });
