@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :shelf_games, dependent: :destroy
   has_many :games, through: :shelf_games
+  has_one_attached :photo
 
   validates :name, presence: true
 end
