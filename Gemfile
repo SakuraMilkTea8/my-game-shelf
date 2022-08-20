@@ -82,6 +82,3 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.16.0'
 
 # gem 'google-api-client', '>0.7'
-
-# twitch api gem
-gem 'twitch-api'
