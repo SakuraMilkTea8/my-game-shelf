@@ -3,7 +3,6 @@ class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   require 'google/apis/youtube_v3'
   require 'active_support/all'
-  GOOGLE_API_KEY="AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM"
 
   def index
     # creates the link path to get the users show page
@@ -47,7 +46,7 @@ class GamesController < ApplicationController
 
   def find_videos(keyword, after: 80.months.ago, before: Time.now)
     service = Google::Apis::YoutubeV3::YouTubeService.new
-    service.key = GOOGLE_API_KEY
+    service.key = "#{ENV['RAWG_API']}"
     next_page_token = nil
     opt = {
       q: keyword,
