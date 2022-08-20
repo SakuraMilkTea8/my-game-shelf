@@ -1,9 +1,9 @@
 class GamesController < ApplicationController
-  helper_method :find_videos
+  # helper_method :find_videos
   skip_before_action :authenticate_user!, only: [:index, :show]
-  require 'google/apis/youtube_v3'
-  require 'active_support/all'
-  GOOGLE_API_KEY="AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM"
+  # require 'google/apis/youtube_v3'
+  # require 'active_support/all'
+  # GOOGLE_API_KEY="AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM"
 
   def index
     # creates the link path to get the users show page
@@ -23,6 +23,8 @@ class GamesController < ApplicationController
     @games = Game.all
     @game = Game.find(params[:id])
     authorize @game
+    @streams = get_twitch_streams(@game.title)
+    raise
     # if the user is not signed in they cannot add a game to a list
     if user_signed_in?
       # list_game is either present with an id or not yet made
@@ -96,5 +98,54 @@ class GamesController < ApplicationController
       end
     end
     return tally_recommendations(recommended_games)
+  end
+
+  require 'json'
+  require 'net/http'
+  require 'uri'
+
+  def get_twitch_streams(game)
+    game_query = game.downcase
+    uri = URI.parse("https://api.twitch.tv/helix/games?name=#{game_query}")
+    request = Net::HTTP::Get.new(uri)
+    request["Client-Id"] = ENV['TWITCH_CLIENT_ID']
+    request["Authorization"] = "Bearer #{ENV['TWITCH_TOKEN']}"
+
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+
+    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+    end
+    resp = JSON.parse(response.body)["data"]
+    game_id = resp.first['id']
+
+    stream_uri = URI.parse("https://api.twitch.tv/helix/streams?game_id=#{game_id}")
+    stream_request = Net::HTTP::Get.new(stream_uri)
+    stream_request["Client-Id"] = ENV['TWITCH_CLIENT_ID']
+    stream_request["Authorization"] = "Bearer #{ENV['TWITCH_TOKEN']}"
+
+    req_options = {
+      use_ssl: stream_uri.scheme == "https",
+    }
+
+    response = Net::HTTP.start(stream_uri.hostname, stream_uri.port, req_options) do |http|
+      http.request(stream_request)
+    end
+    stream_resp = JSON.parse(response.body)["data"]
+    return stream_resp
+
+    # if !resp.empty?
+    #   user = resp.select{ |user| user["broadcaster_login"] == "#{query}" }[0]
+    #   p user
+    #   if user["is_live"] == true
+    #     return "El usuario #{query} está transmitiendo en vivo jugando #{user["game_name"]}!!! 🔴\nMíralo en https://www.twitch.tv/#{query}"
+    #   else
+    #     return "El usuario #{query} no está transmitiendo en este momento, en su última transmición jugó #{user["game_name"]}.\nSíguelo en https://www.twitch.tv/#{query}"
+    #   end
+    # else
+    #   return "#{query}? Quién te conoce papá?."
+    # end
   end
 end
