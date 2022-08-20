@@ -27,6 +27,9 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     authorize @game
     @streams = get_twitch_streams(@game.title)
+    @preview_stream = @streams.first
+    thumbnail_url_split = @preview_stream['thumbnail_url'].split(/{width}x{height}/)
+    @thumbnail_url = thumbnail_url_split.join("500x300")
     # if the user is not signed in they cannot add a game to a list
     if user_signed_in?
       # list_game is either present with an id or not yet made
