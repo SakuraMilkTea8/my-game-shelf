@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'json'
 require 'open-uri'
 
@@ -31,32 +24,32 @@ if ENV['minimal'] == 'yes'
 end
 
   # the following will do 21 api calls, please don't do until it's on heroku and we're not likely to put any more
-  if ENV['detailed'] == 'yes'
-    Game.destroy_all
+if ENV['detailed'] == 'yes'
+  Game.destroy_all
 
 
-    url = "https://api.rawg.io/api/games?key=#{ENV['RAWG_API']}"
-    doc = URI.parse(url).open.read
-    response = JSON.parse(doc)
-    results = response['results']
-    results.take(20).each do |result|
-      # can get more game info at "https://api.rawg.io/api/games/#{game['id']}?key=#{ENV['RAWG_API']}"
-      game_url =  "https://api.rawg.io/api/games/#{result['id']}?key=#{ENV['RAWG_API']}"
-      game_doc = URI.parse(game_url).open.read
-      game = JSON.parse(game_doc)
-      # details has two or more developers usually so loop through (detailed) game['developers'].each |dev| and put the dev['name'] into an array
-      developers = []
-      game['developers'].each { |dev| developers << dev['name'] }
-      # should probably join all of them by comma, no space maybe
-      # if using detailed game all keys are the same, 'description' gives a description with p tags and breaks 'description_raw' has breaks but no html
-      genres = []
-      game['genres'].each { |genre| genres << genre['name'] }
-      platforms = []
-      game['platforms'].each { |platform| platforms << platform['platform']['name'] }
-      # add   description: game['description_raw']    after migrating
-      this = Game.new(title: game['name'], description: game['description_raw'], genre: genres.join(","), developer: developers.join(','), console: platforms.join(","), price: 3.5, release_date: game['released'], image_url: game['background_image'])
-      this.save
-      p this.title
+  url = "https://api.rawg.io/api/games?key=#{ENV['RAWG_API']}"
+  doc = URI.parse(url).open.read
+  response = JSON.parse(doc)
+  results = response['results']
+  results.take(20).each do |result|
+    # can get more game info at "https://api.rawg.io/api/games/#{game['id']}?key=#{ENV['RAWG_API']}"
+    game_url =  "https://api.rawg.io/api/games/#{result['id']}?key=#{ENV['RAWG_API']}"
+    game_doc = URI.parse(game_url).open.read
+    game = JSON.parse(game_doc)
+    # details has two or more developers usually so loop through (detailed) game['developers'].each |dev| and put the dev['name'] into an array
+    developers = []
+    game['developers'].each { |dev| developers << dev['name'] }
+    # should probably join all of them by comma, no space maybe
+    # if using detailed game all keys are the same, 'description' gives a description with p tags and breaks 'description_raw' has breaks but no html
+    genres = []
+    game['genres'].each { |genre| genres << genre['name'] }
+    platforms = []
+    game['platforms'].each { |platform| platforms << platform['platform']['name'] }
+    # add   description: game['description_raw']    after migrating
+    this = Game.new(title: game['name'], description: game['description_raw'], genre: genres.join(","), developer: developers.join(','), console: platforms.join(","), price: 3.5, release_date: game['released'], image_url: game['background_image'])
+    this.save
+    p this.title
   end
 end
 
@@ -83,4 +76,31 @@ seedy_game.user = seedyboi
 seedy_game.game = Game.first
 seedy_game.save!
 
-p "#{seedy_game.user.name} added #{seedy_game.game.title} to their shelf under #{seedy_game.category}"
+# p "#{seedy_game.user.name} added #{seedy_game.game.title} to their shelf under #{seedy_game.category}"
+
+# require 'google/apis/youtube_v3'
+# require 'active_support/all'
+# GOOGLE_API_KEY="AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM"
+
+# def find_videos(keyword, after: 1.months.ago, before: Time.now) #検索キーワードと検索範囲を変えれるように引数に値を取っています
+#   service = Google::Apis::YoutubeV3::YouTubeService.new
+#   service.key = GOOGLE_API_KEY
+#   next_page_token = nil
+#   opt = {
+#     q: keyword,
+#     type: 'video',
+#     max_results: 2,
+#     order: :date,
+#     page_token: next_page_token,
+#     published_after: after.iso8601,
+#     published_before: before.iso8601
+#   }
+#   results = service.list_searches(:snippet, q: keyword)
+#   results.items.each do |item|
+#     id = item.id
+#     snippet = item.snippet
+#     puts "\"#{snippet.title}\" by #{snippet.channel_title} (id: #{id.video_id}) (#{snippet.published_at})"
+#   end
+# end
+# find_videos('team fortress 2 trailer')
+# this returns what i want but the controller version does not return what i want
