@@ -14,19 +14,16 @@ class UsersController < ApplicationController
     @completed = []
     @user.shelf_games.each do |game|
       if game.category == "completed"
-          @completed << game.category
-          @completed_count = @completed.count
+        @completed << game.category
       elsif game.category == "want to play"
-          @want_to_play << game
-          @want_to_play_count = @want_to_play.count
-      else game.category == "now playing"
-          @now_playing << game
-          @now_playing_count = @now_playing.count
-          @graph_array = [@completed_count, @now_playing_count, @want_to_play_count]
-          # raise
+        @want_to_play << game
+      elsif game.category == "now playing"
+        @now_playing << game
+        @graph_array = [@completed.count, @now_playing.count, @want_to_play.count]
+      else
+        print "error"
       end
     end
-      # raise
     authorize @user
   end
 end
