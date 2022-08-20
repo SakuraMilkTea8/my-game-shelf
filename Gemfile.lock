@@ -149,6 +149,9 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jquery-turbolinks (2.1.0)
+      railties (>= 3.1.0)
+      turbolinks
     jwt (2.4.1)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -325,6 +328,7 @@ DEPENDENCIES
   font-awesome-sass (~> 5.6.1)
   google-api-client (> 0.7)
   jbuilder (~> 2.7)
+  jquery-turbolinks
   listen (~> 3.3)
   pg (~> 1.1)
   pg_search (~> 2.3.0)

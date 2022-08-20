@@ -80,7 +80,7 @@ seedy_game.save!
 
 # require 'google/apis/youtube_v3'
 # require 'active_support/all'
-# GOOGLE_API_KEY="AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM"
+# GOOGLE_API_KEY=
 
 # def find_videos(keyword, after: 1.months.ago, before: Time.now) #検索キーワードと検索範囲を変えれるように引数に値を取っています
 #   service = Google::Apis::YoutubeV3::YouTubeService.new
