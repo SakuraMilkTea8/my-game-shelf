@@ -1,7 +1,9 @@
 class GamesController < ApplicationController
+  helper_method :find_videos
   skip_before_action :authenticate_user!, only: [:index, :show]
-
-
+  require 'google/apis/youtube_v3'
+  require 'active_support/all'
+  GOOGLE_API_KEY="AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM"
 
   def index
     # creates the link path to get the users show page
@@ -34,45 +36,35 @@ class GamesController < ApplicationController
       ratings << review.rating
     end
     @rating = ratings.sum / ratings.length unless ratings.empty?
-
-
     # still not perfect but much better than before
     recommended_games = recommended(@game)
     @three_games = recommended_games.keys.first(3)
-    # @games.map do |element|
-    #   if @game.genre == element.genre && @game.title != element.title
-    #     break if total == 3
-
-    #     @three_games << element
-    #     total += 1
-    #   end
-    # end
-
+    @videos
   end
+
 
   private
 
-  def find_videos(keyword, after: 1.months.ago, before: Time.now)
+  def find_videos(keyword, after: 80.months.ago, before: Time.now)
     service = Google::Apis::YoutubeV3::YouTubeService.new
     service.key = GOOGLE_API_KEY
     next_page_token = nil
     opt = {
       q: keyword,
       type: 'video',
-      max_results: 2,
+      max_results: 1,
       order: :date,
       page_token: next_page_token,
       published_after: after.iso8601,
       published_before: before.iso8601
     }
     results = service.list_searches(:snippet, q: keyword)
-    results.items.each do |item|
+      results.items.each do |item|
       id = item.id
       snippet = item.snippet
       puts "\"#{snippet.title}\" by #{snippet.channel_title} (id: #{id.video_id}) (#{snippet.published_at})"
     end
   end
-  find_videos('team fortress 2 trailer')
 
   def get_tags(game)
     game_tags = []
