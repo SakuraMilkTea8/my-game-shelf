@@ -8,7 +8,6 @@ class GamesController < ApplicationController
   # helper_method :find_videos
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-
   def index
     # creates the link path to get the users show page
     @user = current_user

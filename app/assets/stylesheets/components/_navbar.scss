@@ -27,6 +27,10 @@
   transition: 0.5s;
 }
 
+li.nav-item.dropdown {
+  box-shadow: none;
+}
+
 .search-flex-container .btn {
   font-family: $body-font;
   flex-grow: 0;
@@ -38,10 +42,13 @@
   transition: 0.5s;
 }
 
+.navbarSupportedContent {
+  vertical-align: middle;
+}
+
 #query {
   border: none;
   margin-right: 8px;
-  ;
 }
 
 .search-flex-container .btn:hover {
