@@ -9,7 +9,8 @@
                 <ul class="friend-list clearfix">
                   <li>
                     <%= link_to user_path(user) do %>
-                      <div class="friend-img"> <%= image_tag "avatar.png" %></div>
+                      <div class="friend-img"> <%= cl_image_tag(current_user.photo.key) %></div>
+                      <%= raise %>
                       <div class="friend-info">
                         <h4><%= user.name %></h4>
                       </div>
