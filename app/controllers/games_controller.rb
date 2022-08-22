@@ -3,7 +3,7 @@ require 'net/http'
 require 'uri'
 require 'google/apis/youtube_v3'
 require 'active_support/all'
-GOOGLE_API_KEY=AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM
+GOOGLE_API_KEY="AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM"
 
 class GamesController < ApplicationController
   # helper_method :find_videos
