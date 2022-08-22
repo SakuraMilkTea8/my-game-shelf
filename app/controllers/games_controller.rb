@@ -50,8 +50,8 @@ class GamesController < ApplicationController
     recommended_games = recommended(@game)
     @three_games = recommended_games.keys.first(3)
 
-    # trying to get the video game trailer with the youtube api
-    @youtube_results = find_videos("#{@game.title} trailer")
+    # gets the youtube trailer from the youtube api
+    @youtube_results = find_videos("#{@game.title} game release trailer")
     @one_game = @youtube_results.first.to_h
     @one_game_id = @one_game[:id][:video_id]
   end
@@ -59,26 +59,16 @@ class GamesController < ApplicationController
 
   private
 
-        def find_videos(keyword, after: 80.months.ago, before: Time.now)
-          service = Google::Apis::YoutubeV3::YouTubeService.new
-          service.key = GOOGLE_API_KEY
-          next_page_token = nil
-          opt = {
-            q: keyword,
-            type: 'video',
-            max_results: 1,
-            order: :date,
-            page_token: next_page_token,
-            published_after: after.iso8601,
-            published_before: before.iso8601
-          }
-          results = service.list_searches(:snippet, q: keyword)
-            results.items.each do |item|
-            id = item.id
-            snippet = item.snippet
-            puts "\"#{snippet.title}\" by #{snippet.channel_title} (id: #{id.video_id}) (#{snippet.published_at})"
-          end
-        end
+  def find_videos(keyword, after: 80.months.ago, before: Time.now)
+    service = Google::Apis::YoutubeV3::YouTubeService.new
+    service.key = GOOGLE_API_KEY
+    next_page_token = nil
+    opt = {q: keyword}
+    results = service.list_searches(:snippet, q: keyword)
+      results.items.each do |item|
+      id = item.id
+    end
+  end
 
   def get_tags(game)
     game_tags = []
