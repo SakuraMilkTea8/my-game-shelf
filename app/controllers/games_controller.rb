@@ -1,8 +1,9 @@
 require 'json'
 require 'net/http'
 require 'uri'
-# require 'google/apis/youtube_v3'
-# require 'active_support/all'
+require 'google/apis/youtube_v3'
+require 'active_support/all'
+GOOGLE_API_KEY=AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM
 
 class GamesController < ApplicationController
   # helper_method :find_videos
@@ -48,32 +49,31 @@ class GamesController < ApplicationController
     # still not perfect but much better than before
     recommended_games = recommended(@game)
     @three_games = recommended_games.keys.first(3)
-    @videos
+
+      def find_videos(keyword, after: 80.months.ago, before: Time.now)
+        service = Google::Apis::YoutubeV3::YouTubeService.new
+        service.key = GOOGLE_API_KEY
+        next_page_token = nil
+        opt = {
+          q: keyword,
+          type: 'video',
+          max_results: 1,
+          order: :date,
+          page_token: next_page_token,
+          published_after: after.iso8601,
+          published_before: before.iso8601
+        }
+        results = service.list_searches(:snippet, q: keyword)
+          results.items.each do |item|
+          id = item.id
+          snippet = item.snippet
+          puts "\"#{snippet.title}\" by #{snippet.channel_title} (id: #{id.video_id}) (#{snippet.published_at})"
+        end
+      end
   end
 
 
   private
-
-  # def find_videos(keyword, after: 80.months.ago, before: Time.now)
-  #   service = Google::Apis::YoutubeV3::YouTubeService.new
-  #   service.key = GOOGLE_API_KEY
-  #   next_page_token = nil
-  #   opt = {
-  #     q: keyword,
-  #     type: 'video',
-  #     max_results: 1,
-  #     order: :date,
-  #     page_token: next_page_token,
-  #     published_after: after.iso8601,
-  #     published_before: before.iso8601
-  #   }
-  #   results = service.list_searches(:snippet, q: keyword)
-  #     results.items.each do |item|
-  #     id = item.id
-  #     snippet = item.snippet
-  #     puts "\"#{snippet.title}\" by #{snippet.channel_title} (id: #{id.video_id}) (#{snippet.published_at})"
-  #   end
-  # end
 
   def get_tags(game)
     game_tags = []
