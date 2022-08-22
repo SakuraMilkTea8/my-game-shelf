@@ -53,13 +53,21 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-6">
       <div class="card p-4">
         <h1><%= @game.title %></h1>
         <p> <%= @game.genre.split(",").join(", ") %></p>
         <p> <%= @game.developer.split(",").join(", ") %></p>
         <p> <%= @game.console.split(",").join(", ") %></p>
         <%= @game.description %>
+      </div>
+    </div>
+    <!-- youtube trailer -->
+    <div class="col-6">
+      <div class="card p-4">
+        <iframe width="450" height="392"
+      src="https://www.youtube.com/embed/<%= @one_game_id %>?controls=0&mute=1", class="trailer-image">
+        </iframe>
       </div>
     </div>
     <div class="reviews">
