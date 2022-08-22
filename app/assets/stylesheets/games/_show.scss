@@ -444,3 +444,9 @@ body .fc-widget-header a {
     color: #666;
     margin: 0;
 }
+
+iframe {
+  border: 0;
+  width: inherit;
+  max-height: fit-content;
+}
