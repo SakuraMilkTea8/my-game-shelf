@@ -54,7 +54,6 @@ class GamesController < ApplicationController
     @youtube_results = find_videos("#{@game.title} trailer")
     @one_game = @youtube_results.first.to_h
     @one_game_id = @one_game[:id][:video_id]
-    raise
       end
     end
 
