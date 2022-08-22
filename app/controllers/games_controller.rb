@@ -3,7 +3,7 @@ require 'net/http'
 require 'uri'
 require 'google/apis/youtube_v3'
 require 'active_support/all'
-GOOGLE_API_KEY="AIzaSyAGH5jocDGqi74r4gisEbvXkWxuxCr-1SM"
+GOOGLE_API_KEY=ENV['GOOGLE_API_KEY']
 
 class GamesController < ApplicationController
   # helper_method :find_videos
@@ -27,12 +27,12 @@ class GamesController < ApplicationController
     @games = Game.all
     @game = Game.find(params[:id])
     authorize @game
-    @streams = get_twitch_streams(@game.title)
-    unless @streams.empty?
-      @preview_stream = @streams.first
-      thumbnail_url_split = @preview_stream['thumbnail_url'].split(/{width}x{height}/)
-      @thumbnail_url = thumbnail_url_split.join("500x300")
-    end
+    # @streams = get_twitch_streams(@game.title)
+    # unless @streams.empty?
+    #   @preview_stream = @streams.first
+    #   thumbnail_url_split = @preview_stream['thumbnail_url'].split(/{width}x{height}/)
+    #   @thumbnail_url = thumbnail_url_split.join("500x300")
+    # end
     # if the user is not signed in they cannot add a game to a list
     if user_signed_in?
       # list_game is either present with an id or not yet made
@@ -50,30 +50,37 @@ class GamesController < ApplicationController
     recommended_games = recommended(@game)
     @three_games = recommended_games.keys.first(3)
 
-      def find_videos(keyword, after: 80.months.ago, before: Time.now)
-        service = Google::Apis::YoutubeV3::YouTubeService.new
-        service.key = GOOGLE_API_KEY
-        next_page_token = nil
-        opt = {
-          q: keyword,
-          type: 'video',
-          max_results: 1,
-          order: :date,
-          page_token: next_page_token,
-          published_after: after.iso8601,
-          published_before: before.iso8601
-        }
-        results = service.list_searches(:snippet, q: keyword)
-          results.items.each do |item|
-          id = item.id
-          snippet = item.snippet
-          puts "\"#{snippet.title}\" by #{snippet.channel_title} (id: #{id.video_id}) (#{snippet.published_at})"
-        end
+    # trying to get the video game trailer with the youtube api
+    @youtube_results = find_videos("#{@game.title} trailer")
+    @one_game = @youtube_results.first.to_h
+    @one_game_id = @one_game[:id][:video_id]
+    raise
       end
-  end
+    end
 
 
   private
+
+        def find_videos(keyword, after: 80.months.ago, before: Time.now)
+          service = Google::Apis::YoutubeV3::YouTubeService.new
+          service.key = GOOGLE_API_KEY
+          next_page_token = nil
+          opt = {
+            q: keyword,
+            type: 'video',
+            max_results: 1,
+            order: :date,
+            page_token: next_page_token,
+            published_after: after.iso8601,
+            published_before: before.iso8601
+          }
+          results = service.list_searches(:snippet, q: keyword)
+            results.items.each do |item|
+            id = item.id
+            snippet = item.snippet
+            puts "\"#{snippet.title}\" by #{snippet.channel_title} (id: #{id.video_id}) (#{snippet.published_at})"
+          end
+        end
 
   def get_tags(game)
     game_tags = []
@@ -107,48 +114,48 @@ class GamesController < ApplicationController
     return tally_recommendations(recommended_games)
   end
 
-  def get_twitch_streams(game)
-    game_query = game.downcase
-    uri = URI.parse("https://api.twitch.tv/helix/games?name=#{game_query}")
-    request = Net::HTTP::Get.new(uri)
-    request["Client-Id"] = ENV['TWITCH_CLIENT_ID']
-    request["Authorization"] = "Bearer #{ENV['TWITCH_TOKEN']}"
+  # def get_twitch_streams(game)
+  #   game_query = game.downcase
+  #   uri = URI.parse("https://api.twitch.tv/helix/games?name=#{game_query}")
+  #   request = Net::HTTP::Get.new(uri)
+  #   request["Client-Id"] = ENV['TWITCH_CLIENT_ID']
+  #   request["Authorization"] = "Bearer #{ENV['TWITCH_TOKEN']}"
 
-    req_options = {
-      use_ssl: uri.scheme == "https",
-    }
+  #   req_options = {
+  #     use_ssl: uri.scheme == "https",
+  #   }
 
-    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-      http.request(request)
-    end
-    resp = JSON.parse(response.body)["data"]
-    game_id = resp.first['id']
+  #   response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+  #     http.request(request)
+  #   end
+  #   resp = JSON.parse(response.body)["data"]
+  #   game_id = resp.first['id']
 
-    stream_uri = URI.parse("https://api.twitch.tv/helix/streams?game_id=#{game_id}")
-    stream_request = Net::HTTP::Get.new(stream_uri)
-    stream_request["Client-Id"] = ENV['TWITCH_CLIENT_ID']
-    stream_request["Authorization"] = "Bearer #{ENV['TWITCH_TOKEN']}"
+  #   stream_uri = URI.parse("https://api.twitch.tv/helix/streams?game_id=#{game_id}")
+  #   stream_request = Net::HTTP::Get.new(stream_uri)
+  #   stream_request["Client-Id"] = ENV['TWITCH_CLIENT_ID']
+  #   stream_request["Authorization"] = "Bearer #{ENV['TWITCH_TOKEN']}"
 
-    req_options = {
-      use_ssl: stream_uri.scheme == "https",
-    }
+  #   req_options = {
+  #     use_ssl: stream_uri.scheme == "https",
+  #   }
 
-    response = Net::HTTP.start(stream_uri.hostname, stream_uri.port, req_options) do |http|
-      http.request(stream_request)
-    end
-    stream_resp = JSON.parse(response.body)["data"]
-    return stream_resp
+  #   response = Net::HTTP.start(stream_uri.hostname, stream_uri.port, req_options) do |http|
+  #     http.request(stream_request)
+  #   end
+  #   stream_resp = JSON.parse(response.body)["data"]
+  #   return stream_resp
 
-    # if !resp.empty?
-    #   user = resp.select{ |user| user["broadcaster_login"] == "#{query}" }[0]
-    #   p user
-    #   if user["is_live"] == true
-    #     return "El usuario #{query} está transmitiendo en vivo jugando #{user["game_name"]}!!! 🔴\nMíralo en https://www.twitch.tv/#{query}"
-    #   else
-    #     return "El usuario #{query} no está transmitiendo en este momento, en su última transmición jugó #{user["game_name"]}.\nSíguelo en https://www.twitch.tv/#{query}"
-    #   end
-    # else
-    #   return "#{query}? Quién te conoce papá?."
-    # end
-  end
-end
+  #   if !resp.empty?
+  #     user = resp.select{ |user| user["broadcaster_login"] == "#{query}" }[0]
+  #     p user
+  #     if user["is_live"] == true
+  #       return "El usuario #{query} está transmitiendo en vivo jugando #{user["game_name"]}!!! 🔴\nMíralo en https://www.twitch.tv/#{query}"
+  #     else
+  #       return "El usuario #{query} no está transmitiendo en este momento, en su última transmición jugó #{user["game_name"]}.\nSíguelo en https://www.twitch.tv/#{query}"
+  #     end
+  #   else
+  #     return "#{query}? Quién te conoce papá?."
+  #   end
+  # end
+# end
