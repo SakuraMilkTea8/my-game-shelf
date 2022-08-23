@@ -1,6 +1,16 @@
 var userId = '<%= @user.id%>'
-function toggleLikeButton(userId, innerHTML) {
+
+
+function toggleLikeButton(userId, favoritedUser) {
+  console.log('clicked')
   let likeButton = document.querySelector(`.like-icon[data-id='${userId}']`)
   likeButton.classList.toggle('red');
+  if (likeButton.classList.contains('red')) {
+    const favoriteList = document.querySelector('.favorites');
+    favoriteList.insertAdjacentHTML('beforeend', favoritedUser)
+  }
+  else {
+    document.querySelector(`.favorite[data-id='${userId}']`).remove()
+  }
 }
-toggleLikeButton(userId);
+toggleLikeButton(userId, '<%= j render "users/user", user: @user %>');

@@ -11,6 +11,6 @@ class UserPolicy < ApplicationPolicy
     end
 
     def toggle_favorite?
-      false
+      true
     end
 end
