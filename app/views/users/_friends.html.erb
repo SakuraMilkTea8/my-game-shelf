@@ -13,7 +13,7 @@
                     <%= link_to user_path(user) do %>
                       <%if user.avatar.attached?%>
 
-                    <div class="friend-img"> <%= cl_image_tag(user.avatar.key) %>
+                    <div class="friend-img"> <%= cl_image_tag(user.avatar.key, :width => 40, :radius => "max") %>
                       <% else %>
                         <p>no photo</p>
                       <% end %>
