@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   devise_for :users, :path_prefix => 'd'
   resources :users, :only => [:show]
 
+  # allows a user to like another user profile
+  resources :users, only: :show do
+    member do
+      post 'toggle_favorite', to: "users#toggle_favorite"
+    end
+  end
+
   resources :shelf_games, only: [:index, :create, :update, :destroy]
   root to: 'games#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

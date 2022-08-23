@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # users can follow other users
     @users = User.all
+    # like users
+    current_user.favorited?(@user)  ?
+      current_user.unfavorite(@user) : current_user.favorite(@user)
     # for the shelf list on users profile
     @want_to_play = []
     @now_playing = []

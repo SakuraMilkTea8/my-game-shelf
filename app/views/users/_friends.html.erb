@@ -12,6 +12,7 @@
                       <div class="friend-img"> <%= image_tag "avatar.png" %></div>
                       <div class="friend-info">
                         <h4><%= user.name %></h4>
+                        <%= link_to "like", toggle_favorite_user_path(user), remote: true, method: :post %>
                       </div>
                     </li>
                   <% end %>
