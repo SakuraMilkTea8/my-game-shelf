@@ -128,10 +128,10 @@ class GamesController < ApplicationController
       use_ssl: stream_uri.scheme == "https",
     }
 
-    response = Net::HTTP.start(stream_uri.hostname, stream_uri.port, req_options) do |http|
+    stream_response = Net::HTTP.start(stream_uri.hostname, stream_uri.port, req_options) do |http|
       http.request(stream_request)
     end
-    stream_resp = JSON.parse(response.body)["data"]
+    stream_resp = JSON.parse(stream_response.body)["data"]
     return stream_resp
 
     # if !resp.empty?

@@ -135,9 +135,19 @@
   color: $raspberry;
 }
 
-// .preview-thumbnail {
-//   visibility: hidden;
-// }
+a .preview-thumbnail {
+  display: none;
+}
+
+a:hover .preview-thumbnail {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+  height: 200px;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+}
 
   // move this to a new sass file:
 

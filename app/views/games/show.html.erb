@@ -46,8 +46,8 @@
         <% else %>
           <a href="https://www.twitch.tv/<%= @preview_stream['user_login'] %>" class="twitch_preview" target="_blank">
             <%= @preview_stream['user_name'] %> is <%= @preview_stream['type'] %> streaming <%= @game.title %>
-          </a>
           <%= image_tag(@thumbnail_url, class: 'preview-thumbnail') %>
+          </a>
         <% end %>
       </div>
     </div>
