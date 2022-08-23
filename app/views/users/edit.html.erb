@@ -7,7 +7,7 @@
 
   <%= simple_form_for(current_user) do |f| %>
     <%= f.input :name, maxlength: 21 %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :avatar, as: :file %>
     <%= f.submit %>
   <% end %>
 </div>
