@@ -1,7 +1,12 @@
 .avatar {
-  width: 40px;
+  width: 50px;
   border-radius: 50%;
 }
+.avatar:hover {
+  cursor: pointer;
+  filter: brightness(105%);
+}
+
 .avatar-large {
   width: 56px;
   border-radius: 50%;
