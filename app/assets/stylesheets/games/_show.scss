@@ -33,9 +33,24 @@
 
 .show-game-image {
   object-fit: cover;
-  width: 600px;
-  height: 320px;
+  width: 800px;
+  height: 450px;
 }
+
+@media (max-width: 1399px) {
+  .show-game-image {
+    width: 600px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 992px) {
+  .show-game-image {
+    width: 400px;
+    height: 220px;
+  }
+}
+
 
 .game-row {
   padding: 32px;
