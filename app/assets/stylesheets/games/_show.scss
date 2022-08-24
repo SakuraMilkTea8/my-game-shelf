@@ -1,3 +1,109 @@
+.game-row {
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.rounded-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.show-game-image {
+  object-fit: cover;
+  width: 800px;
+  height: 450px;
+  border-radius: 3px;
+}
+
+.ratings-card {
+  border: none;
+}
+
+.game-title {
+  text-align: center;
+}
+
+.star-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1px;
+  margin-bottom: 15px;
+}
+.rating-notification {
+  z-index: 1;
+  position: absolute;
+  left: 156px;
+  top: 68px;
+  font-size: 20px;
+}
+.star {
+  width: 32px;
+  height: 32px;
+}
+.no-rating {
+  opacity: 20%;
+}
+.review-star {
+  width: 16px;
+  height: 16px;
+}
+
+.new_shelf_game {
+  // It's a simple form class so I had no choice to use underscores in the class name
+  margin-top: 25px;
+  margin-bottom: 18px;
+}
+
+.btn {
+  // The little + sign to add games to a shelf
+  padding: 0 0 8px 10px;
+}
+
+.twitch-preview {
+  color: black;
+  background-color: hsl(140, 47%, 70%);
+  padding: 8px 16px;
+  border-radius: 3px;
+  margin-top: 16px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  margin-right: auto;
+  transition: 3ms;
+}
+.twitch-preview:hover {
+  color: black;
+  background-color: hsl(140, 67%, 70%);
+}
+
+a .preview-thumbnail {
+  display: none;
+}
+a:hover .preview-thumbnail {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+  height: 200px;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .reviewContent {
   font-size: 16px;
   line-height: 16px;
@@ -31,11 +137,6 @@
   grid-gap: 16px;
 }
 
-.show-game-image {
-  object-fit: cover;
-  width: 800px;
-  height: 450px;
-}
 
 @media (max-width: 1399px) {
   .show-game-image {
@@ -49,33 +150,6 @@
     width: 400px;
     height: 220px;
   }
-}
-
-
-.game-row {
-  padding: 32px;
-  background-color: #ffffff;
-  color: #252627;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 24px;
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: calc(-1 * var(--bs-gutter-y));
-  margin-right: calc(-.5 * var(--bs-gutter-x));
-  margin-left: calc(-.5 * var(--bs-gutter-x));
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-
-.rounded-box {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  row-gap: 16px;
-  flex-wrap: wrap;
-  margin: 16px auto;
 }
 
 .rounded-box-reviews {
@@ -115,31 +189,6 @@
   opacity: 70%;
 }
 
-.star-container {
-  display: flex;
-  margin-bottom: 8px;
-}
-
-.star {
-  width: 32px;
-  height: 32px;
-}
-
-.no-rating {
-  opacity: 20%;
-}
-
-.rating-notification {
-  z-index: 1;
-  position: absolute;
-  padding: 0 8px;
-  font-size: 22px;
-}
-
-.review-star {
-  width: 16px;
-  height: 16px;
-}
 
 // BRO PLZ CHANGE THIS TO hyphenated
 .reviewImage {
@@ -148,35 +197,6 @@
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;}
 
   // feel free to change the button colors especially to make it fit more
-.twitch-preview {
-  color: black;
-  background-color: hsl(140, 47%, 70%);
-  padding: 8px 16px;
-  border-radius: 4px;
-  // border: 1px solid black;
-  box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 5px;
-  margin-right: auto;
-  transition: 3ms;
-}
-
-.twitch-preview:hover {
-  color: black;
-  background-color: hsl(140, 67%, 70%);
-}
-
-a .preview-thumbnail {
-  display: none;
-}
-
-a:hover .preview-thumbnail {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  width: 300px;
-  height: 200px;
-  border-radius: 3px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
-}
 
 iframe {
   border: 0;
