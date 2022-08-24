@@ -10,16 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2022_08_20_071610) do
-=======
 ActiveRecord::Schema.define(version: 2022_08_23_071823) do
->>>>>>> abe5c407aae2411da4fdf3a8dc5de27685ea614f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -46,7 +41,8 @@ ActiveRecord::Schema.define(version: 2022_08_23_071823) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-=======
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.bigint "favoritable_id", null: false
@@ -65,17 +61,6 @@ ActiveRecord::Schema.define(version: 2022_08_23_071823) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.string "follower_type"
-    t.integer "follower_id"
-    t.string "followable_type"
-    t.integer "followable_id"
-    t.datetime "created_at"
-    t.index ["followable_id", "followable_type"], name: "fk_followables"
-    t.index ["follower_id", "follower_type"], name: "fk_follows"
->>>>>>> abe5c407aae2411da4fdf3a8dc5de27685ea614f
-  end
-
   create_table "games", force: :cascade do |t|
     t.string "title"
     t.string "genre"
@@ -87,36 +72,6 @@ ActiveRecord::Schema.define(version: 2022_08_23_071823) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
-    t.string "trailer"
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.string "liker_type"
-    t.integer "liker_id"
-    t.string "likeable_type"
-    t.integer "likeable_id"
-    t.datetime "created_at"
-    t.index ["likeable_id", "likeable_type"], name: "fk_likeables"
-    t.index ["liker_id", "liker_type"], name: "fk_likes"
-  end
-
-  create_table "mentions", force: :cascade do |t|
-    t.string "mentioner_type"
-    t.integer "mentioner_id"
-    t.string "mentionable_type"
-    t.integer "mentionable_id"
-    t.datetime "created_at"
-    t.index ["mentionable_id", "mentionable_type"], name: "fk_mentionables"
-    t.index ["mentioner_id", "mentioner_type"], name: "fk_mentions"
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -153,12 +108,8 @@ ActiveRecord::Schema.define(version: 2022_08_23_071823) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-<<<<<<< HEAD
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-=======
-  add_foreign_key "profiles", "users"
->>>>>>> abe5c407aae2411da4fdf3a8dc5de27685ea614f
   add_foreign_key "reviews", "games"
   add_foreign_key "reviews", "users"
   add_foreign_key "shelf_games", "games"

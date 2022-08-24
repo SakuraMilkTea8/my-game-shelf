@@ -17,11 +17,15 @@
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :name,
+                hint: "Leave blank if there is no change"
+                required: false,
+                input_html: { autocomplete: "new-username"} %>
+    <%= f.input :avatar, as: :file %>
     <%= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
-                <%= f.input :avatar, as: :file %>
   </div>
 
   <div class="form-actions">
