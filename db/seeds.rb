@@ -76,11 +76,11 @@ seedy_game.user = seedyboi
 seedy_game.game = Game.first
 seedy_game.save!
 
-# p "#{seedy_game.user.name} added #{seedy_game.game.title} to their shelf under #{seedy_game.category}"
+p "#{seedy_game.user.name} added #{seedy_game.game.title} to their shelf under #{seedy_game.category}"
 
 # require 'google/apis/youtube_v3'
 # require 'active_support/all'
-# GOOGLE_API_KEY=
+# GOOGLE_API_KEY=ENV['GOOGLE_API_KEY']
 
 # def find_videos(keyword, after: 1.months.ago, before: Time.now) #検索キーワードと検索範囲を変えれるように引数に値を取っています
 #   service = Google::Apis::YoutubeV3::YouTubeService.new
@@ -89,7 +89,7 @@ seedy_game.save!
 #   opt = {
 #     q: keyword,
 #     type: 'video',
-#     max_results: 2,
+#     max_results: 1,
 #     order: :date,
 #     page_token: next_page_token,
 #     published_after: after.iso8601,
@@ -103,4 +103,3 @@ seedy_game.save!
 #   end
 # end
 # find_videos('team fortress 2 trailer')
-# this returns what i want but the controller version does not return what i want

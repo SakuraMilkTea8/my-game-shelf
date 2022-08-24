@@ -1,8 +1,9 @@
 require 'json'
 require 'net/http'
 require 'uri'
-# require 'google/apis/youtube_v3'
-# require 'active_support/all'
+require 'google/apis/youtube_v3'
+require 'active_support/all'
+# GOOGLE_API_KEY=ENV['GOOGLE_API_KEY']
 
 class GamesController < ApplicationController
   # helper_method :find_videos
@@ -27,6 +28,11 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     authorize @game
     @streams = get_twitch_streams(@game.title)
+    unless @streams.empty?
+      @preview_stream = @streams.first
+      thumbnail_url_split = @preview_stream['thumbnail_url'].split(/{width}x{height}/)
+      @thumbnail_url = thumbnail_url_split.join("500x300")
+    end
     # if the user is not signed in they cannot add a game to a list
     if user_signed_in?
       # list_game is either present with an id or not yet made
@@ -43,32 +49,26 @@ class GamesController < ApplicationController
     # still not perfect but much better than before
     recommended_games = recommended(@game)
     @three_games = recommended_games.keys.first(3)
-    @videos
+
+    # gets the youtube trailer from the youtube api
+    # @youtube_results = find_videos("#{@game.title} game release trailer")
+    # @one_game = @youtube_results.first.to_h
+    # @one_game_id = @one_game[:id][:video_id]
   end
 
 
   private
 
-  # def find_videos(keyword, after: 80.months.ago, before: Time.now)
-  #   service = Google::Apis::YoutubeV3::YouTubeService.new
-  #   service.key = GOOGLE_API_KEY
-  #   next_page_token = nil
-  #   opt = {
-  #     q: keyword,
-  #     type: 'video',
-  #     max_results: 1,
-  #     order: :date,
-  #     page_token: next_page_token,
-  #     published_after: after.iso8601,
-  #     published_before: before.iso8601
-  #   }
-  #   results = service.list_searches(:snippet, q: keyword)
-  #     results.items.each do |item|
-  #     id = item.id
-  #     snippet = item.snippet
-  #     puts "\"#{snippet.title}\" by #{snippet.channel_title} (id: #{id.video_id}) (#{snippet.published_at})"
-  #   end
-  # end
+  def find_videos(keyword, after: 80.months.ago, before: Time.now)
+    service = Google::Apis::YoutubeV3::YouTubeService.new
+    service.key = ENV['GOOGLE_API_KEY']
+    next_page_token = nil
+    opt = {q: keyword}
+    results = service.list_searches(:snippet, q: keyword)
+    results.items.each do |item|
+      id = item.id
+    end
+  end
 
   def get_tags(game)
     game_tags = []
@@ -128,10 +128,10 @@ class GamesController < ApplicationController
       use_ssl: stream_uri.scheme == "https",
     }
 
-    response = Net::HTTP.start(stream_uri.hostname, stream_uri.port, req_options) do |http|
+    stream_response = Net::HTTP.start(stream_uri.hostname, stream_uri.port, req_options) do |http|
       http.request(stream_request)
     end
-    stream_resp = JSON.parse(response.body)["data"]
+    stream_resp = JSON.parse(stream_response.body)["data"]
     return stream_resp
 
     # if !resp.empty?

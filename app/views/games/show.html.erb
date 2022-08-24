@@ -41,17 +41,33 @@
             This game is on your shelf under <%= @shelf_game.category %>
           <% end %>
         <% end %>
+        <% if @streams.empty? %>
+          No one is streaming <%= @game.title %> right now.
+        <% else %>
+          <a href="https://www.twitch.tv/<%= @preview_stream['user_login'] %>" class="twitch-preview" target="_blank">
+            <%= @preview_stream['user_name'] %> is <%= @preview_stream['type'] %> streaming <%= @game.title %>
+          <%= image_tag(@thumbnail_url, class: 'preview-thumbnail') %>
+          </a>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-6">
       <div class="card p-4">
         <h1><%= @game.title %></h1>
         <p> <%= @game.genre.split(",").join(", ") %></p>
         <p> <%= @game.developer.split(",").join(", ") %></p>
         <p> <%= @game.console.split(",").join(", ") %></p>
         <%= @game.description %>
+      </div>
+    </div>
+    <!-- youtube trailer -->
+    <div class="col-6">
+      <div class="card p-4">
+        <iframe width="450" height="392"
+      src="https://www.youtube.com/embed/<%= @one_game_id %>?controls=1&mute=1", class="trailer-image">
+        </iframe>
       </div>
     </div>
     <div class="reviews">
@@ -84,5 +100,4 @@
       </div>
     </div>
   </div>
-  <p></p>
 </div>

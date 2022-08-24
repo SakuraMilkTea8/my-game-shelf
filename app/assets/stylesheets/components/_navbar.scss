@@ -3,16 +3,21 @@
   align-items: center;
   align-content: center;
   background: $raspberry;
-  box-shadow: 1px 1px 4px rgb(75, 5, 37);
+  box-shadow: 0px 1px 5px #4B0526;
   margin-bottom: 16px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+  padding: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 60px;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
 }
 
 .nav-item {
@@ -27,19 +32,26 @@
   transition: 0.5s;
 }
 
-li.nav-item.dropdown {
-  box-shadow: none;
+.navbar-nav.mr-auto {
+  align-items: center;
 }
 
-.search-flex-container .btn {
+.search-btn {
   font-family: $body-font;
   flex-grow: 0;
   color: $not-white-white;
   background-color: $raspberry;
   border-radius: 4px;
-  box-shadow: 1px 1px 10px rgb(87, 31, 23);
+  box-shadow: 0px 0px 5px #854136;
   margin-right: 15px;
-  transition: 0.5s;
+  transition: 0.3s;
+}
+.search-btn:hover {
+  color: $not-white-white;
+}
+
+li.nav-item.dropdown {
+  box-shadow: none;
 }
 
 .navbarSupportedContent {
@@ -49,12 +61,17 @@ li.nav-item.dropdown {
 #query {
   border: none;
   margin-right: 8px;
+  border-radius: 3px;
+  position: relative;
+  top: 3px;
+}
+#query:focus {
+  outline: none;
 }
 
 .search-flex-container .btn:hover {
   background-color: $diet-raspberry;
 }
-
 
 a.dropdown-item:hover  {
   background-color: $diet-raspberry;

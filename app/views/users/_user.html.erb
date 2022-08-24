@@ -1,0 +1,8 @@
+<div class="favorite" data-id="<%= user.id %>">
+  <ul class="friend-list clearfix">
+    <%= link_to user_path(user) do %>
+    <li class="friend-img"> <%= image_tag "avatar.png" %> </li>
+        <li class="friend-info"><h4><%= user.name %></li>
+        <% end %>
+  </ul>
+</div>
