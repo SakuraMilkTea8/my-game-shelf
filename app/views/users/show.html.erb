@@ -29,10 +29,9 @@
 
 <div class="col-6">
 <div class="container">
-  <h1>Users</h1>
-  <hr>
   <div class="row">
     <div class="col-xs-12 col-sm-6">
+  <h1>Users</h1>
       <% @users.each do |user| %>
         <div class="d-flex">
           <div>
@@ -46,8 +45,8 @@
         </div>
       <% end %>
     </div>
-    <div class="col-xs-12 col-sm-6">
-      <h3>Following users</h3>
+    <div class="col-6">
+      <h1>Following users</h1>
       <div class="favorites">
         <% @favorite_users.each do |user| %>
           <%= render 'user', user: user %>
