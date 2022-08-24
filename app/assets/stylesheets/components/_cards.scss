@@ -37,10 +37,9 @@
   height: 350px;
   display: flex;
   justify-content: space-between;
-  justify-items: space-between;
   align-items: center;
   flex-direction: column;
-  box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
   margin: 16px auto;
 }
 
@@ -52,12 +51,12 @@
 }
 
 .game-card:hover {
-  box-shadow: 0px 0px 8px 6px $hover-darker-gray;
+  box-shadow: 0px 0px 10px $hover-darker-gray;
   // background-color: $hover-darker-gray;
 }
 
 .game-card:hover img {
-  filter: brightness(80%);
+  filter: brightness(110%);
   // lower one increases contrast which looks cool on some images
   // filter: contrast(120%);
 }
