@@ -77,3 +77,11 @@ gem 'pundit'
 gem 'pg_search', '~> 2.3.0'
 
 gem 'google-api-client', '>0.7'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
+# Gemfile
+gem 'cloudinary', '~> 1.16.0'
+
+# gem 'google-api-client', '>0.7'
+

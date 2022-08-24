@@ -43,4 +43,10 @@ class UsersController < ApplicationController
     end
     authorize @user
   end
+  private
+
+  def user_params
+    params.require(:user).permit(:avatar)
+  end
+
 end
