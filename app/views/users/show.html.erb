@@ -27,10 +27,36 @@
       </div>
 
 
-
-        <!-- friends list partial-->
-        <%= render 'users/friends' %>
+<div class="col-6">
+<div class="container">
+  <h1>Users</h1>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <% @users.each do |user| %>
+        <div class="d-flex">
+          <div>
+            <%= link_to toggle_favorite_user_path(user), remote: true, method: :post do %>
+              <%= render 'users/like_button', user: user %>
+            <% end %>
+          </div>
+          <div>
+            <h3><%= user.name %></h3>
+          </div>
+        </div>
+      <% end %>
     </div>
+    <div class="col-xs-12 col-sm-6">
+      <h3>Following users</h3>
+      <div class="favorites">
+        <% @favorite_users.each do |user| %>
+          <%= render 'user', user: user %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
