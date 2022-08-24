@@ -1,3 +1,4 @@
+<div class="col-4">
 <div class="tab-content p-0">
   <h1>Users</h1>
   <div class="tab-pane fade active show" id="profile-friends">
@@ -19,14 +20,14 @@
             <%= render 'users/like_button', user: user %>
           <% end %>
         <% end %>
-        <div class="col-xs-12 col-sm-6">
-  <h3>Liked users</h3>
-    <div class="favorites">
+      </div>
+    </div>
+    </div>
+
+
+    <div class="col-2">
+      <h3>Liked users</h3>
       <% @favorite_users.each do |user| %>
         <%= render 'user', user: user %>
       <% end %>
     </div>
-</div>
-      </div>
-    </div>
-  </div>
