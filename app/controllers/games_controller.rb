@@ -51,9 +51,9 @@ class GamesController < ApplicationController
     @three_games = recommended_games.keys.first(3)
 
     # gets the youtube trailer from the youtube api
-    @youtube_results = find_videos("#{@game.title} game release trailer")
-    @one_game = @youtube_results.first.to_h
-    @one_game_id = @one_game[:id][:video_id]
+    # @youtube_results = find_videos("#{@game.title} game release trailer")
+    # @one_game = @youtube_results.first.to_h
+    # @one_game_id = @one_game[:id][:video_id]
   end
 
 
@@ -65,7 +65,7 @@ class GamesController < ApplicationController
     next_page_token = nil
     opt = {q: keyword}
     results = service.list_searches(:snippet, q: keyword)
-      results.items.each do |item|
+    results.items.each do |item|
       id = item.id
     end
   end
@@ -128,10 +128,10 @@ class GamesController < ApplicationController
       use_ssl: stream_uri.scheme == "https",
     }
 
-    response = Net::HTTP.start(stream_uri.hostname, stream_uri.port, req_options) do |http|
+    stream_response = Net::HTTP.start(stream_uri.hostname, stream_uri.port, req_options) do |http|
       http.request(stream_request)
     end
-    stream_resp = JSON.parse(response.body)["data"]
+    stream_resp = JSON.parse(stream_response.body)["data"]
     return stream_resp
 
     # if !resp.empty?
