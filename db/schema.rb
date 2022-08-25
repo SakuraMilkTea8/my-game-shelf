@@ -61,16 +61,6 @@ ActiveRecord::Schema.define(version: 2022_08_23_071823) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.string "follower_type"
-    t.integer "follower_id"
-    t.string "followable_type"
-    t.integer "followable_id"
-    t.datetime "created_at"
-    t.index ["followable_id", "followable_type"], name: "fk_followables"
-    t.index ["follower_id", "follower_type"], name: "fk_follows"
-  end
-
   create_table "games", force: :cascade do |t|
     t.string "title"
     t.string "genre"
@@ -82,36 +72,6 @@ ActiveRecord::Schema.define(version: 2022_08_23_071823) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
-    t.string "trailer"
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.string "liker_type"
-    t.integer "liker_id"
-    t.string "likeable_type"
-    t.integer "likeable_id"
-    t.datetime "created_at"
-    t.index ["likeable_id", "likeable_type"], name: "fk_likeables"
-    t.index ["liker_id", "liker_type"], name: "fk_likes"
-  end
-
-  create_table "mentions", force: :cascade do |t|
-    t.string "mentioner_type"
-    t.integer "mentioner_id"
-    t.string "mentionable_type"
-    t.integer "mentionable_id"
-    t.datetime "created_at"
-    t.index ["mentionable_id", "mentionable_type"], name: "fk_mentionables"
-    t.index ["mentioner_id", "mentioner_type"], name: "fk_mentions"
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -150,7 +110,6 @@ ActiveRecord::Schema.define(version: 2022_08_23_071823) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "profiles", "users"
   add_foreign_key "reviews", "games"
   add_foreign_key "reviews", "users"
   add_foreign_key "shelf_games", "games"

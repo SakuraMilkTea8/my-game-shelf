@@ -7,14 +7,6 @@
   margin: 16px auto;
 }
 
-
-// kinda fixes last flex row issues but not really
-// .game-cards:after {
-//   content: "";
-//   justify-content: flex-start;
-//   align-content: flex-start;
-// }
-
 .recommended-game-card {
   border-radius: 4px;
   background-color: $card-light-gray;
