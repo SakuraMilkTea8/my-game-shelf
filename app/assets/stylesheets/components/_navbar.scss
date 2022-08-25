@@ -36,7 +36,7 @@
   align-items: center;
 }
 
-.search-btn {
+input.btn.search-btn {
   font-family: $body-font;
   flex-grow: 0;
   color: $not-white-white;
@@ -80,5 +80,3 @@ a.dropdown-item:hover  {
 #navbarSupportedContent {
   align-items: center;
 }
-
-

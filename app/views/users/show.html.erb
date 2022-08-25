@@ -3,72 +3,67 @@
     <div class="col-6">
       <%# <%= cl_image_tag(current_user.avatar.key, :width => 40, :radius => "max" ) %>
       <h1><%= @user.name %>'s profile</h1>
-        <h1>Reviews</h1>
-        <% @user.reviews.each do |review| %>
-          <!-- this line needs to be put in the controller -->
-          <% @game = Game.find(review.game.id) %>
-          <div class="rounded-box-reviews col-lg-12 col-md-4">
-            <ul class="list-group list-group-flush col-6">
-              <p class ="review-user">
-                <%= review.game.title %>
-                <%= link_to "Visit", game_path(@game), class: 'btn btn-secondary btn-sm w-4px'  %>
-                <% review.rating.times do %>
-                  <%= image_tag('icons/star-full.svg', class: "review-star") %>
-                <% end %>
-                <% (5 - review.rating).times do %>
-                  <%= image_tag('icons/star-empty.svg', class: "review-star") %>
-                <% end %>
-              </p>
-              <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
-              <p class="reviewContent">"<%= review.content %>"</p>
-            </ul>
-            <%= image_tag @game.image_url, class: "reviewImage" %>
-          </div>
-        <% end %>
-      </div>
-
-
-<div class="col-6">
-<div class="container">
-  <div class="row">
-    <div class="user-list col-sm-6">
-  <h1>Users</h1>
-      <% @users.each do |user| %>
-        <div class="d-flex">
-          <div>
-            <%= link_to toggle_favorite_user_path(user), remote: true, method: :post do %>
-              <%= render 'users/like_button', user: user %>
-            <% end %>
-          </div>
-          <div>
-          <% if user.name != current_user[:name] %>
-            <h5><%= user.name %></h5>
-            <% else %>
-            <h5>current user</h5>
-            <% end %>
-          </div>
+      <h1>Reviews</h1>
+      <% @user.reviews.each do |review| %>
+        <!-- this line needs to be put in the controller -->
+        <% @game = Game.find(review.game.id) %>
+        <div class="rounded-box-reviews col-lg-12 col-md-4">
+          <ul class="list-group list-group-flush col-6">
+            <p class ="review-user">
+              <%= review.game.title %>
+              <%= link_to "Visit", game_path(@game), class: 'btn btn-secondary btn-sm w-4px'  %>
+              <% review.rating.times do %>
+                <%= image_tag('icons/star-full.svg', class: "review-star") %>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <%= image_tag('icons/star-empty.svg', class: "review-star") %>
+              <% end %>
+            </p>
+            <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
+            <p class="reviewContent">"<%= review.content %>"</p>
+          </ul>
+          <%= image_tag @game.image_url, class: "reviewImage" %>
         </div>
       <% end %>
     </div>
+
+
     <div class="col-6">
-      <h1>Following users</h1>
-      <div class="favorites">
-        <% @favorite_users.each do |user| %>
-          <%= render 'user', user: user %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-    <div class="graph col-6">
-        <h1>My shelf data</h1>
-      <!-- adding data attribute -->
-      <canvas id="myChart" width="220" height="220"
+      <div class="container">
+        <div class="row">
+        <% if @user != current_user  %>
+            <div class="user-list col-sm-6">
+              <h1>follow this user</h1>
+              <div class="d-flex">
+                <h3 class="follow-user"><%= @user.name  %>
+                  <%= link_to toggle_favorite_user_path(@user), remote: true, method: :post do %>
+                    <%= render 'users/like_button', user: @user %>
+                    <% end %>
+                  </h3>
+                </div>
+                <% else %>
+                <p></p>
+                <% end %>
+              </div>
+              <% if @user == current_user %>
+                <div class="col-6">
+                  <h1>Following users</h1>
+                  <div class="favorites">
+                    <% @favorite_users.each do |user| %>
+                      <%= render 'user', user: user %>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <p></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="graph col-6">
+            <h1>My shelf data</h1>
+            <!-- adding data attribute -->
+            <canvas id="myChart" width="220" height="220"
         data-page-views="<%=@graph_array %>">
-      </canvas>
-    </div>
-</div>
+            </canvas>
+          </div>
+        </div>
