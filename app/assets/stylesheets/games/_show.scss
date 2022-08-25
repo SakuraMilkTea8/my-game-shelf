@@ -123,7 +123,7 @@ iframe {
 
 
 
-.reviewContent {
+.review-content {
   font-size: 16px;
   line-height: 16px;
   font-weight: normal;
@@ -132,7 +132,7 @@ iframe {
   height: 64px;
 }
 
-.reviewTime {
+.review-time {
   font-size: .85rem;
   font-weight: normal;
   margin: 1px 10px 10px 10px
@@ -212,7 +212,45 @@ iframe {
 
 
 // BRO PLZ CHANGE THIS TO hyphenated
-.reviewImage {
+.review-image {
   width: 240px;
   height: 120px;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;}
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+  // feel free to change the button colors especially to make it fit more
+.twitch-preview {
+  color: black;
+  background-color: hsl(140, 47%, 70%);
+  padding: 8px 16px;
+  border-radius: 4px;
+  // border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 5px;
+  margin-right: auto;
+  transition: 3ms;
+}
+
+.twitch-preview:hover {
+  color: black;
+  background-color: hsl(140, 67%, 70%);
+}
+
+a .preview-thumbnail {
+  display: none;
+}
+
+a:hover .preview-thumbnail {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+  height: 200px;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+}
+
+iframe {
+  border: 0;
+  width: inherit;
+  max-height: fit-content;
+}
