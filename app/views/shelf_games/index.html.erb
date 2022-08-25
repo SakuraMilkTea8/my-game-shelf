@@ -20,7 +20,7 @@
                 <div class="shelf-card-overlay">
                   <div class="trash-container">
                     <%= link_to shelf_game_path(shelf_game), method: :delete, data: { confirm: "Are you sure?" } do %>
-                      <%= image_tag('icons/trash.svg') %> x
+                      <%= image_tag('icons/trash.svg', class: 'trash-icon') %>
                     <% end %>
                   </div>
                   <div class="shelf-game-title">
@@ -69,7 +69,7 @@
                 <div class="shelf-card-overlay">
                   <div class="trash-container">
                     <%= link_to shelf_game_path(shelf_game), method: :delete, data: { confirm: "Are you sure?" } do %>
-                      <%= image_tag('icons/trash.svg') %> x
+                      <%= image_tag('icons/trash.svg', class: 'trash-icon') %>
                     <% end %>
                   </div>
                   <div class="shelf-game-title">
@@ -121,7 +121,7 @@
                 <div class="shelf-card-overlay">
                   <div class="trash-container">
                     <%= link_to shelf_game_path(shelf_game), method: :delete, data: { confirm: "Are you sure?" } do %>
-                      <%= image_tag('icons/trash.svg') %> x
+                      <%= image_tag('icons/trash.svg', class: 'trash-icon') %>
                     <% end %>
                   </div>
                   <div class="shelf-game-title">

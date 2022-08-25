@@ -82,6 +82,7 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 16px auto;
 }
 
 .shelf-card-overlay {
@@ -95,8 +96,8 @@
 }
 
 .shelf-card:hover .shelf-card-overlay {
-  background-color: black;
-  opacity: 0.8;
+  background-color: rgba(0,0,0,0.8);
+  opacity: 1;
 }
 
 .shelf-buttons {
@@ -119,4 +120,8 @@
   background: none;
   color: white;
   border: none;
+}
+
+.trash-icon {
+  filter: invert(100%);
 }
