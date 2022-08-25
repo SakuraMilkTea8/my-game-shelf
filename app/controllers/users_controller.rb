@@ -22,7 +22,10 @@ class UsersController < ApplicationController
     @favorite_users = current_user.favorited_by_type('User')
     # group game by category then count them to add to the graph
     @game_per_category = @user.shelf_games.group_by{|game| game.category}
-    @graph_array = [ @game_per_category['completed'].count,  @game_per_category['now playing'].count, @game_per_category['want to play'].count ]
+    @completed =  @game_per_category['completed'].to_a.count
+    @now_playing =  @game_per_category['now playing'].to_a.count
+    @want_to_play =  @game_per_category['want to play'].to_a.count
+    @graph_array = [ @completed, @now_playing, @want_to_play ]
     authorize @user
     respond_to do |format|
       format.html
