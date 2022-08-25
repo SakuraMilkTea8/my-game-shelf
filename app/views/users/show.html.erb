@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-6">
-      <%# <%= cl_image_tag(current_user.avatar.key, :width => 40, :radius => "max" ) %>
+      <%= cl_image_tag(current_user.avatar.key, :width => 40, :radius => "max" ) %>
       <h1><%= @user.name %>'s profile</h1>
       <h1>Reviews</h1>
       <% @user.reviews.each do |review| %>
@@ -19,10 +19,10 @@
                 <%= image_tag('icons/star-empty.svg', class: "review-star") %>
               <% end %>
             </p>
-            <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
-            <p class="reviewContent">"<%= review.content %>"</p>
+            <p class ="review-time"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
+            <p class="review-content">"<%= review.content %>"</p>
           </ul>
-          <%= image_tag @game.image_url, class: "reviewImage" %>
+          <%= image_tag @game.image_url, class: "review-image" %>
         </div>
       <% end %>
     </div>
