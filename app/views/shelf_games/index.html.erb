@@ -36,7 +36,7 @@
                     </div>
                     <div class="shelf-btn">
                     <%= simple_form_for(shelf_game) do |f| %>
-                      <%= hidden_field_tag(:category, 'now playing') %>
+                      <%= f.hidden_field :category, value: 'now playing' %>
                     <%= f.submit ">>", class: 'shelf-submit' %>
                     <% end %>
                     </div>
@@ -82,13 +82,13 @@
                   <div class="shelf-buttons">
                     <div class="shelf-btn">
                       <%= simple_form_for(shelf_game) do |f| %>
-                        <%= hidden_field_tag(:category, 'want to play') %>
+                        <%= f.hidden_field :category, value: 'want to play' %>
                       <%= f.submit "<<", class: 'shelf-submit' %>
                       <% end %>
                     </div>
                     <div class="shelf-btn">
                       <%= simple_form_for(shelf_game) do |f| %>
-                        <%= hidden_field_tag(:category, 'completed') %>
+                        <%= f.hidden_field :category, value: 'completed' %>
                       <%= f.submit ">>", class: 'shelf-submit' %>
                       <% end %>
                     </div>
@@ -134,7 +134,7 @@
                   <div class="shelf-buttons">
                     <div class="shelf-btn">
                       <%= simple_form_for(shelf_game) do |f| %>
-                        <%= hidden_field_tag(:category, 'now playing') %>
+                        <%= f.hidden_field :category, value: 'now playing' %>
                       <%= f.submit "<<", class: 'shelf-submit' %>
                       <% end %>
                     </div>
