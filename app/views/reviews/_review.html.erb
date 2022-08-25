@@ -8,7 +8,7 @@
         <p class ="review-user">
           <%= image_tag "avatar.png", class: "avatar dropdown-toggle"%>
           <small>
-            <%= review.user.name %>
+            <%= link_to review.user.name , user_path(review.user) %>
           </small>
           <% review.rating.times do %>
             <%= image_tag('icons/star-full.svg', class: "review-star") %>
