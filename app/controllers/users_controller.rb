@@ -33,10 +33,10 @@ class UsersController < ApplicationController
       if game.category == "completed"
         @completed << game.category
       elsif game.category == "want to play"
-        @want_to_play << game
+        @want_to_play << game.category
       elsif game.category == "now playing"
-        @now_playing << game
-        @graph_array = [@completed.count, @now_playing.count, @want_to_play.count]
+        @now_playing << game.category
+        @graph_array = { completed: @completed.count, now_playing: @now_playing.count, want_to_play: @want_to_play.count }
       else
         print "error"
       end
