@@ -20,28 +20,14 @@ class UsersController < ApplicationController
     # users can follow other users
     @users = User.all
     @favorite_users = current_user.favorited_by_type('User')
-
+    # group game by category then count them to add to the graph
+    @game_per_category = @user.shelf_games.group_by{|game| game.category}
+    @graph_array = [ @game_per_category['completed'].count,  @game_per_category['now playing'].count, @game_per_category['want to play'].count ]
+    authorize @user
     respond_to do |format|
       format.html
       format.js
     end
-    # for the shelf list on users profile
-    @want_to_play = []
-    @now_playing = []
-    @completed = []
-    @user.shelf_games.each do |game|
-      if game.category == "completed"
-        @completed << game.category
-      elsif game.category == "want to play"
-        @want_to_play << game
-      elsif game.category == "now playing"
-        @now_playing << game
-        @graph_array = [@completed.count, @now_playing.count, @want_to_play.count]
-      else
-        print "error"
-      end
-    end
-    authorize @user
   end
   private
 
