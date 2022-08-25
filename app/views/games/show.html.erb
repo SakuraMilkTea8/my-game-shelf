@@ -1,18 +1,20 @@
 <div class="container">
-  <div class="game-row">
-    <div class="rounded-box col-lg-8 col-md-4">
+
+  <div class="game-row-first">
+    <div class="col-lg-7 col-sm-12">
       <%= image_tag @game.image_url, class: "show-game-image" %>
     </div>
-    <div class="col-4">
-      <div class="card p-4 m-4">
-        <h4> User rating</h4>
+
+    <div class="col-lg-5 col-sm-12">
+      <div class="card ratings-card p-2">
+      <h1 class="game-title"><%= @game.title %></h1>
         <div class="star-container">
           <% @rating.times do %>
             <%= image_tag('icons/star-full.svg', class: "star rating") %>
           <% end %>
           <% if @rating == 0 %>
             <p class="rating-notification">
-              no user ratings yet
+              Be the First to Rate!
             </p>
             <% (5 - @rating).times do %>
               <%= image_tag('icons/star-empty.svg', class:"star no-rating") %>
@@ -23,11 +25,12 @@
             <% end %>
           <% end %>
         </div>
+
         <% if user_signed_in? %>
           <!--adding games to users' shelves-->
           <%= simple_form_for(@shelf_game) do |f| %>
             <%= hidden_field_tag(:game, @game.id) %>
-            <%= f.label "Add to your game shelf" %>
+            <%= f.label "Add to My Game Shelf" %>
             <div class="shelf-select">
               <%= f.input_field :category, collection: ['want to play', 'now playing', 'completed'], default: 'want to play' %>
               <%= f.button :button do %>
@@ -41,63 +44,63 @@
             This game is on your shelf under <%= @shelf_game.category %>
           <% end %>
         <% end %>
+
         <% if @streams.empty? %>
-          No one is streaming <%= @game.title %> right now.
+          No one is streaming <%= @game.title %> right now... Come back later!
         <% else %>
           <a href="https://www.twitch.tv/<%= @preview_stream['user_login'] %>" class="twitch-preview" target="_blank">
-            <%= @preview_stream['user_name'] %> is <%= @preview_stream['type'] %> streaming <%= @game.title %>
+            Watch <%= @preview_stream['user_name'] %> play <%= @game.title %>
           <%= image_tag(@thumbnail_url, class: 'preview-thumbnail') %>
           </a>
         <% end %>
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="col-6">
-      <div class="card p-4">
-        <h1><%= @game.title %></h1>
-        <p> <%= @game.genre.split(",").join(", ") %></p>
-        <p> <%= @game.developer.split(",").join(", ") %></p>
-        <p> <%= @game.console.split(",").join(", ") %></p>
-        <%= @game.description %>
+      <div class="game-row-second-left">
+        <p><em><%= @game.genre.split(",").join(", ")%></em></p>
+        <p><b><%= @game.developer.split(",").join(", ")%></b></p>
+        <p><%= @game.console.split(",").join(", ")%></p>
+        <p> <%= @game.description %></p>
       </div>
     </div>
     <!-- youtube trailer -->
     <div class="col-6">
-      <div class="card p-4">
-        <iframe width="450" height="392"
+      <div class="game-row-second-right">
+        <iframe width="510" height="395"
       src="https://www.youtube.com/embed/<%= @one_game_id %>?controls=1&mute=1", class="trailer-image">
         </iframe>
       </div>
     </div>
-    <div class="reviews">
-      <div class="reviews card p-4">
-        <% if user_signed_in? %>
-          <h3>Reviews for <%= @game.title %></h3>
-          <!--partial for the review form -->
-          <%= render 'reviews/form', game: @game, review: @review %>
-        <% else %>
-        <% end %>
-        <h1></h1>
-        <!--partial for the shelf of reviews -->
-        <%= render 'reviews/review' %>
-      </div>
-    </div>
-    <div class="col-12">
-      <h3>You may also like</h3>
-      <div class="recommended-game-cards">
-        <!-- Recommends (max) 3 games by genre not including current game -->
-        <% @three_games.each do |game| %>
-          <%= link_to game_path(game) do %>
-            <div class="game-card">
-              <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
-              <h3>
-                <%= game.title %>
-              </h3>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+  </div>
+
+
+  <div class="game-row-reviews">
+    <% if user_signed_in? %>
+      <h3>Reviews for <%= @game.title %></h3>
+      <!--partial for the review form -->
+      <%= render 'reviews/form', game: @game, review: @review %>
+    <% else %>
+    <% end %>
+    <h1></h1>
+    <!--partial for the shelf of reviews -->
+    <%= render 'reviews/review' %>
+  </div>
+
+  <h3>You may also like</h3>
+  <div class="recommended-game-cards">
+    <!-- Recommends (max) 3 games by genre not including current game -->
+    <% @three_games.each do |game| %>
+      <%= link_to game_path(game) do %>
+        <div class="game-card">
+          <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
+          <h3>
+            <%= game.title %>
+          </h3>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
