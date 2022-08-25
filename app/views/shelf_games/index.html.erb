@@ -16,16 +16,30 @@
         <div class="row">
           <% @want_to_play.each do |shelf_game| %>
             <div class="col-md-4 col-sm-6">
-              <%= link_to game_path(shelf_game.game) do %>
-                <div class="game-card">
-                  <img src="<%= shelf_game.game.image_url %>" alt="Boxart for <%= shelf_game.game.title %>">
-                  <div class="game-title">
-                    <h3>
-                      <%= shelf_game.game.title %>
-                    </h3>
+                <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');">
+                  <div class="shelf-card-overlay">
+                    <div class="trash-container">
+                      <%= link_to shelf_game_path(shelf_game), method: :delete, data: { confirm: "Are you sure?" } do %>
+                        <%= image_tag('icons/trash.svg') %> delete
+                      <% end %>
+                    </div>
+                    <div class="shelf-game-title">
+                      <h3>
+                        <%= link_to game_path(shelf_game.game) do %>
+                          <%= shelf_game.game.title %>
+                        <% end %>
+                      </h3>
+                    </div>
+                    <div class="shelf-buttons">
+                      <div class="prev-shelf-btn">
+                        <<
+                      </div>
+                      <div class="nex-shelf-btn">
+                        >>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              <% end %>
             </div>
           <% end %>
         </div>
