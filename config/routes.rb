@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # changed for user profiles to appear
   devise_for :users, :path_prefix => 'd'
-  resources :users, :only => [:show, :index]
+  resources :users, :only => [:show]
 
   # allows a user to like another user profile
   resources :users, only: :show do
