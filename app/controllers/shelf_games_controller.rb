@@ -35,6 +35,11 @@ class ShelfGamesController < ApplicationController
   end
 
   def destroy
+    shelf_game = ShelfGame.find(params[:id])
+    authorize shelf_game
+    shelf_game.delete
+
+    redirect_to shelf_games_path
   end
 
   private
