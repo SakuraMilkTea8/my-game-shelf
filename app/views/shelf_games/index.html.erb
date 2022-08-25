@@ -31,13 +31,13 @@
                     </h3>
                   </div>
                   <div class="shelf-buttons">
-                    <div class="prev-shelf-btn">
+                    <div class="shelf-btn">
 
                     </div>
-                    <div class="nex-shelf-btn">
+                    <div class="shelf-btn">
                     <%= simple_form_for(shelf_game) do |f| %>
                       <%= hidden_field_tag(:category, 'now playing') %>
-                    <%= f.submit ">>" %>
+                    <%= f.submit ">>", class: 'shelf-submit' %>
                     <% end %>
                     </div>
                   </div>
@@ -80,16 +80,16 @@
                     </h3>
                   </div>
                   <div class="shelf-buttons">
-                    <div class="prev-shelf-btn">
+                    <div class="shelf-btn">
                       <%= simple_form_for(shelf_game) do |f| %>
                         <%= hidden_field_tag(:category, 'want to play') %>
-                      <%= f.submit "<<" %>
+                      <%= f.submit "<<", class: 'shelf-submit' %>
                       <% end %>
                     </div>
-                    <div class="nex-shelf-btn">
+                    <div class="shelf-btn">
                       <%= simple_form_for(shelf_game) do |f| %>
                         <%= hidden_field_tag(:category, 'completed') %>
-                      <%= f.submit ">>" %>
+                      <%= f.submit ">>", class: 'shelf-submit' %>
                       <% end %>
                     </div>
                   </div>
@@ -132,13 +132,13 @@
                     </h3>
                   </div>
                   <div class="shelf-buttons">
-                    <div class="prev-shelf-btn">
+                    <div class="shelf-btn">
                       <%= simple_form_for(shelf_game) do |f| %>
                         <%= hidden_field_tag(:category, 'now playing') %>
-                      <%= f.submit "<<" %>
+                      <%= f.submit "<<", class: 'shelf-submit' %>
                       <% end %>
                     </div>
-                    <div class="nex-shelf-btn">
+                    <div class="shelf-btn">
 
                     </div>
                   </div>
