@@ -1,17 +1,10 @@
-.game-row {
+.game-row-first {
   padding: 20px;
   background-color: #ffffff;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
   border-radius: 10px;
   display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-
-.rounded-box {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 .show-game-image {
@@ -60,7 +53,7 @@
   margin-bottom: 18px;
 }
 
-.btn {
+button.btn {
   // The little + sign to add games to a shelf
   padding: 0 0 8px 10px;
 }
@@ -93,11 +86,37 @@ a:hover .preview-thumbnail {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 }
 
+.game-row-second-left {
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  margin-bottom: 30px;
+  height: 435px;
+}
+.game-row-second-right {
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  display: flex;
+  align-content: center;
+  margin-bottom: 30px;
+}
 
+// feel free to change the button colors especially to make it fit more
+iframe {
+  border: 0;
+  border-radius: 3px;
+}
 
-
-
-
+.game-row-reviews {
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
 
 
 
@@ -195,11 +214,3 @@ a:hover .preview-thumbnail {
   width: 240px;
   height: 120px;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;}
-
-  // feel free to change the button colors especially to make it fit more
-
-iframe {
-  border: 0;
-  width: inherit;
-  max-height: fit-content;
-}

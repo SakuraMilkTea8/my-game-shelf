@@ -1,7 +1,7 @@
 <div class="container">
 
-  <div class="game-row">
-    <div class="rounded-box col-lg-7 col-sm-12">
+  <div class="game-row-first">
+    <div class="col-lg-7 col-sm-12">
       <%= image_tag @game.image_url, class: "show-game-image" %>
     </div>
 
@@ -49,7 +49,7 @@
           No one is streaming <%= @game.title %> right now... Come back later!
         <% else %>
           <a href="https://www.twitch.tv/<%= @preview_stream['user_login'] %>" class="twitch-preview" target="_blank">
-            Watch <%= @preview_stream['user_name'] %> play <%= @game.title %> right now!
+            Watch <%= @preview_stream['user_name'] %> play <%= @game.title %>
           <%= image_tag(@thumbnail_url, class: 'preview-thumbnail') %>
           </a>
         <% end %>
@@ -59,35 +59,34 @@
 
   <div class="row">
     <div class="col-6">
-      <div class="card p-4">
-        <p> <%= @game.genre.split(",").join(", ") %></p>
-        <p> <%= @game.developer.split(",").join(", ") %></p>
-        <p> <%= @game.console.split(",").join(", ") %></p>
-        <%= @game.description %>
+      <div class="game-row-second-left">
+        <p><em><%= @game.genre.split(",").join(", ")%></em></p>
+        <p><b><%= @game.developer.split(",").join(", ")%></b></p>
+        <p><%= @game.console.split(",").join(", ")%></p>
+        <p> <%= @game.description %></p>
       </div>
     </div>
     <!-- youtube trailer -->
     <div class="col-6">
-      <div class="card p-4">
-        <iframe width="450" height="392"
+      <div class="game-row-second-right">
+        <iframe width="510" height="395"
       src="https://www.youtube.com/embed/<%= @one_game_id %>?controls=1&mute=1", class="trailer-image">
         </iframe>
       </div>
     </div>
   </div>
 
-  <div class="reviews">
-    <div class="reviews card p-4">
-      <% if user_signed_in? %>
-        <h3>Reviews for <%= @game.title %></h3>
-        <!--partial for the review form -->
-        <%= render 'reviews/form', game: @game, review: @review %>
-      <% else %>
-      <% end %>
-      <h1></h1>
-      <!--partial for the shelf of reviews -->
-      <%= render 'reviews/review' %>
-    </div>
+
+  <div class="game-row-reviews">
+    <% if user_signed_in? %>
+      <h3>Reviews for <%= @game.title %></h3>
+      <!--partial for the review form -->
+      <%= render 'reviews/form', game: @game, review: @review %>
+    <% else %>
+    <% end %>
+    <h1></h1>
+    <!--partial for the shelf of reviews -->
+    <%= render 'reviews/review' %>
   </div>
 
   <h3>You may also like</h3>
