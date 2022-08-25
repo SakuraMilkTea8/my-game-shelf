@@ -7,7 +7,7 @@
 
     <div class="col-lg-5 col-sm-12">
       <div class="card ratings-card p-2">
-      <h1 class="game-title"><%= @game.title %></h1>
+      <h2 class="game-title"><%= truncate(@game.title, length: 29) %></h2>
         <div class="star-container">
           <% @rating.times do %>
             <%= image_tag('icons/star-full.svg', class: "star rating") %>
@@ -76,15 +76,12 @@
     </div>
   </div>
 
-
   <div class="game-row-reviews">
     <% if user_signed_in? %>
-      <h3>Reviews for <%= @game.title %></h3>
+      <h3>Leave a review for <%= @game.title %></h3>
       <!--partial for the review form -->
       <%= render 'reviews/form', game: @game, review: @review %>
-    <% else %>
     <% end %>
-    <h1></h1>
     <!--partial for the shelf of reviews -->
     <%= render 'reviews/review' %>
   </div>
