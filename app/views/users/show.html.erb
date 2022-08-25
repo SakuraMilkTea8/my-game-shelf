@@ -41,6 +41,7 @@
         </div>
       <% end %>
     </div>
+    <% if @user == current_user %>
     <div class="col-6">
       <h1>Following users</h1>
       <div class="favorites">
@@ -48,7 +49,10 @@
           <%= render 'user', user: user %>
         <% end %>
       </div>
+      <% else %>
+      <p></p>
     </div>
+    <% end %>
   </div>
 </div>
 
