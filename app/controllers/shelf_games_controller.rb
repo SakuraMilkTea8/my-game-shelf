@@ -8,11 +8,11 @@ class ShelfGamesController < ApplicationController
     @completed = []
     shelf_games.each do |shelf_game|
       if shelf_game.category == 'want to play'
-        @want_to_play << shelf_game.game
+        @want_to_play << shelf_game
       elsif shelf_game.category == 'now playing'
-        @now_playing << shelf_game.game
+        @now_playing << shelf_game
       elsif shelf_game.category == 'completed'
-        @completed << shelf_game.game
+        @completed << shelf_game
       end
     end
   end
