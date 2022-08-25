@@ -51,5 +51,5 @@ const myChart = new Chart(ctx, {
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   createGraph()
-  // initSelect2();
+  initSelect2();
 });
