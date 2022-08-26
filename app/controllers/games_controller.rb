@@ -10,6 +10,7 @@ class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @users = User.all
     # creates the link path to get the users show page
     @user = current_user
     # for the search bar
@@ -19,6 +20,13 @@ class GamesController < ApplicationController
       @games = Game.all
       @games = policy_scope(Game).order(created_at: :desc)
     end
+    # allows searches for users in the nav searchbar
+    if params[:query].present?
+      @users = policy_scope(User).search_by_name(params[:query])
+    else
+    @users = User.all
+    @users = policy_scope(User).order(created_at: :desc)
+  end
   end
 
   def show

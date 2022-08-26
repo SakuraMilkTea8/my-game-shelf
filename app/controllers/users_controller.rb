@@ -32,6 +32,7 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
   private
 
   def user_params
