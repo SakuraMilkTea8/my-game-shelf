@@ -30,10 +30,15 @@
           <!--adding games to users' shelves-->
           <%= simple_form_for(@shelf_game) do |f| %>
             <%= hidden_field_tag(:game, @game.id) %>
-            <!-- <%= f.label "Add to Your Game Shelf" %> -->
-            <label for="category">Add to Your Game Shelf</label>
+            <%= f.label id="game-shelf-label" "Add to My Game Shelf" %>
             <div class="shelf-select">
-              <%= f.input_field :category, collection: ['want to play', 'now playing', 'completed'], default: 'want to play' %>
+            <input id="user_options_true" name="user[options]" type="radio" value="true"/>
+            <label class="collection_radio_buttons" for="user_options_true">Want to play</label>
+            <input id="user_options_true" name="user[options]" type="radio" value="true" />
+            <label class="collection_radio_buttons" for="user_options_false">Currently playing</label>
+            <input id="user_options_true" name="user[options]" type="radio" value="true" />
+            <label class="collection_radio_buttons" for="user_options_false">Completed</label>
+              <%# <%= f.input :category, collection: ['want to play', 'now playing', 'completed'], class: "category-buttons" %>
               <%= f.button :button do %>
                 <%= image_tag('icons/plus.svg') %>
               <% end %>
@@ -64,7 +69,7 @@
         <p><em><%= @game.genre.split(",").join(", ")%></em></p>
         <p><b><%= @game.developer.split(",").join(", ")%></b></p>
         <p><%= @game.console.split(",").join(", ")%></p>
-        <p><%= truncate(@game.description, length: 1090) %></p>
+        <p> <%= @game.description %></p>
       </div>
     </div>
     <!-- youtube trailer -->
