@@ -125,6 +125,9 @@ class GamesController < ApplicationController
       http.request(request)
     end
     resp = JSON.parse(response.body)["data"]
+    if resp.first.nil?
+      return []
+    end
     game_id = resp.first['id']
 
     stream_uri = URI.parse("https://api.twitch.tv/helix/streams?game_id=#{game_id}")
