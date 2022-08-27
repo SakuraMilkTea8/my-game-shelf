@@ -18,7 +18,7 @@ class GamesController < ApplicationController
       @games = policy_scope(Game).search_by_title_and_genre(params[:query])
     else
       @games = Game.all
-      @games = policy_scope(Game).order(created_at: :desc)
+      @games = policy_scope(Game).order(release_date: :desc)
     end
     # allows searches for users in the nav searchbar
     if params[:query].present?
@@ -59,9 +59,9 @@ class GamesController < ApplicationController
     @three_games = recommended_games.keys.first(3)
 
     # gets the youtube trailer from the youtube api
-    @youtube_results = find_videos("#{@game.title} game release trailer")
-    @one_game = @youtube_results.first.to_h
-    @one_game_id = @one_game[:id][:video_id]
+    # @youtube_results = find_videos("#{@game.title} game release trailer")
+    # @one_game = @youtube_results.first.to_h
+    # @one_game_id = @one_game[:id][:video_id]
   end
 
 
