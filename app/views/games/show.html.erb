@@ -28,7 +28,7 @@
 
         <% if user_signed_in? %>
           <!--adding games to users' shelves-->
-          <p>Add to My Game Shelf"</p>
+          <p>Add to My Game Shelf</p>
           <%= simple_form_for(@shelf_game) do |f| %>
             <%= hidden_field_tag(:game, @game.id) %>
             <div class="shelf-select">
