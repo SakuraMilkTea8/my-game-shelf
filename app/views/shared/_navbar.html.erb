@@ -1,6 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <% if user_signed_in? %>
+    <%= link_to shelf_games_path(@user), class: "navbar-brand" do %>
+      <%= image_tag "logo2.png" %>
+      <% end %>
+  <% else %>
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo2.png" %>
+      <%= image_tag "logo2.png" %>
+    <% end %>
   <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -23,6 +29,7 @@
             <%= link_to 'View My Profile', user_path(@user), class: "dropdown-item" %>
             <%= link_to "Edit My Profile", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "My Twitch", "#", class: "dropdown-item" %>
+            <%= link_to "Games", root_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
