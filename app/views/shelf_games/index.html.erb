@@ -12,11 +12,11 @@
         Completed
       </div>
     </div>
-    <div data-shelf-categories-target="wants" hidden>
+    <div id="wants" data-shelf-categories-target="wants" hidden>
       <%# <div class="game-cards"> %>
-      <div class="row">
+      <div class="row" data-shelf-categories-target="wantsRow">
         <% @want_to_play.each do |shelf_game| %>
-          <div class="col-md-4 col-sm-6">
+          <div class="col-md-4 col-sm-6" data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
             <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');">
               <div class="shelf-card-overlay">
                 <div class="trash-container">
@@ -33,9 +33,10 @@
                 </div>
                 <div class="shelf-buttons">
                   <div class="shelf-btn">
+                    <%# empty for styling %>
                   </div>
                   <div class="shelf-btn">
-                    <%= simple_form_for(shelf_game) do |f| %>
+                    <%= simple_form_for(shelf_game, remote: true, data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory'}) do |f| %>
                       <%= f.hidden_field :category, value: 'now playing' %>
                       <%= f.submit ">>", class: 'shelf-submit' %>
                     <% end %>
@@ -48,12 +49,12 @@
       </div>
       <%# </div> %>
     </div>
-    <div data-shelf-categories-target="plays" hidden>
+    <div id="plays" data-shelf-categories-target="plays" hidden>
       <%# <div class="game-cards"> %>
-      <div class="row">
+      <div class="row" data-shelf-categories-target="playsRow">
         <% @now_playing.each do |shelf_game| %>
-          <div class="col-md-4 col-sm-6">
-            <!--
+          <div class="col-md-4 col-sm-6"   data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
+            <!-- old cards
               <%= link_to game_path(shelf_game.game) do %>
                 <div class="game-card">
                   <img src="<%= shelf_game.game.image_url %>" alt="Boxart for <%= shelf_game.game.title %>">
@@ -81,13 +82,13 @@
                 </div>
                 <div class="shelf-buttons">
                   <div class="shelf-btn">
-                    <%= simple_form_for(shelf_game) do |f| %>
+                    <%= simple_form_for(shelf_game, remote: true, data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory' }) do |f| %>
                       <%= f.hidden_field :category, value: 'want to play' %>
                       <%= f.submit "<<", class: 'shelf-submit' %>
                     <% end %>
                   </div>
                   <div class="shelf-btn">
-                    <%= simple_form_for(shelf_game) do |f| %>
+                    <%= simple_form_for(shelf_game, remote: true, data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory' }) do |f| %>
                       <%= f.hidden_field :category, value: 'completed' %>
                       <%= f.submit ">>", class: 'shelf-submit' %>
                     <% end %>
@@ -100,12 +101,12 @@
       </div>
       <%# </div> %>
     </div>
-    <div data-shelf-categories-target="completes" hidden>
+    <div id="completes" data-shelf-categories-target="completes" hidden>
       <%# <div class="game-cards"> %>
-      <div class="row">
+      <div class="row" data-shelf-categories-target="completesRow">
         <% @completed.each do |shelf_game| %>
-          <div class="col-md-4 col-sm-6">
-            <!--
+          <div class="col-md-4 col-sm-6"   data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
+            <!-- old cards
               <%= link_to game_path(shelf_game.game) do %>
                 <div class="game-card">
                   <img src="<%= shelf_game.game.image_url %>" alt="Boxart for <%= shelf_game.game.title %>">
@@ -133,12 +134,13 @@
                 </div>
                 <div class="shelf-buttons">
                   <div class="shelf-btn">
-                    <%= simple_form_for(shelf_game) do |f| %>
+                    <%= simple_form_for(shelf_game, remote: true,  data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory' }) do |f| %>
                       <%= f.hidden_field :category, value: 'now playing' %>
                       <%= f.submit "<<", class: 'shelf-submit' %>
                     <% end %>
                   </div>
                   <div class="shelf-btn">
+                    <%# empty for styling %>
                   </div>
                 </div>
               </div>
