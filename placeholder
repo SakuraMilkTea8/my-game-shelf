@@ -1,0 +1,8 @@
+<% @users.each do |user| %>
+<% if user.avatar.attached? %>
+  <%= cl_image_tag(user.avatar.key, class: "img-fluid profile-image", width: "70px") %>
+<% end %>
+<div class="ml-3">
+  <h5 class="name"><%= user.name %></h5>
+  <p class="mail"><%= user.email %></p>
+<% end %>
