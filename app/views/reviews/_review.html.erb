@@ -15,7 +15,7 @@
         <% end %>
 
           <small>
-
+          <%= @user.name %>
           </small>
           <% review.rating.times do %>
             <%= image_tag('icons/star-full.svg', class: "review-star") %>
