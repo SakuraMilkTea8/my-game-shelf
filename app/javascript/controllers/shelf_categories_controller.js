@@ -47,7 +47,6 @@ export default class extends Controller {
     } else if (event.currentTarget[1].value === 'completed') {
       this.completesRowTarget.insertAdjacentElement("beforeend", shelfCard);
     }
-    // shelfCard.remove()
   }
 
   connect() {

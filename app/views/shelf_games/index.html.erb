@@ -15,8 +15,8 @@
         <%# <div class="game-cards"> %>
         <div class="row" data-shelf-categories-target="wantsRow">
           <% @want_to_play.each do |shelf_game| %>
-            <div class="col-md-4 col-sm-6">
-              <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');" data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
+            <div class="col-md-4 col-sm-6" data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
+              <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');">
                 <div class="shelf-card-overlay">
                   <div class="trash-container">
                     <%= link_to shelf_game_path(shelf_game), method: :delete, data: { confirm: "Are you sure?" } do %>
@@ -52,8 +52,8 @@
         <%# <div class="game-cards"> %>
         <div class="row" data-shelf-categories-target="playsRow">
           <% @now_playing.each do |shelf_game| %>
-            <div class="col-md-4 col-sm-6">
-              <!--
+            <div class="col-md-4 col-sm-6"   data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
+              <!-- old cards
               <%= link_to game_path(shelf_game.game) do %>
                 <div class="game-card">
                   <img src="<%= shelf_game.game.image_url %>" alt="Boxart for <%= shelf_game.game.title %>">
@@ -65,7 +65,7 @@
                 </div>
               <% end %>
               -->
-              <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');"  data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
+              <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');">
                 <div class="shelf-card-overlay">
                   <div class="trash-container">
                     <%= link_to shelf_game_path(shelf_game), method: :delete, data: { confirm: "Are you sure?" } do %>
@@ -104,8 +104,8 @@
         <%# <div class="game-cards"> %>
         <div class="row" data-shelf-categories-target="completesRow">
           <% @completed.each do |shelf_game| %>
-            <div class="col-md-4 col-sm-6">
-            <!--
+            <div class="col-md-4 col-sm-6"   data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
+            <!-- old cards
               <%= link_to game_path(shelf_game.game) do %>
                 <div class="game-card">
                   <img src="<%= shelf_game.game.image_url %>" alt="Boxart for <%= shelf_game.game.title %>">
@@ -117,7 +117,7 @@
                 </div>
               <% end %>
               -->
-              <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');"  data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
+              <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');">
                 <div class="shelf-card-overlay">
                   <div class="trash-container">
                     <%= link_to shelf_game_path(shelf_game), method: :delete, data: { confirm: "Are you sure?" } do %>
