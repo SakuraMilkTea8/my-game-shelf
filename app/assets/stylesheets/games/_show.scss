@@ -126,20 +126,20 @@ iframe {
   font-size: 16px;
   line-height: 16px;
   font-weight: normal;
-  margin: 0px 8px 8px;
+  margin: 0px;
   overflow: hidden;
-  height: 64px;
 }
 
 .review-time {
-  font-size: .85rem;
-  font-weight: normal;
-  margin: 1px 10px 10px 10px
+    font-weight: normal;
+    position: relative;
+    left: 54px;
+    top: -26px;
+    font-size: 13px;
 }
 
 .review-user {
   display: flex;
-  align-items: center;
   gap: 4px;
   color: inherit;
   font-weight: bold;
@@ -209,8 +209,6 @@ iframe {
   opacity: 70%;
 }
 
-
-// BRO PLZ CHANGE THIS TO hyphenated
 .review-image {
   width: 240px;
   height: 120px;
