@@ -53,6 +53,30 @@ if ENV['detailed'] == 'yes'
   end
 end
 
+if ENV['super'] == 'yes'
+  Game.destroy_all
+
+  ids = %w"428839 46508 1358 15272 326248 327236 262382 326243 50734 51610 2551 41494 278 259801 282825 58858 622495 51323 667657 10141 422859 452638 244741 60074 22509 654 9767 9600 287342 10419 58835 44525 369157 492 421698 11839 47326 27977 22511 302974 56092 27023 27057 27015 25924 26824 53205 13554 19299 5562 5563 11859 58175 32 3070 2454 1030 4286 13537 28 802 3439 4062 13536 12020 5679 4291 5286 4200 3328 3498"
+  ids.each do |id|
+    game_url =  "https://api.rawg.io/api/games/#{id}?key=#{ENV['RAWG_API']}"
+    game_doc = URI.parse(game_url).open.read
+    game = JSON.parse(game_doc)
+    # details has two or more developers usually so loop through (detailed) game['developers'].each |dev| and put the dev['name'] into an array
+    developers = []
+    game['developers'].each { |dev| developers << dev['name'] }
+    # should probably join all of them by comma, no space maybe
+    # if using detailed game all keys are the same, 'description' gives a description with p tags and breaks 'description_raw' has breaks but no html
+    genres = []
+    game['genres'].each { |genre| genres << genre['name'] }
+    platforms = []
+    game['platforms'].each { |platform| platforms << platform['platform']['name'] }
+    # add   description: game['description_raw']    after migrating
+    this = Game.new(title: game['name'], description: game['description_raw'], genre: genres.join(","), developer: developers.join(','), console: platforms.join(","), release_date: game['released'], image_url: game['background_image'])
+    this.save
+    p this.title
+  end
+end
+
 puts 'adding users'
 
 # users!
