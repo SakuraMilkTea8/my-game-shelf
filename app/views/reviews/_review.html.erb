@@ -6,9 +6,16 @@
       <div class="rounded-box-reviews col-lg-12 col-md-4">
       <ul class="list-group list-group-flush">
         <p class ="review-user">
-          <%= image_tag "avatar.png", class: "avatar dropdown-toggle"%>
+        <%= link_to user_path(review.user) do %>
+          <% if review.user.avatar.attached? %>
+            <%= cl_image_tag(review.user.avatar.key, class: "avatar")%>
+          <% else %>
+            <%= image_tag "gamepad.png", class: "avatar" %>
+          <% end %>
+        <% end %>
+
           <small>
-              <%= link_to review.user.name , user_path(review.user) %>
+          <%= review.user.name %>
           </small>
           <% review.rating.times do %>
             <%= image_tag('icons/star-full.svg', class: "review-star") %>
@@ -17,8 +24,8 @@
             <%= image_tag('icons/star-empty.svg', class: "review-star") %>
           <% end %>
         </p>
-        <p class ="reviewTime"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
-        <p class="reviewContent"><%= review.content %></p>
+        <p class ="review-time"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
+        <p class="review-content"><%= review.content %></p>
       </ul>
       </div>
     <% end %>
