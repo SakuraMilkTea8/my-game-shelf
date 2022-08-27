@@ -18,7 +18,7 @@ class GamesController < ApplicationController
       @games = policy_scope(Game).search_by_title_and_genre(params[:query])
     else
       @games = Game.all
-      @games = policy_scope(Game).order(created_at: :desc)
+      @games = policy_scope(Game).order(release_date: :desc)
     end
     # allows searches for users in the nav searchbar
     if params[:query].present?
