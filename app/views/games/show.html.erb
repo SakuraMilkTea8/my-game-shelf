@@ -30,7 +30,8 @@
           <!--adding games to users' shelves-->
           <%= simple_form_for(@shelf_game) do |f| %>
             <%= hidden_field_tag(:game, @game.id) %>
-            <%= f.label "Add to My Game Shelf" %>
+            <!-- <%= f.label "Add to Your Game Shelf" %> -->
+            <label for="category">Add to Your Game Shelf</label>
             <div class="shelf-select">
               <%= f.input_field :category, collection: ['want to play', 'now playing', 'completed'], default: 'want to play' %>
               <%= f.button :button do %>
@@ -63,7 +64,7 @@
         <p><em><%= @game.genre.split(",").join(", ")%></em></p>
         <p><b><%= @game.developer.split(",").join(", ")%></b></p>
         <p><%= @game.console.split(",").join(", ")%></p>
-        <p> <%= @game.description %></p>
+        <p><%= truncate(@game.description, length: 1090) %></p>
       </div>
     </div>
     <!-- youtube trailer -->
