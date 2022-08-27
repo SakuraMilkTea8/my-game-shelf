@@ -1,21 +1,54 @@
 <div class="container">
-    <div class="row">
-      <% @games.each do |game| %>
-        <div class="col-md-4 col-sm-6">
-          <%= link_to game_path(game) do %>
-            <div class="game-card">
-              <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
-              <div class="game-title">
-                <h3>
-                  <%= game.title %>
-                </h3>
+  <div class="row">
+    <% @games.each do |game| %>
+      <div class="col-md-4 col-sm-6">
+        <%= link_to game_path(game) do %>
+          <div class="game-card">
+            <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
+            <div class="game-title">
+              <h3>
+                <%= game.title %>
+              </h3>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <% if params[:query].present?%>
+    <div class="user-container w-720px">
+      <div class="search-container w-720px ">
+        <h1>Users</h1>
+        <div class="card p-3">
+          <% @users.each do |user| %>
+            <div class="d-flex align-items-center">
+              <%= link_to user_path(user) do %>
+                <div class="image">
+                  <% if user.avatar.attached? %>
+                    <%= cl_image_tag(user.avatar.key, class: "rounded m-2", width: "80px")%>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="ml-3 w-100">
+                <%= link_to user_path(user) do %>
+                  <h4 class="mb-0 mt-0"><%= user.name %></h4>
+                <% end %>
+                <div class="p-2 mt-2 bg-secondary d-flex flex-row rounded text-white stats">
+                  <div class="d-flex flex-column">
+                    <div class="p-2">Reviews: <%= user.reviews.count %></div>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <div class="p-2">Followers: <%= user.favorited.count%></div>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <div class="p-2">Games: <%= user.games.count%></div>
+                  <% end %>
               </div>
             </div>
-          <% end %>
+          </div>
         </div>
-      <% end %>
+      </div>
     </div>
-    <% @users.each do |user| %>
-    <%= user.name %>
-    <% end %>
+  </div>
+                <% end %>
 </div>
