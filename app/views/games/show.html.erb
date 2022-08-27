@@ -28,9 +28,9 @@
 
         <% if user_signed_in? %>
           <!--adding games to users' shelves-->
+          <p>Add to My Game Shelf"</p>
           <%= simple_form_for(@shelf_game) do |f| %>
             <%= hidden_field_tag(:game, @game.id) %>
-            <%= f.label id="game-shelf-label" "Add to My Game Shelf" %>
             <div class="shelf-select">
             <input id="user_options_true" name="user[options]" type="radio" value="true"/>
             <label class="collection_radio_buttons" for="user_options_true">Want to play</label>

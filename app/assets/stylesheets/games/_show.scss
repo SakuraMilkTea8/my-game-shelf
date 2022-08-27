@@ -232,13 +232,10 @@ label {
 
 label:hover {
   cursor:pointer;
-  background-color:#EEE;
+  background-color: $diet-raspberry;
 }
 
-input[type="radio"]:checked + label {
-  background-color:#DDD;
+input[type="radio"]:checked {
+  background-color: $raspberry;
 }
 
-#game-shelf-label {
-  
-}
