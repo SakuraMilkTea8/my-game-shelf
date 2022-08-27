@@ -28,22 +28,17 @@
 
         <% if user_signed_in? %>
           <!--adding games to users' shelves-->
-          <p>Add to My Game Shelf</p>
-          <%= simple_form_for(@shelf_game) do |f| %>
-            <%= hidden_field_tag(:game, @game.id) %>
-            <div class="shelf-select">
-            <input id="user_options_true" name="user[options]" type="radio" value="true"/>
-            <label class="collection_radio_buttons" for="user_options_true">Want to play</label>
-            <input id="user_options_true" name="user[options]" type="radio" value="true" />
-            <label class="collection_radio_buttons" for="user_options_false">Currently playing</label>
-            <input id="user_options_true" name="user[options]" type="radio" value="true" />
-            <label class="collection_radio_buttons" for="user_options_false">Completed</label>
-              <%# <%= f.input :category, collection: ['want to play', 'now playing', 'completed'], class: "category-buttons" %>
-              <%= f.button :button do %>
-                <%= image_tag('icons/plus.svg') %>
-              <% end %>
-            </div>
-          <% end %>
+          <div class ="shelf-buttons">
+            <p>Add to My Game Shelf</p>
+            <%= simple_form_for([@game, @shelf_game]) do |f| %>
+            <%= f.input :category, input_html:{value:"want to play"}, as: :hidden %>
+            <%= f.button :submit, "Want to play", class: "btn #{(@shelf_game.category == 'want to play') ? 'btn-outline-primary' : 'btn-primary'}" %>
+            <%= f.input :category, input_html:{value:"want to play"}, as: :hidden %>
+            <%= f.button :submit, "Currently playing", class: "btn #{(@shelf_game.category == 'currently playing') ? 'btn-outline-primary' : 'btn-primary'}" %>
+            <%= f.input :category, input_html:{value:"want to play"}, as: :hidden %>
+            <%= f.button :submit, "Completed", class: "btn #{(@shelf_game.category == 'completed') ? 'btn-outline-primary' : 'btn-primary'}" %>
+            <% end %>
+          </div>
           <!--Checking status of game (make into a partial) -->
           <!--persisted checks if it is saved -->
           <% if @shelf_game.persisted? %>
