@@ -4,37 +4,37 @@
 
     <% @game.reviews.each do |review| %>
       <div class="rounded-box-reviews col-lg-12 col-md-4">
-
         <div class ="review-user">
-        <%= link_to user_path(review.user) do %>
-          <% if review.user.avatar.attached? %>
-            <%= cl_image_tag(review.user.avatar.key, class: "avatar")%>
-          <% else %>
-            <%= image_tag "gamepad.png", class: "avatar" %>
+          <%= link_to user_path(review.user) do %>
+            <% if review.user.avatar.attached? %>
+              <%= cl_image_tag(review.user.avatar.key, class: "avatar")%>
+            <% else %>
+              <%= image_tag "gamepad.png", class: "avatar" %>
+            <% end %>
           <% end %>
-        <% end %>
+          <ul class="reviewer">
+            <li class="review-user">
+            <%= review.user.name %>
+            </li>
+            <li class ="review-time">
+              <%= time_ago_in_words(review.created_at) %> ago
+            </li>
+          </ul>
+
+          <ul class="review">
+            <li>
+              <% review.rating.times do %>
+                <%= image_tag('icons/star-full.svg', class: "review-star") %>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <%= image_tag('icons/star-empty.svg', class: "review-star") %>
+              <% end %>
+            </li>
+            <li>
+              <p class="review-content"><%= review.content %></p>
+            </li>
+          </ul>
         </div>
-        <ul>
-          <li>
-          <%= review.user.name %>
-          </li>
-          <li>
-            <div class ="review-time"><%= time_ago_in_words(review.created_at) %> ago</div>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <% review.rating.times do %>
-              <%= image_tag('icons/star-full.svg', class: "review-star") %>
-            <% end %>
-            <% (5 - review.rating).times do %>
-              <%= image_tag('icons/star-empty.svg', class: "review-star") %>
-            <% end %>
-          </li>
-          <li>
-            <p class="review-content"><%= review.content %></p>
-          </li>
-        </ul>
       </div>
     <% end %>
   <% end %>

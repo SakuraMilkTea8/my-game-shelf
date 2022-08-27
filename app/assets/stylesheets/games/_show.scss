@@ -76,6 +76,7 @@ button.btn {
 a .preview-thumbnail {
   display: none;
 }
+
 a:hover .preview-thumbnail {
   display: block;
   position: absolute;
@@ -117,10 +118,40 @@ iframe {
   margin-bottom: 50px;
 }
 
+.rounded-box-reviews {
+  background: #fff;
+  padding: 16px;
+  border: 1px solid darkred;
+  border-radius: 3px;
+  margin: 30px 0 0 0;
+}
 
+ul.reviewer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
+ul.review {
+  list-style: none;
+  padding: 0;
+  margin-left: 100px;
+}
 
+.review-user {
+  display: flex;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 25px;
+  text-decoration: none;
+  margin: 0px;
+}
 
+.review-time {
+  font-weight: normal;
+  position: relative;
+  font-size: 13px;
+}
 
 .review-content {
   font-size: 16px;
@@ -130,33 +161,25 @@ iframe {
   overflow: hidden;
 }
 
-.review-time {
-    font-weight: normal;
-    position: relative;
-    left: 54px;
-    top: -26px;
-    font-size: 13px;
+img.avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: relative;
+  top: 10px;
 }
 
-.review-user {
-  display: flex;
-  gap: 4px;
-  color: inherit;
-  font-weight: bold;
-  text-decoration: none;
-  margin: 0px;
-}
 
-.img {
-  width: 40px;
-}
+
+
+
+
 
 .recommended-game-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
 }
-
 
 @media (max-width: 1399px) {
   .show-game-image {
@@ -170,12 +193,6 @@ iframe {
     width: 400px;
     height: 220px;
   }
-}
-
-.rounded-box-reviews {
-  background: #fff;
-  padding: 16px;
-  box-shadow: rgb(136 165 191 / 48%) 6px 2px 16px 0px, rgb(255 255 255 / 80%) -6px -2px 16px 0px;
 }
 
 .shelf-select {
