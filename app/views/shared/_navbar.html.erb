@@ -29,6 +29,7 @@
             <%= link_to 'View My Profile', user_path(@user), class: "dropdown-item" %>
             <%= link_to "Edit My Profile", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "My Twitch", "#", class: "dropdown-item" %>
+            <%= link_to "Games", root_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
