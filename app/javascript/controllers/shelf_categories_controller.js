@@ -41,12 +41,13 @@ export default class extends Controller {
     let shelfCard = this.shelfcardTargets.find(e => e.id === cardId)
     // console.log(shelfCard);
     if (event.currentTarget[1].value === 'want to play') {
-
+      this.wantsTarget.insertAdjacentHTML("beforeend", shelfCard);
     } else if (event.currentTarget[1].value === 'now playing') {
-
+      this.playsTarget.insertAdjacentHTML("beforeend", shelfCard);
     } else if (event.currentTarget[1].value === 'completed') {
-
+      this.completesTarget.insertAdjacentHTML("beforeend", shelfCard);
     }
+    shelfCard.remove()
   }
 
   connect() {
