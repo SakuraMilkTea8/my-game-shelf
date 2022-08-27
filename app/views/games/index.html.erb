@@ -1,21 +1,33 @@
 <div class="container">
-    <div class="row">
-      <% @games.each do |game| %>
-        <div class="col-md-4 col-sm-6">
-          <%= link_to game_path(game) do %>
-            <div class="game-card">
-              <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
-              <div class="game-title">
-                <h3>
-                  <%= game.title %>
-                </h3>
-              </div>
+  <div class="row">
+    <% @games.each do |game| %>
+      <div class="col-md-4 col-sm-6">
+        <%= link_to game_path(game) do %>
+          <div class="game-card">
+            <img src="<%= game.image_url %>" alt="Boxart for <%= game.title %>">
+            <div class="game-title">
+              <h3>
+                <%= game.title %>
+              </h3>
             </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="container d-flex justify-content-center mt-5">
+    <div class="card">
+      <div class="top-container">
+        <% @users.each do |user| %>
+          <% if user.avatar.attached? %>
+            <%= cl_image_tag(user.avatar.key, class: "img-fluid profile-image", width: "70px") %>
+          <% end %>
+          <div class="ml-3">
+            <h5 class="name"><%= user.name %></h5>
+            <p class="mail"><%= user.email %></p>
           <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
-    <% @users.each do |user| %>
-    <%= user.name %>
-    <% end %>
+  </div>
 </div>
