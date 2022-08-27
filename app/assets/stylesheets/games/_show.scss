@@ -173,16 +173,10 @@ iframe {
 }
 
 .rounded-box-reviews {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  row-gap: 16px;
-  flex-wrap: wrap;
-  margin: 16px auto;
-  border-radius: 25px;
   background: #fff;
   padding: 16px;
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;}
+  box-shadow: rgb(136 165 191 / 48%) 6px 2px 16px 0px, rgb(255 255 255 / 80%) -6px -2px 16px 0px;
+}
 
 .shelf-select {
   display: flex;
