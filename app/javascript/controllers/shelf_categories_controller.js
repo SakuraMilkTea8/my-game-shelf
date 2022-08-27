@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["want", "playing", "complete", "wants", "plays", "completes", "form", "shelfcard"]
+  static targets = ["want", "playing", "complete", "wants", "plays", "completes", "form", "shelfcard", "wantsRow", "playsRow", "completesRow"]
 
   want() {
     this.wantTarget.classList.add('selected-category')
@@ -39,21 +39,21 @@ export default class extends Controller {
     let cardId = cardIdArray[cardIdArray.length - 1]
     // console.log(cardId);
     let shelfCard = this.shelfcardTargets.find(e => e.id === cardId)
-    // console.log(shelfCard);
+    console.log(shelfCard);
     if (event.currentTarget[1].value === 'want to play') {
-      this.wantsTarget.insertAdjacentHTML("beforeend", shelfCard);
+      this.wantsRowTarget.insertAdjacentElement("beforeend", shelfCard);
     } else if (event.currentTarget[1].value === 'now playing') {
-      this.playsTarget.insertAdjacentHTML("beforeend", shelfCard);
+      this.playsRowTarget.insertAdjacentElement("beforeend", shelfCard);
     } else if (event.currentTarget[1].value === 'completed') {
-      this.completesTarget.insertAdjacentHTML("beforeend", shelfCard);
+      this.completesRowTarget.insertAdjacentElement("beforeend", shelfCard);
     }
-    shelfCard.remove()
+    // shelfCard.remove()
   }
 
   connect() {
     this.wantTarget.classList.add('selected-category')
     this.wantsTarget.removeAttribute('hidden')
-    console.log(this.formTargets);
-    console.log(this.shelfcardTargets);
+    // console.log(this.formTargets);
+    // console.log(this.shelfcardTargets);
   }
 }

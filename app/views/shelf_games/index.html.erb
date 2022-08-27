@@ -13,7 +13,7 @@
     </div>
       <div id="wants" data-shelf-categories-target="wants" hidden>
         <%# <div class="game-cards"> %>
-        <div class="row">
+        <div class="row" data-shelf-categories-target="wantsRow">
           <% @want_to_play.each do |shelf_game| %>
             <div class="col-md-4 col-sm-6">
               <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');" data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
@@ -50,7 +50,7 @@
       </div>
         <div id="plays" data-shelf-categories-target="plays" hidden>
         <%# <div class="game-cards"> %>
-        <div class="row">
+        <div class="row" data-shelf-categories-target="playsRow">
           <% @now_playing.each do |shelf_game| %>
             <div class="col-md-4 col-sm-6">
               <!--
@@ -102,7 +102,7 @@
       </div>
       <div id="completes" data-shelf-categories-target="completes" hidden>
         <%# <div class="game-cards"> %>
-        <div class="row">
+        <div class="row" data-shelf-categories-target="completesRow">
           <% @completed.each do |shelf_game| %>
             <div class="col-md-4 col-sm-6">
             <!--
