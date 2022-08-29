@@ -1,48 +1,39 @@
-<div class="container">
-  <div class="row">
-    <!-- This shows the users avatar -->
-    <div class="col-6">
-      <%if current_user.avatar.attached? %>
-        <%= cl_image_tag(current_user.avatar.key, class: "avatar")%>
+<!--everything is inside this row -->
+<div class="row">
+  <div class="col-6">
+    <h1>  <%if current_user.avatar.attached? %>
+        <%= cl_image_tag(@user.avatar.key, class: "avatar")%>
       <% else %>
         <%= image_tag "gamepad.png", class: "avatar" %>
-      <% end %>
-      <h1><%= @user.name %>'s profile</h1>
-      <!-- This shows the user's reviews -->
-      <h1>Reviews</h1>
-      <% @user.reviews.each do |review| %>
-        <div class="rounded-box-reviews col-lg-12 col-md-4">
-          <ul class="list-group list-group-flush col-6">
-            <p class ="review-user">
-              <%= review.game.title %>
-              <%= link_to "Visit", game_path(review.game), class: 'btn btn-secondary btn-sm w-4px'  %>
-              <% review.rating.times do %>
-                <%= image_tag('icons/star-full.svg', class: "review-star") %>
-              <% end %>
-              <% (5 - review.rating).times do %>
-                <%= image_tag('icons/star-empty.svg', class: "review-star") %>
-              <% end %>
-            </p>
-            <p class ="review-time"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
-            <p class="review-content">"<%= review.content %>"</p>
-          </ul>
-          <%= image_tag review.game.image_url, class: "review-image" %>
-        </div>
-      <% end %>
-    </div>
+      <% end %><%= @user.name %>'s profile</h1>
+    <!-- This shows the user's reviews -->
+    <h1>Reviews</h1>
+    <% @user.reviews.each do |review| %>
+      <div class="rounded-box-reviews col-lg-12 col-md-4">
+        <ul class="list-group list-group-flush col-6">
+          <p class ="review-user">
+            <%= review.game.title %>
+            <%= link_to "Visit", game_path(review.game), class: 'btn btn-secondary btn-sm w-4px'  %>
+            <% review.rating.times do %>
+              <%= image_tag('icons/star-full.svg', class: "review-star") %>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <%= image_tag('icons/star-empty.svg', class: "review-star") %>
+            <% end %>
+          </p>
+          <p class ="review-time"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
+          <p class="review-content">"<%= review.content %>"</p>
+        </ul>
+        <%= image_tag review.game.image_url, class: "review-image" %>
+      </div>
+    <% end %>
+  </div>
 
 
-
-
-
-
-
-
-    <div class="col-6">
-      <div class="following-container">
-        <div class="row">
-          <!-- This shows the user's follow list or other user's name to follow -->
-          <% if @user != current_user  %>
+  <div class="col-6">
+          <div class="favorites">
+    <!-- This shows the user's follow list or other user's name to follow -->
+    <% if @user != current_user  %>
             <div class="user-list">
               <h1>follow this user</h1>
               <div class="d-flex">
@@ -51,57 +42,39 @@
                     <%= render 'users/like_button', user: @user %>
                   <% end %>
                 </h3>
+                        <!-- Shows user graph -->
+                      <div class="graph">
+          <h1>My shelf data</h1>
+          <canvas id="myChart" data-page-views="<%=@graph_array %>"></canvas>
+        </div>
               </div>
             <% else %>
               <p></p>
             <% end %>
           </div>
-          <!-- User's following list -->
-          <% if @user == current_user %>
-            <div class="favorites">
-              <h1>Following</h1>
-                <% @favorite_users.each do |user| %>
-                  <div class="favorite" data-id="<%= user.id %>">
-                    <ul class="friend-list clearfix">
-                      <%= link_to user_path(user) do %>
-                        <li class="friend-img"> <%= image_tag "avatar.png" %> </li>
-                        <li class="friend-info"><h4><%= user.name %></li>
-                        <li class="friend-info">Followers: <%= user.reviews.count %>, Games: <%= user.games.count%></li>
-                        <% end %>
-                      </ul>
-                    </div>
-                  <% end %>
-                                <div class="col-6"><h1>search for users</h1></div>
-              <% else %>
-                <p></p>
-              </div>
-            <% end %>
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <div class="row">
+    <!-- User's following list -->
+    <% if @user == current_user %>
+        <h1>Following</h1>
+        <% @favorite_users.each do |user| %>
+          <div class="favorite" data-id="<%= user.id %>">
+            <ul class="friend-list clearfix">
+              <%= link_to user_path(user) do %>
+                <li class="friend-img"> <%= image_tag "avatar.png" %> </li>
+                <li class="friend-info">
+                  <h4><%= user.name %></li>
+                  <li class="friend-info">Followers: <%= user.reviews.count %>, Games: <%= user.games.count%></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
         <!-- Shows user graph -->
         <div class="graph">
           <h1>My shelf data</h1>
           <canvas id="myChart" data-page-views="<%=@graph_array %>"></canvas>
         </div>
+        <% else %>
+          <p></p>
+        <% end %>
       </div>
-      </div>
-  </div>
-  </div>
+    </div>
+</div>
