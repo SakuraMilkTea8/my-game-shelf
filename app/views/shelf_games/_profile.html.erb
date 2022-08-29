@@ -15,7 +15,7 @@
           <ul class="list-group list-group-flush col-6">
             <p class ="review-user">
               <%= review.game.title %>
-              <%= link_to "Visit", game_path(@game), class: 'btn btn-secondary btn-sm w-4px'  %>
+              <%= link_to "Visit", game_path(review.game), class: 'btn btn-secondary btn-sm w-4px'  %>
               <% review.rating.times do %>
                 <%= image_tag('icons/star-full.svg', class: "review-star") %>
               <% end %>
@@ -26,16 +26,24 @@
             <p class ="review-time"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
             <p class="review-content">"<%= review.content %>"</p>
           </ul>
-          <%= image_tag @game.image_url, class: "review-image" %>
+          <%= image_tag review.game.image_url, class: "review-image" %>
         </div>
       <% end %>
     </div>
+
+
+
+
+
+
+
+
     <div class="col-6">
       <div class="following-container">
         <div class="row">
           <!-- This shows the user's follow list or other user's name to follow -->
           <% if @user != current_user  %>
-            <div class="user-list col-6">
+            <div class="user-list">
               <h1>follow this user</h1>
               <div class="d-flex">
                 <h3 class="follow-user"><%= @user.name  %>
@@ -50,9 +58,8 @@
           </div>
           <!-- User's following list -->
           <% if @user == current_user %>
-            <div class="favorites col-6">
+            <div class="favorites">
               <h1>Following</h1>
-              <div class="favorites">
                 <% @favorite_users.each do |user| %>
                   <div class="favorite" data-id="<%= user.id %>">
                     <ul class="friend-list clearfix">
@@ -64,20 +71,37 @@
                       </ul>
                     </div>
                   <% end %>
-                </div>
+                                <div class="col-6"><h1>search for users</h1></div>
               <% else %>
                 <p></p>
               </div>
             <% end %>
-          </div>
         </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="row">
         <!-- Shows user graph -->
-        <div class="graph col-6">
+        <div class="graph">
           <h1>My shelf data</h1>
-          <canvas id="myChart" width="220" height="220"
-        data-page-views="<%=@graph_array %>">
-          </canvas>
+          <canvas id="myChart" data-page-views="<%=@graph_array %>"></canvas>
         </div>
       </div>
       </div>
-    </div>
+  </div>
+  </div>
