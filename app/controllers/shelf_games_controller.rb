@@ -16,6 +16,9 @@ class ShelfGamesController < ApplicationController
         @completed << shelf_game
       end
     end
+    @user.reviews.each do |review|
+      @game = Game.find(review.game.id)
+    end
     # this shows the graph
     @game_per_category = @user.shelf_games.group_by{|game| game.category}
     @completed_number =  @game_per_category['completed'].to_a.count

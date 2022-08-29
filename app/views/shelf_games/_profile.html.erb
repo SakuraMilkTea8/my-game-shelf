@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+    <!-- This shows the users avatar -->
     <div class="col-6">
       <%if current_user.avatar.attached? %>
         <%= cl_image_tag(current_user.avatar.key, class: "avatar")%>
@@ -7,10 +8,9 @@
         <%= image_tag "gamepad.png", class: "avatar" %>
       <% end %>
       <h1><%= @user.name %>'s profile</h1>
+      <!-- This shows the user's reviews -->
       <h1>Reviews</h1>
       <% @user.reviews.each do |review| %>
-        <!-- this line needs to be put in the controller -->
-        <% @game = Game.find(review.game.id) %>
         <div class="rounded-box-reviews col-lg-12 col-md-4">
           <ul class="list-group list-group-flush col-6">
             <p class ="review-user">
@@ -31,10 +31,11 @@
       <% end %>
     </div>
     <div class="col-6">
-      <div class="container">
+      <div class="following-container">
         <div class="row">
+          <!-- This shows the user's follow list or other user's name to follow -->
           <% if @user != current_user  %>
-            <div class="user-list col-sm-6">
+            <div class="user-list col-6">
               <h1>follow this user</h1>
               <div class="d-flex">
                 <h3 class="follow-user"><%= @user.name  %>
@@ -47,32 +48,36 @@
               <p></p>
             <% end %>
           </div>
+          <!-- User's following list -->
           <% if @user == current_user %>
-            <div class="col-6">
-              <h1>Following users</h1>
+            <div class="favorites col-6">
+              <h1>Following</h1>
               <div class="favorites">
                 <% @favorite_users.each do |user| %>
                   <div class="favorite" data-id="<%= user.id %>">
-  <ul class="friend-list clearfix">
-    <%= link_to user_path(user) do %>
-    <li class="friend-img"> <%= image_tag "avatar.png" %> </li>
-        <li class="friend-info"><h4><%= user.name %></li>
-        <% end %>
-  </ul>
-</div>
-                <% end %>
+                    <ul class="friend-list clearfix">
+                      <%= link_to user_path(user) do %>
+                        <li class="friend-img"> <%= image_tag "avatar.png" %> </li>
+                        <li class="friend-info"><h4><%= user.name %></li>
+                        <li class="friend-info">Followers: <%= user.reviews.count %>, Games: <%= user.games.count%></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                </div>
+              <% else %>
+                <p></p>
               </div>
-            <% else %>
-              <p></p>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
+        </div>
+        <!-- Shows user graph -->
+        <div class="graph col-6">
+          <h1>My shelf data</h1>
+          <canvas id="myChart" width="220" height="220"
+        data-page-views="<%=@graph_array %>">
+          </canvas>
         </div>
       </div>
-      <div class="graph col-6">
-        <h1>My shelf data</h1>
-        <!-- adding data attribute -->
-        <canvas id="myChart" width="220" height="220"
-        data-page-views="<%=@graph_array %>">
-        </canvas>
       </div>
     </div>
