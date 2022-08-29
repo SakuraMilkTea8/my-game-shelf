@@ -16,6 +16,16 @@ class ShelfGamesController < ApplicationController
         @completed << shelf_game
       end
     end
+    # this shows the graph
+    @game_per_category = @user.shelf_games.group_by{|game| game.category}
+    @completed_number =  @game_per_category['completed'].to_a.count
+    @now_playing_number =  @game_per_category['now playing'].to_a.count
+    @want_to_play_number =  @game_per_category['want to play'].to_a.count
+    @graph_array = [ @completed_number, @now_playing_number, @want_to_play_number ]
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
