@@ -2,6 +2,7 @@ class ShelfGamesController < ApplicationController
   def index
     # creates the link path to get the users show page
     @user = current_user
+    @users = User.all
     shelf_games = policy_scope(ShelfGame).includes(:game).order(created_at: :desc)
     @favorite_users = current_user.favorited_by_type('User')
     @want_to_play = []
