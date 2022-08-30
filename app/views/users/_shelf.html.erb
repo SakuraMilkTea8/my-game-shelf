@@ -1,0 +1,118 @@
+  <div data-controller="shelf-categories">
+    <div class="categories-container">
+      <div class="category-btn" data-action="click->shelf-categories#want" data-shelf-categories-target="want">
+        Want to play
+      </div>
+      <div class="category-btn" data-action="click->shelf-categories#playing" data-shelf-categories-target="playing">
+        Now Playing
+      </div>
+      <div class="category-btn" data-action="click->shelf-categories#completed" data-shelf-categories-target="complete">
+        Completed
+      </div>
+    </div>
+    <div id="wants" data-shelf-categories-target="wants" hidden>
+      <%# <div class="game-cards"> %>
+      <div class="row" data-shelf-categories-target="wantsRow">
+        <% @want_to_play.each do |shelf_game| %>
+          <div class="col-md-4 col-sm-6" data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
+            <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');">
+              <div class="shelf-card-overlay">
+                <div class="trash-container">
+                  <%# empty for styling %>
+                </div>
+                <div class="shelf-game-title">
+                  <h3>
+                    <%= link_to game_path(shelf_game.game) do %>
+                      <%= shelf_game.game.title %>
+                    <% end %>
+                  </h3>
+                </div>
+                <div class="shelf-buttons">
+                    <%# empty for styling %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <%# </div> %>
+    </div>
+    <div id="plays" data-shelf-categories-target="plays" hidden>
+      <%# <div class="game-cards"> %>
+      <div class="row" data-shelf-categories-target="playsRow">
+        <% @now_playing.each do |shelf_game| %>
+          <div class="col-md-4 col-sm-6"   data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
+            <!-- old cards
+              <%= link_to game_path(shelf_game.game) do %>
+                <div class="game-card">
+                  <img src="<%= shelf_game.game.image_url %>" alt="Boxart for <%= shelf_game.game.title %>">
+                  <div class="game-title">
+                    <h3>
+                      <%= shelf_game.game.title %>
+                    </h3>
+                  </div>
+                </div>
+              <% end %>
+              -->
+            <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');">
+              <div class="shelf-card-overlay">
+                <div class="trash-container">
+                  <%# empty for styling %>
+                </div>
+                <div class="shelf-game-title">
+                  <h3>
+                    <%= link_to game_path(shelf_game.game) do %>
+                      <%= shelf_game.game.title %>
+                    <% end %>
+                  </h3>
+                </div>
+                <div class="shelf-buttons">
+                  <%# empty for styling %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <%# </div> %>
+    </div>
+    <div id="completes" data-shelf-categories-target="completes" hidden>
+      <%# <div class="game-cards"> %>
+      <div class="row" data-shelf-categories-target="completesRow">
+        <% @completed.each do |shelf_game| %>
+          <div class="col-md-4 col-sm-6"   data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
+            <!-- old cards
+              <%= link_to game_path(shelf_game.game) do %>
+                <div class="game-card">
+                  <img src="<%= shelf_game.game.image_url %>" alt="Boxart for <%= shelf_game.game.title %>">
+                  <div class="game-title">
+                    <h3>
+                      <%= shelf_game.game.title %>
+                    </h3>
+                  </div>
+                </div>
+              <% end %>
+              -->
+            <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');">
+              <div class="shelf-card-overlay">
+                <div class="trash-container">
+                  <%# empty for styling %>
+                </div>
+                <div class="shelf-game-title">
+                  <h3>
+                    <%= link_to game_path(shelf_game.game) do %>
+                      <%= shelf_game.game.title %>
+                    <% end %>
+                  </h3>
+                </div>
+                <div class="shelf-buttons">
+                    <%# empty for styling %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <%# </div> %>
+    </div>
+  </div>
