@@ -102,6 +102,40 @@ seedy_game.save!
 
 p "#{seedy_game.user.name} added #{seedy_game.game.title} to their shelf under #{seedy_game.category}"
 
+# reviews
+
+content = "wow amazing game, it really changed my life"
+all_users = User.all
+all_games = Game.all
+all_users.each do |user|
+  review = Review.new(content: content, rating: rand(4..5), user: user, game: all_games.sample)
+  review.save!
+end
+
+content = "meeeeeh"
+all_users = User.all
+all_games = Game.all
+all_users.each do |user|
+  review = Review.new(content: content, rating: rand(2..3), user: user, game: all_games.sample)
+  review.save!
+end
+
+content = "I'd rather play Duke Nukem Forever"
+all_users = User.all
+all_games = Game.all
+all_users.each do |user|
+  review = Review.new(content: content, rating: 1, user: user, game: all_games.sample)
+  review.save!
+end
+
+all_users.each do |user|
+  fav = all_users.sample
+  if user == fav
+    fav = all_users.sample
+  end
+  user.favorite(fav)
+end
+
 # require 'google/apis/youtube_v3'
 # require 'active_support/all'
 # GOOGLE_API_KEY=ENV['GOOGLE_API_KEY']
