@@ -1,4 +1,6 @@
 <div class="container">
+<!-- categories partial -->
+<%= render 'games/categories' %>
   <div class="row">
     <% @games.each do |game| %>
       <div class="col-md-4 col-sm-6">
@@ -19,8 +21,6 @@
   <% if params[:query].present?%>
     <div class="user-container w-720px">
       <div class="search-container w-720px ">
-        <h1>Users</h1>
-        <div class="card p-3">
           <% @users.each do |user| %>
             <div class="d-flex align-items-center">
               <%= link_to user_path(user) do %>
@@ -50,6 +50,5 @@
           </div>
         </div>
       </div>
-    </div>
   <% end %>
-</div>
+    </div>
