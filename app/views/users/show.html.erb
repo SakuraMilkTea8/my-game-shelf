@@ -71,6 +71,8 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <%= render 'users/shelf' %>
-</div>
+<% unless @user.shelf_games.empty? %>
+  <div class="container">
+    <%= render 'users/shelf' %>
+  </div>
+<% end %>
