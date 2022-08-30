@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @completed_count =  @game_per_category['completed'].to_a.count
     @now_playing_count =  @game_per_category['now playing'].to_a.count
     @want_to_play_count =  @game_per_category['want to play'].to_a.count
-    @graph_array = [ @completed, @now_playing, @want_to_play ]
+    @graph_array = [ @completed_count, @now_playing_count, @want_to_play_count ]
     authorize @user
     respond_to do |format|
       format.html
