@@ -10,6 +10,7 @@
 .show-game-image {
   object-fit: cover;
   width: 800px;
+  max-width: 100%;
   height: 450px;
   border-radius: 3px;
 }
@@ -174,7 +175,7 @@ img.review-avatar {
   grid-gap: 16px;
 }
 
-@media (max-width: 1399px) {
+@media (max-width: 1350px) {
   .show-game-image {
     width: 600px;
     height: 320px;
