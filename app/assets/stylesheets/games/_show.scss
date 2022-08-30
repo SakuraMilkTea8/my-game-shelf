@@ -119,11 +119,12 @@ iframe {
 }
 
 .rounded-box-reviews {
-  background: #fff;
+  // background: rgba(228, 228, 228, 0.6);
+  // border: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
+  // border-radius: 3px;
   padding: 16px;
-  border: 1px solid darkred;
-  border-radius: 3px;
-  margin: 30px 0 0 0;
+  margin: 8px 0 0 0;
 }
 
 ul.reviewer {
@@ -161,19 +162,13 @@ ul.review {
   overflow: hidden;
 }
 
-img.avatar {
+img.review-avatar {
   height: 50px;
   width: 50px;
   border-radius: 50%;
   position: relative;
   top: 10px;
 }
-
-
-
-
-
-
 
 .recommended-game-cards {
   display: grid;
@@ -195,6 +190,11 @@ img.avatar {
   }
 }
 
+
+
+
+
+// I have no idea what these are, I think they are CSS for the another page...
 .shelf-select {
   display: flex;
   width: 100%;

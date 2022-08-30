@@ -9,7 +9,7 @@
             <% if review.user.avatar.attached? %>
               <%= cl_image_tag(review.user.avatar.key, class: "avatar")%>
             <% else %>
-              <%= image_tag "gamepad.png", class: "avatar" %>
+              <%= image_tag "gamepad.png", class: "avatar review-avatar" %>
             <% end %>
           <% end %>
           <ul class="reviewer">
