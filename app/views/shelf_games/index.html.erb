@@ -35,19 +35,6 @@
                   <div class="shelf-btn">
                     <%# empty for styling %>
                   </div>
-                  <div class="shelf-game-title">
-                    <h3>
-                      <%= link_to game_path(shelf_game.game) do %>
-                        <%= shelf_game.game.title %>
-                      <% end %>
-                    </h3>
-                  </div>
-                  <div class="shelf-buttons">
-                    <div class="shelf-btn">
-                      <%# empty for styling %>
-                    </div>
-                    <div class="shelf-btn">
-                    <%= simple_form_for([shelf_game.game, shelf_game], remote: true, data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory'}) do |f| %>
                   <div class="shelf-btn">
                     <%= simple_form_for(shelf_game, remote: true, data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory'}) do |f| %>
                       <%= f.hidden_field :category, value: 'now playing' %>
@@ -91,24 +78,6 @@
                     <%= link_to game_path(shelf_game.game) do %>
                       <%= shelf_game.game.title %>
                     <% end %>
-                  </div>
-                  <div class="shelf-game-title">
-                    <h3>
-                      <%= link_to game_path(shelf_game.game) do %>
-                        <%= shelf_game.game.title %>
-                      <% end %>
-                    </h3>
-                  </div>
-                  <div class="shelf-buttons">
-                    <div class="shelf-btn">
-                      <%= simple_form_for([shelf_game.game, shelf_game], remote: true, data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory' }) do |f| %>
-                        <%= f.hidden_field :category, value: 'want to play' %>
-                      <%= f.submit "<<", class: 'shelf-submit' %>
-                      <% end %>
-                    </div>
-                    <div class="shelf-btn">
-                      <%= simple_form_for([shelf_game.game, shelf_game], remote: true, data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory' }) do |f| %>
-                        <%= f.hidden_field :category, value: 'completed' %>
                   </h3>
                 </div>
                 <div class="shelf-buttons">
@@ -161,18 +130,6 @@
                     <%= link_to game_path(shelf_game.game) do %>
                       <%= shelf_game.game.title %>
                     <% end %>
-                  </div>
-                  <div class="shelf-game-title">
-                    <h3>
-                      <%= link_to game_path(shelf_game.game) do %>
-                        <%= shelf_game.game.title %>
-                      <% end %>
-                    </h3>
-                  </div>
-                  <div class="shelf-buttons">
-                    <div class="shelf-btn">
-                      <%= simple_form_for([shelf_game.game, shelf_game], remote: true,  data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory' }) do |f| %>
-                        <%= f.hidden_field :category, value: 'now playing' %>
                   </h3>
                 </div>
                 <div class="shelf-buttons">
