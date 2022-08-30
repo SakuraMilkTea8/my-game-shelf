@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <%if current_user.avatar.attached? %>
-        <%= cl_image_tag(current_user.avatar.key, class: "avatar")%>
+      <%if @user.avatar.attached? %>
+        <%= cl_image_tag(@user.avatar.key, class: "avatar")%>
       <% else %>
         <%= image_tag "gamepad.png", class: "avatar" %>
       <% end %>
@@ -30,44 +30,42 @@
         </div>
       <% end %>
     </div>
-
-
     <div class="col-6">
       <div class="container">
         <div class="row">
-        <% if @user != current_user  %>
+          <% if @user != current_user  %>
             <div class="user-list col-sm-6">
               <h1>follow this user</h1>
               <div class="d-flex">
                 <h3 class="follow-user"><%= @user.name  %>
                   <%= link_to toggle_favorite_user_path(@user), remote: true, method: :post do %>
                     <%= render 'users/like_button', user: @user %>
-                    <% end %>
-                  </h3>
-                </div>
-                <% else %>
-                <p></p>
+                  <% end %>
+                </h3>
+              </div>
+            <% else %>
+              <p></p>
+            <% end %>
+          </div>
+          <% if @user == current_user %>
+            <div class="col-6">
+              <h1>Following users</h1>
+              <div class="favorites">
+                <% @favorite_users.each do |user| %>
+                  <%= render 'user', user: user %>
                 <% end %>
               </div>
-              <% if @user == current_user %>
-                <div class="col-6">
-                  <h1>Following users</h1>
-                  <div class="favorites">
-                    <% @favorite_users.each do |user| %>
-                      <%= render 'user', user: user %>
-                    <% end %>
-                  </div>
-                <% else %>
-                  <p></p>
-                </div>
-              <% end %>
+            <% else %>
+              <p></p>
             </div>
-          </div>
-          <div class="graph col-6">
-            <h1>My shelf data</h1>
-            <!-- adding data attribute -->
-            <canvas id="myChart" width="220" height="220"
-        data-page-views="<%=@graph_array %>">
-            </canvas>
-          </div>
+          <% end %>
         </div>
+      </div>
+      <div class="graph col-6">
+        <h1>My shelf data</h1>
+        <!-- adding data attribute -->
+        <canvas id="myChart" width="220" height="220"
+        data-page-views="<%=@graph_array %>">
+        </canvas>
+      </div>
+    </div>

@@ -190,6 +190,31 @@ img.review-avatar {
   }
 }
 
+.rounded-box-update {
+  height: 160px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  row-gap: 16px;
+  flex-wrap: wrap;
+  margin: 16px auto;
+  border-radius: 25px;
+  background: #fff;
+  padding: 16px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;}
+
+
+.rounded-box-reviews {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  row-gap: 16px;
+  flex-wrap: wrap;
+  margin: 16px auto;
+  border-radius: 25px;
+  background: #fff;
+  padding: 16px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;}
 
 
 
