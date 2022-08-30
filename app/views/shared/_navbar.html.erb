@@ -15,7 +15,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <%= form_tag games_path, method: :get, class: "form-inline" do %>
-          <%= text_field_tag :query, params[:query], placeholder: "Find a game"%>
+          <%= text_field_tag :query, params[:query], placeholder: "Search Games, Users"%>
           <%= submit_tag "Search", class: "btn search-btn my-2 my-sm-0" %>
         <%end%>
         <li class="nav-item dropdown">

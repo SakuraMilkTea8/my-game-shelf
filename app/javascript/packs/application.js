@@ -12,6 +12,7 @@ import "bootstrap"
 
 console.log('Hello from application.js')
 
+
 // require chart.js
 const Chart = require('chart.js')
 
@@ -52,4 +53,12 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   createGraph()
   initSelect2();
+});
+
+new TomSelect("#select-beast",{
+	create: true,
+	sortField: {
+		field: "text",
+		direction: "asc"
+	}
 });
