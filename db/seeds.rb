@@ -128,6 +128,14 @@ all_users.each do |user|
   review.save!
 end
 
+all_users.each do |user|
+  fav = all_users.sample
+  if user == fav
+    fav = all_users.sample
+  end
+  user.favorite(fav)
+end
+
 # require 'google/apis/youtube_v3'
 # require 'active_support/all'
 # GOOGLE_API_KEY=ENV['GOOGLE_API_KEY']
