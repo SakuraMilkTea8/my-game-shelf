@@ -32,9 +32,10 @@
 .rating-notification {
   z-index: 1;
   position: absolute;
-  left: 156px;
-  top: 58px;
+  // left: 156px;
+  // top: 58px;
   font-size: 20px;
+  margin: auto;
 }
 .star {
   width: 32px;
@@ -175,7 +176,7 @@ img.review-avatar {
   grid-gap: 16px;
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1200px) {
   .show-game-image {
     width: 600px;
     height: 320px;
