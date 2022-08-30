@@ -64,7 +64,7 @@
         <p><em><%= @game.genre.split(",").join(", ")%></em></p>
         <p><b><%= @game.developer.split(",").join(", ")%></b></p>
         <p><%= @game.console.split(",").join(", ")%></p>
-        <p><%= truncate(@game.description, length: 1090) %></p>
+        <p><%= truncate(@game.description, length: 1070) %></p>
       </div>
     </div>
     <!-- youtube trailer -->
@@ -84,6 +84,8 @@
       <%= render 'reviews/form', game: @game, review: @review %>
     <% end %>
     <!--partial for the shelf of reviews -->
+    <br>
+    <h4>Reviews from other users</h4>
     <%= render 'reviews/review' %>
   </div>
 
