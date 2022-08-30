@@ -1,8 +1,7 @@
-<% @users.each do |user| %>
-<% if user.avatar.attached? %>
-  <%= cl_image_tag(user.avatar.key, class: "img-fluid profile-image", width: "70px") %>
-<% end %>
-<div class="ml-3">
-  <h5 class="name"><%= user.name %></h5>
-  <p class="mail"><%= user.email %></p>
-<% end %>
+        <h1>Users</h1>
+<select id="select-beast" placeholder="Users" autocomplete="off">
+			<option value="">Users</option>
+      <% @users.each do |user| %>
+    <option value=""><%= user.name %></option>
+    <% end %>
+		</select>

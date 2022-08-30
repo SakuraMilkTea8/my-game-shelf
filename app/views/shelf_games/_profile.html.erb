@@ -75,15 +75,19 @@
         <% end %>
       </div>
       <div class="col-3">
-        <h1>Users</h1>
-<select id="select-beast" placeholder="Users" autocomplete="off">
-			<option value="">Users</option>
-      <% @users.each do |user| %>
-                    <%link_to user_path(user) do %>
-    <option value=""><%= user.name %></option>
-    <% end %>
-    <% end %>
-		</select>
+      <h1>Latest shelf update</h1>
+      <div class="rounded-box-updates ">
+              <ul class="list-group list-group-flush">
+              <p class ="review-user">
+        <%= @category.capitalize %>:
+        <% @latest_game.each do |content| %>
+        <%= content.title %>
+        </p>
+        <%= image_tag content.image_url, class: "review-image" %>
+        <p class ="review-time">Added <%= time_ago_in_words(content.created_at) %> ago</p>
+        <% end %>
+        </ul>
       </div>
     </div>
+  </div>
   </div>

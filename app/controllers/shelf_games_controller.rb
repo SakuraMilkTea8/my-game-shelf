@@ -26,9 +26,19 @@ class ShelfGamesController < ApplicationController
     @now_playing_number =  @game_per_category['now playing'].to_a.count
     @want_to_play_number =  @game_per_category['want to play'].to_a.count
     @graph_array = [ @completed_number, @now_playing_number, @want_to_play_number ]
-    respond_to do |format|
-      format.html
-      format.js
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
+
+    @user.shelf_games.each do |game|
+      @category = game.category
+      @latest_game = Game.find([game.game_id])
+      @latest_game.each do |content|
+        @title = content.title
+        @image = content.image_url
+        @updated_at = (content.updated_at)
+      end
     end
   end
 
