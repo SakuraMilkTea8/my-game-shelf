@@ -54,9 +54,11 @@ class ShelfGamesController < ApplicationController
 
   def update
     @shelf_game = ShelfGame.find(params[:id])
+    @game = Game.find(params[:game_id])
     authorize @shelf_game
     @shelf_game.update(shelf_game_params)
     @shelf_game.save
+    redirect_to game_path(@game)
   end
 
   def destroy

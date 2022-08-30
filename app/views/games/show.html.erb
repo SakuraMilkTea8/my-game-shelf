@@ -29,13 +29,17 @@
         <% if user_signed_in? %>
           <!--adding games to users' shelves-->
           <p>Add to My Game Shelf</p>
-          <div class ="shelf-buttons">
+          <div class ="shelf-buttons-container">
             <%= simple_form_for([@game, @shelf_game]) do |f| %>
             <%= f.input :category, input_html:{value:"want to play"}, as: :hidden %>
             <%= f.button :submit, "Want to play", class: "btn #{(@shelf_game.category == 'want to play') ? 'btn-outline-primary' : 'btn-primary'}" %>
-            <%= f.input :category, input_html:{value:"want to play"}, as: :hidden %>
+            <% end %>
+            <%= simple_form_for([@game, @shelf_game]) do |f| %>
+            <%= f.input :category, input_html:{value:"currently playing"}, as: :hidden %>
             <%= f.button :submit, "Currently playing", class: "btn #{(@shelf_game.category == 'currently playing') ? 'btn-outline-primary' : 'btn-primary'}" %>
-            <%= f.input :category, input_html:{value:"want to play"}, as: :hidden %>
+            <% end %>
+            <%= simple_form_for([@game, @shelf_game]) do |f| %>
+            <%= f.input :category, input_html:{value:"completed"}, as: :hidden %>
             <%= f.button :submit, "Completed", class: "btn #{(@shelf_game.category == 'completed') ? 'btn-outline-primary' : 'btn-primary'}" %>
             <% end %>
           </div>

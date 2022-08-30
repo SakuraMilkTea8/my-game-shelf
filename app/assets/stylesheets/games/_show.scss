@@ -249,16 +249,38 @@ label:hover {
   background-color: $diet-raspberry;
 }
 
-input[type="radio"]:checked {
-  background-color: $raspberry;
-}
 
 p {
-  text-align: left;
+  text-align: center;
   font-weight: bold;
 }
 
-.shelf-buttons {
+.shelf-buttons-container {
   display: flex;
-  
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.btn-primary {
+  align-self: center;
+  background-color:  rgba(188,25,92, 1);
+  border-color:  rgba(188,25,92, 1);
+  box-shadow: 0px 1px 3px #4B0526;
+}
+
+.btn-primary:hover {
+  background-color: rgba(210,126,160, 1);
+  border-color:  rgba(210,126,160, 1);
+}
+
+.btn-outline-primary {
+  border-color:  rgba(188,25,92, 1);
+  color:  rgba(188,25,92, 1);
+}
+
+.btn-outline-primary:hover {
+  background-color: rgba(210,126,160, 1);
+  border-color: rgba(210,126,160, 1);
+  box-shadow: 0px 1px 3px #4B0526;
 }
