@@ -1,5 +1,5 @@
-<div class="container">
 <%= render 'shelf_games/profile' %>
+<div class="container">
   <div data-controller="shelf-categories">
     <div class="categories-container">
       <div class="category-btn" data-action="click->shelf-categories#want" data-shelf-categories-target="want">
@@ -13,7 +13,6 @@
       </div>
     </div>
     <div id="wants" data-shelf-categories-target="wants" hidden>
-      <%# <div class="game-cards"> %>
       <div class="row" data-shelf-categories-target="wantsRow">
         <% @want_to_play.each do |shelf_game| %>
           <div class="col-md-4 col-sm-6" data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
@@ -47,7 +46,6 @@
           </div>
         <% end %>
       </div>
-      <%# </div> %>
     </div>
     <div id="plays" data-shelf-categories-target="plays" hidden>
       <%# <div class="game-cards"> %>

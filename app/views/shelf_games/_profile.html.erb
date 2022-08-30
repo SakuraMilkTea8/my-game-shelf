@@ -1,34 +1,33 @@
-<!--everything is inside this row -->
-<div class="row">
-  <div class="col-6">
-    <h1>  <%if current_user.avatar.attached? %>
-        <%= cl_image_tag(@user.avatar.key, class: "avatar")%>
-      <% else %>
-        <%= image_tag "gamepad.png", class: "avatar" %>
-      <% end %><%= @user.name %>'s profile</h1>
-    <!-- This shows the user's reviews -->
-    <h1>Reviews</h1>
-    <% @user.reviews.each do |review| %>
-      <div class="rounded-box-reviews col-lg-12 col-md-4">
-        <ul class="list-group list-group-flush col-6">
-          <p class ="review-user">
-            <%= review.game.title %>
-            <%= link_to "Visit", game_path(review.game), class: 'btn btn-secondary btn-sm w-4px'  %>
-            <% review.rating.times do %>
-              <%= image_tag('icons/star-full.svg', class: "review-star") %>
-            <% end %>
-            <% (5 - review.rating).times do %>
-              <%= image_tag('icons/star-empty.svg', class: "review-star") %>
-            <% end %>
-          </p>
-          <p class ="review-time"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
-          <p class="review-content">"<%= review.content %>"</p>
-        </ul>
-        <%= image_tag review.game.image_url, class: "review-image" %>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-3">
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h1><%if current_user.avatar.attached? %>
+            <%= cl_image_tag(@user.avatar.key, class: "avatar")%>
+          <% else %>
+            <%= image_tag "gamepad.png", class: "avatar" %>
+          <% end %><%= @user.name %>'s profile
+      </h1>
+      <!-- This shows the user's reviews -->
+      <h1>Reviews</h1>
+      <% @user.reviews.each do |review| %>
+        <div class="rounded-box-reviews">
+          <ul class="list-group list-group-flush">
+            <li class ="review-user">
+              <%= review.game.title %>
+              <%= link_to "Visit", game_path(review.game), class: 'btn btn-secondary btn-sm w-4px'  %>
+              <% review.rating.times do %>
+                <%= image_tag('icons/star-full.svg', class: "review-star") %>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <%= image_tag('icons/star-empty.svg', class: "review-star") %>
+              <% end %>
+            <li class ="review-time"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
+            <li class="review-content">"<%= review.content %>"</p>
+          </ul>
+          <%= image_tag review.game.image_url, class: "review-image" %>
+        </div>
+      <% end %>
+    </div>
     <div class="favorites">
       <!-- This shows the user's follow list or other user's name to follow -->
       <% if @user != current_user  %>
@@ -40,14 +39,12 @@
                 <%= render 'users/like_button', user: @user %>
               <% end %>
             </h3>
+            </div>
             <!-- Shows user graph -->
-            <div class="graph">
               <h1>My shelf data</h1>
               <canvas id="myChart" data-page-views="<%=@graph_array %>"></canvas>
-            </div>
+            <div class="graph">
           </div>
-        <% else %>
-          <p></p>
         <% end %>
       </div>
       <!-- User's following list -->
@@ -74,7 +71,6 @@
           <p></p>
         <% end %>
       </div>
-      <div class="col-3">
       <h1>Latest shelf update</h1>
       <div class="rounded-box-updates ">
               <ul class="list-group list-group-flush">
@@ -87,7 +83,6 @@
         <p class ="review-time">Added <%= time_ago_in_words(content.created_at) %> ago</p>
         <% end %>
         </ul>
-      </div>
     </div>
   </div>
-  </div>
+</div>
