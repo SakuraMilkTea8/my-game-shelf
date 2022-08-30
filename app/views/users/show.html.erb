@@ -69,3 +69,10 @@
         </canvas>
       </div>
     </div>
+  </div>
+</div>
+<% unless @user.shelf_games.empty? %>
+  <div class="container">
+    <%= render 'users/shelf' %>
+  </div>
+<% end %>
