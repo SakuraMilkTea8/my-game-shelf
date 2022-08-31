@@ -2,6 +2,11 @@
 <!-- categories partial -->
 <%= render 'games/categories' %>
   <div class="row">
+  <% if params[:query].blank? %>
+    <h1 class="search-game"><%= pluralize @games.count, 'game' %> available</h1>
+  <% else %>
+    <h1 class="search-game-results"><%= pluralize @games.count, 'result' %> for <code><%= params[:query] %></code></h1>
+  <% end %>
     <% @games.each do |game| %>
       <div class="col-md-4 col-sm-6">
         <%= link_to game_path(game) do %>
