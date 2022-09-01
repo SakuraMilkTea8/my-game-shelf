@@ -58,7 +58,6 @@ class ShelfGamesController < ApplicationController
     authorize @shelf_game
     @shelf_game.update(shelf_game_params)
     @shelf_game.save
-    redirect_to game_path(@game)
   end
 
   def destroy

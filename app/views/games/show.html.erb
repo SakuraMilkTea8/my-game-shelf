@@ -28,7 +28,7 @@
 
         <% if user_signed_in? %>
           <!--adding games to users' shelves-->
-          <p>Add to My Game Shelf</p>
+          <p class="add-shelf-label">Add to My Game Shelf</p>
           <div class ="shelf-buttons-container">
             <%= simple_form_for([@game, @shelf_game]) do |f| %>
               <%= f.input :category, input_html:{value:"want to play"}, as: :hidden %>
