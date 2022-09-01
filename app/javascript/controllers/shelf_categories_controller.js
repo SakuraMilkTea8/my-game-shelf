@@ -39,12 +39,12 @@ export default class extends Controller {
     let cardId = cardIdArray[cardIdArray.length - 1]
     // console.log(cardId);
     let shelfCard = this.shelfcardTargets.find(e => e.id === cardId)
-    console.log(shelfCard);
-    if (event.currentTarget[1].value === 'want to play') {
+    // console.log(event.currentTarget[2].value);
+    if (event.currentTarget[2].value === 'want to play') {
       this.wantsRowTarget.insertAdjacentElement("beforeend", shelfCard);
-    } else if (event.currentTarget[1].value === 'now playing') {
+    } else if (event.currentTarget[2].value === 'now playing') {
       this.playsRowTarget.insertAdjacentElement("beforeend", shelfCard);
-    } else if (event.currentTarget[1].value === 'completed') {
+    } else if (event.currentTarget[2].value === 'completed') {
       this.completesRowTarget.insertAdjacentElement("beforeend", shelfCard);
     }
   }
