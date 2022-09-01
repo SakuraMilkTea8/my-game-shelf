@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   # If we decide to have user created shelves we should add :new and :create
 
   resources :games, only: [:index, :show] do
+    resources :shelf_games, only: [:create, :update]
+
     resources :reviews, only: [:new, :create, :edit, :update, :destroy]
   end
 end
