@@ -15,17 +15,20 @@
       <h1>Reviews</h1>
       <% @user.reviews.each do |review| %>
         <div class="rounded-box-reviews">
-              <%= review.game.title %>
+              <b><%= link_to review.game.title, game_path(review.game), class: 'review-title' %></b>
               <%= image_tag review.game.image_url, class: "review-image" %>
-              <%= link_to "Visit", game_path(review.game), class: 'btn btn-secondary btn-sm w-4px'  %>
-              <% review.rating.times do %>
-                <%= image_tag('icons/star-full.svg', class: "review-star") %>
-              <% end %>
-              <% (5 - review.rating).times do %>
-                <%= image_tag('icons/star-empty.svg', class: "review-star") %>
-              <% end %>
-            <div class ="review-time"><small><%= time_ago_in_words(review.created_at) %> ago</small></div>
-            <div class="review-content">"<%= review.content %>"</div>
+              <div class="review-stars">
+                <% review.rating.times do %>
+                  <%= image_tag('icons/star-full.svg', class: "review-star") %>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <%= image_tag('icons/star-empty.svg', class: "review-star") %>
+                <% end %>
+                <div class ="review-time"><small><%= time_ago_in_words(review.created_at) %> ago</small></div>
+              </div>
+            <div class="my-review-content">
+              "<%= review.content %>"
+            </div>
         </div>
       <% end %>
     </div>
@@ -52,38 +55,37 @@
 <!-- For the user themself on their page - shows graph and other users they follow -->
       <% if @user == current_user %>
         <h1>Following</h1>
-        <% @favorite_users.each do |user| %>
-          <div class="favorite" data-id="<%= user.id %>">
-            <ul class="friend-list clearfix">
-              <%= link_to user_path(user) do %>
-                <li class="friend-img"> <%= image_tag "avatar.png" %> </li>
-                <li class="friend-info"><h4><%= user.name %></h4></li>
-                <li class="friend-info">Followers: <%= user.reviews.count %>, Games: <%= user.games.count%></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+        <div class="followed-people">
+          <% @favorite_users.each do |user| %>
+            <div class="favorite" data-id="<%= user.id %>">
+              <ul class="friend-list clearfix">
+                <%= link_to user_path(user) do %>
+                  <li class="friend-img avatar"> <%= image_tag "avatar.png" %> </li>
+                  <li class="friend-info"><h4><%= user.name %></h4></li>
+                  <li class="friend-info">Followers: <%= user.reviews.count %>, Games: <%= user.games.count%></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
 
+      <div class="latest-shelf-update-container">
+        <h1>Latest shelf update</h1>
+        <ul class="list-group latest-shelf-update">
+          <li>
+            <p class="shelf-update-title">
+              <% @latest_game.each do |content| %>
+              <%= content.title %>
+            </p>
+          </li>
+          <li><%= image_tag content.image_url, class: "review-image" %></li>
+              <% end %>
+        </ul>
+      </div>
       <!-- graph -->
-          <div class="graph">
-            <h1>My shelf data</h1>
-            <canvas id="myChart" data-page-views="<%=@graph_array %>"></canvas>
-          </div>
+        <h1>My shelf data</h1>
+        <div class="graph"><canvas id="myChart" data-page-views="<%=@graph_array %>"></canvas></div>
       <% end %>
-      <h1>Latest shelf update</h1>
-      <div class="rounded-box-updates ">
-      <ul class="list-group list-group-flush">
-        <li class ="review-user">
-          <p>
-            <%= @category.capitalize %>:
-            <% @latest_game.each do |content| %>
-            <%= content.title %>
-          </p>
-        </li>
-        <li><%= image_tag content.image_url, class: "review-image" %></li>
-        <li class ="review-time">Added <%= time_ago_in_words(content.created_at) %> ago</li>
-        <% end %>
-      </ul>
-    </div>
+
   </div>
 </div>

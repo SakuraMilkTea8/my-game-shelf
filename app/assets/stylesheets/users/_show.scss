@@ -2,10 +2,53 @@
   margin-bottom: 25px;
 }
 
+.review-title:hover {
+  color: $raspberry;
+  z-index: 1;
+}
 
+.review-image {
+  max-width: 100px;
+  border-radius: 4px;
+  margin-top: 8px;
+  display: flex;
+}
 
+.review-stars {
+  text-align: right;
+  position: relative;
+  top: -90px;
+  right: 10px;
+  max-width: 21%;
+  display: block;
+  margin: 0 0 0 auto;
+}
 
+.my-review-content {
+  margin-top: -35px;
+}
 
+.followed-people {
+  margin: 16px 0;
+}
+
+.latest-shelf-update-container {
+  margin-bottom: 16px;
+}
+
+.latest-shelf-update {
+  list-style: none;
+}
+
+.shelf-update-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.graph#myChart {
+  height: 300px;
+  width: 300px;
+}
 
 
 
@@ -387,10 +430,4 @@ body .fc-widget-header a {
   height: 710px;
   margin-top: 90px;
   overflow: hidden;
-}
-
-.graph {
-  display: block;
-  height: 320px;
-  width: 600px;
 }
