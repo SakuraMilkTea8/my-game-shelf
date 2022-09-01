@@ -33,7 +33,7 @@ class ShelfGamesController < ApplicationController
 
     @user.shelf_games.each do |game|
       @category = game.category
-      @latest_game = Game.find([game.game_id])
+      @latest_game =   Game.find([ShelfGame.last.game_id])
       @latest_game.each do |content|
         @title = content.title
         @image = content.image_url

@@ -46,7 +46,7 @@
           <!--Checking status of game (make into a partial) -->
           <!--persisted checks if it is saved -->
           <% if @shelf_game.persisted? %>
-            This game is on your shelf under <%= @shelf_game.category %>
+          <p>This game is on your shelf under <%= @shelf_game.category %></p>
           <% end %>
         <% end %>
 
