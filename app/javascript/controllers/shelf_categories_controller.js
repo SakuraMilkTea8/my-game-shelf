@@ -32,27 +32,15 @@ export default class extends Controller {
 
   updateCategory(event) {
     event.preventDefault();
-    // console.log(event.currentTarget.id);
-    // destination: event.currentTarget[1].value
-    // edit_shelf_game_ event.currentTarget.id
     let cardIdArray = event.currentTarget.id.split('_')
     let cardId = cardIdArray[cardIdArray.length - 1]
-    // console.log(cardId);
     let shelfCard = this.shelfcardTargets.find(e => e.id === cardId)
-    console.log(shelfCard);
-    if (event.currentTarget[1].value === 'want to play') {
+    if (event.currentTarget[2].value === 'want to play') {
       this.wantsRowTarget.insertAdjacentElement("beforeend", shelfCard);
-    } else if (event.currentTarget[1].value === 'now playing') {
+    } else if (event.currentTarget[2].value === 'now playing') {
       this.playsRowTarget.insertAdjacentElement("beforeend", shelfCard);
-    } else if (event.currentTarget[1].value === 'completed') {
+    } else if (event.currentTarget[2].value === 'completed') {
       this.completesRowTarget.insertAdjacentElement("beforeend", shelfCard);
     }
-  }
-
-  connect() {
-    this.wantTarget.classList.add('selected-category')
-    this.wantsTarget.removeAttribute('hidden')
-    // console.log(this.formTargets);
-    // console.log(this.shelfcardTargets);
   }
 }

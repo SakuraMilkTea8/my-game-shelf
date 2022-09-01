@@ -36,6 +36,7 @@
                   </div>
                   <div class="shelf-btn">
                     <%= simple_form_for(shelf_game, remote: true, data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory'}) do |f| %>
+                      <%= hidden_field_tag :game_id, shelf_game.game.id %>
                       <%= f.hidden_field :category, value: 'now playing' %>
                       <%= f.submit ">>", class: 'shelf-submit' %>
                     <% end %>
@@ -81,12 +82,14 @@
                 <div class="shelf-buttons">
                   <div class="shelf-btn">
                     <%= simple_form_for(shelf_game, remote: true, data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory' }) do |f| %>
+                      <%= hidden_field_tag :game_id, shelf_game.game.id %>
                       <%= f.hidden_field :category, value: 'want to play' %>
                       <%= f.submit "<<", class: 'shelf-submit' %>
                     <% end %>
                   </div>
                   <div class="shelf-btn">
                     <%= simple_form_for(shelf_game, remote: true, data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory' }) do |f| %>
+                      <%= hidden_field_tag :game_id, shelf_game.game.id %>
                       <%= f.hidden_field :category, value: 'completed' %>
                       <%= f.submit ">>", class: 'shelf-submit' %>
                     <% end %>
@@ -133,6 +136,7 @@
                 <div class="shelf-buttons">
                   <div class="shelf-btn">
                     <%= simple_form_for(shelf_game, remote: true,  data: { shelf_categories_target: "form", action: 'submit->shelf-categories#updateCategory' }) do |f| %>
+                      <%= hidden_field_tag :game_id, shelf_game.game.id %>
                       <%= f.hidden_field :category, value: 'now playing' %>
                       <%= f.submit "<<", class: 'shelf-submit' %>
                     <% end %>
