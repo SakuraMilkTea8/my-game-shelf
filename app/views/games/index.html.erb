@@ -3,7 +3,7 @@
 <%= render 'games/categories' %>
   <div class="row">
   <% if params[:query].blank? %>
-    <h1 class="search-game"><%= pluralize @games.count, 'game' %> available</h1>
+    <h1 class="search-game-results"><%= pluralize @games.count, 'game' %> available</h1>
   <% else %>
     <h1 class="search-game-results"><%= pluralize @games.count, 'result' %> for <code><%= params[:query] %></code></h1>
   <% end %>
