@@ -1,8 +1,13 @@
 <div class="favorite" data-id="<%= user.id %>">
   <ul class="friend-list clearfix">
     <%= link_to user_path(user) do %>
-    <li class="friend-img"> <%= image_tag "avatar.png" %> </li>
+    <%if @user.avatar.attached? %>
+        <%= cl_image_tag(@user.avatar.key, class: "avatar")%>
         <li class="friend-info"><h4><%= user.name %></li>
-        <% end %>
+      <% else %>
+        <%= image_tag "gamepad.png", class: "avatar" %>
+        <li class="friend-info"><h4><%= user.name %></li>
+      <% end %>
+    <% end %>
   </ul>
 </div>
