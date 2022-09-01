@@ -7,7 +7,7 @@
 
     <div class="col-lg-4 col-sm-12">
       <div class="card ratings-card p-2">
-      <h2 class="game-title"><%= truncate(@game.title, length: 29) %></h2>
+      <h2 class="game-title"><%= @game.title %></h2>
         <div class="star-container">
           <% @rating.times do %>
             <%= image_tag('icons/star-full.svg', class: "star rating") %>
