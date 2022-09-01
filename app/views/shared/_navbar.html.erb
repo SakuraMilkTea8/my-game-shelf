@@ -25,7 +25,7 @@
           <%= image_tag "gamepad.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% end %>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <%= link_to 'View My Profile', user_path(current_user), class: "dropdown-item" %>
+            <%= link_to 'View My Profile', shelf_games_path, class: "dropdown-item" %>
             <%= link_to "Edit My Profile", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Games", root_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
