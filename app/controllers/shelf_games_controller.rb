@@ -43,7 +43,7 @@ class ShelfGamesController < ApplicationController
   end
 
   def create
-    @game = Game.find(params[:game].to_i)
+    @game = Game.find(params[:game_id])
     @shelf_game = ShelfGame.new(shelf_game_params)
     authorize @shelf_game
     @shelf_game.game = @game
@@ -53,10 +53,12 @@ class ShelfGamesController < ApplicationController
   end
 
   def update
-    @shelf_game = ShelfGame.find(params[:id].to_i)
+    @shelf_game = ShelfGame.find(params[:id])
+    @game = Game.find(params[:game_id])
     authorize @shelf_game
     @shelf_game.update(shelf_game_params)
     @shelf_game.save
+    redirect_to game_path(@game)
   end
 
   def destroy
