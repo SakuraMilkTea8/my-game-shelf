@@ -15,11 +15,11 @@ export default class extends Controller {
     event.currentTarget[2].classList.add('btn-outline-primary')
     event.currentTarget[2].blur()
     if (event.currentTarget[2].value === 'Want to play') {
-      this.contentTarget.innerText = "This game is on your shelf under want to play"
-    } else if (event.currentTarget[2].value === 'Currently playing') {
-      this.contentTarget.innerText = "This game is on your shelf under currently playing"
+      this.contentTarget.innerText = "This game is on your shelf under Want to Play"
+    } else if (event.currentTarget[2].value === 'Now playing') {
+      this.contentTarget.innerText = "This game is on your shelf under Now Playing"
     } else if (event.currentTarget[2].value === 'Completed') {
-      this.contentTarget.innerText = "This game is on your shelf under completed"
+      this.contentTarget.innerText = "This game is on your shelf under Completed"
     }
   }
 }

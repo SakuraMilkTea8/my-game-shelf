@@ -36,8 +36,8 @@
                 <%= f.button :submit, "Want to play", class: "btn #{(@shelf_game.category == 'want to play') ? 'btn-outline-primary' : 'btn-primary'}" %>
               <% end %>
               <%= simple_form_for([@game, @shelf_game], remote: true, data: {show_button_target: "play", action: "submit->show-button#change"}) do |f| %>
-                <%= f.input :category, input_html:{value:"currently playing"}, as: :hidden %>
-                <%= f.button :submit, "Currently playing", class: "btn #{(@shelf_game.category == 'currently playing') ? 'btn-outline-primary' : 'btn-primary'}" %>
+                <%= f.input :category, input_html:{value:"now playing"}, as: :hidden %>
+                <%= f.button :submit, "Now playing", class: "btn #{(@shelf_game.category == 'now playing') ? 'btn-outline-primary' : 'btn-primary'}" %>
               <% end %>
               <%= simple_form_for([@game, @shelf_game], remote: true, data: {show_button_target: "complete", action: "submit->show-button#change"} ) do |f| %>
                 <%= f.input :category, input_html:{value:"completed"}, as: :hidden %>
