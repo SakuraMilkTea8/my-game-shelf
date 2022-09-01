@@ -43,4 +43,9 @@ export default class extends Controller {
       this.completesRowTarget.insertAdjacentElement("beforeend", shelfCard);
     }
   }
+
+  connect() {
+    this.wantTarget.classList.add('selected-category')
+    this.wantsTarget.removeAttribute('hidden')
+  }
 }
