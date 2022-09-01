@@ -28,17 +28,21 @@
 
         <% if user_signed_in? %>
           <!--adding games to users' shelves-->
-          <%= simple_form_for(@shelf_game) do |f| %>
-            <%= hidden_field_tag(:game, @game.id) %>
-            <!-- <%= f.label "Add to Your Game Shelf" %> -->
-            <label for="category">Add to Your Game Shelf</label>
-            <div class="shelf-select">
-              <%= f.input_field :category, collection: ['want to play', 'now playing', 'completed'], default: 'want to play' %>
-              <%= f.button :button do %>
-                <%= image_tag('icons/plus.svg') %>
-              <% end %>
-            </div>
-          <% end %>
+          <p>Add to My Game Shelf</p>
+          <div class ="shelf-buttons-container">
+            <%= simple_form_for([@game, @shelf_game]) do |f| %>
+              <%= f.input :category, input_html:{value:"want to play"}, as: :hidden %>
+              <%= f.button :submit, "Want to play", class: "btn #{(@shelf_game.category == 'want to play') ? 'btn-outline-primary' : 'btn-primary'}" %>
+            <% end %>
+            <%= simple_form_for([@game, @shelf_game]) do |f| %>
+              <%= f.input :category, input_html:{value:"currently playing"}, as: :hidden %>
+              <%= f.button :submit, "Currently playing", class: "btn #{(@shelf_game.category == 'currently playing') ? 'btn-outline-primary' : 'btn-primary'}" %>
+            <% end %>
+            <%= simple_form_for([@game, @shelf_game]) do |f| %>
+              <%= f.input :category, input_html:{value:"completed"}, as: :hidden %>
+              <%= f.button :submit, "Completed", class: "btn #{(@shelf_game.category == 'completed') ? 'btn-outline-primary' : 'btn-primary'}" %>
+            <% end %>
+          </div>
           <!--Checking status of game (make into a partial) -->
           <!--persisted checks if it is saved -->
           <% if @shelf_game.persisted? %>
