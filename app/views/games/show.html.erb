@@ -47,7 +47,7 @@
             <!--Checking status of game (make into a partial) -->
             <!--persisted checks if it is saved -->
             <% if @shelf_game.persisted? %>
-              <div data-show-button-target="content">
+              <div data-show-button-target="content" class="show-shelf-content">
                 This game is on your shelf under <%= @shelf_game.category %>
               </div>
             <% end %>
@@ -55,7 +55,11 @@
         <% end %>
 
         <% if @streams.empty? %>
-          No one is streaming <%= @game.title %> right now... Come back later!
+          <div class="twitch-no-preview">
+            No one is streaming <%= @game.title %> right now...
+            <br>
+            Come back later!
+          </div>
         <% else %>
           <a href="https://www.twitch.tv/<%= @preview_stream['user_login'] %>" class="twitch-preview" target="_blank">
             Watch <%= @preview_stream['user_name'] %> play <%= @game.title %>

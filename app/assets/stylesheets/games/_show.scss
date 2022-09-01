@@ -75,6 +75,16 @@ button.btn {
   background-color: hsl(140, 67%, 70%);
 }
 
+.twitch-no-preview {
+  color: black;
+  background-color: hsl(0, 0%, 84%);
+  padding: 8px 16px;
+  border-radius: 3px;
+  margin-top: 16px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  margin-right: auto;
+  transition: 3ms;
+}
 a .preview-thumbnail {
   display: none;
 }
@@ -217,6 +227,10 @@ img.review-avatar {
   opacity: 70%;
 }
 
+.show-shelf-content {
+  text-align: center;
+}
+
 .review-image {
   width: 240px;
   height: 120px;
@@ -233,7 +247,8 @@ img.review-avatar {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 8px;
 }
 
 .btn-primary {
