@@ -52,7 +52,7 @@
               <h1>Following users</h1>
               <div class="favorites">
                 <% @favorite_users.each do |user| %>
-                  <%= render 'user', user: user %>
+                  <% render 'user', user: user %>
                 <% end %>
               </div>
             <% else %>
