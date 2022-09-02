@@ -3,7 +3,6 @@ require 'net/http'
 require 'uri'
 require 'google/apis/youtube_v3'
 require 'active_support/all'
-# GOOGLE_API_KEY=ENV['GOOGLE_API_KEY']
 
 class GamesController < ApplicationController
   # helper_method :find_videos
@@ -59,9 +58,9 @@ class GamesController < ApplicationController
     @three_games = recommended_games.keys.first(3)
 
     # gets the youtube trailer from the youtube api
-    # @youtube_results = find_videos("#{@game.title} game release trailer")
-    # @one_game = @youtube_results.first.to_h
-    # @one_game_id = @one_game[:id][:video_id]
+    @youtube_results = find_videos("#{@game.title} game release trailer")
+    @one_game = @youtube_results.first.to_h
+    @one_game_id = @one_game[:id][:video_id]
   end
 
 
