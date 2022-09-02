@@ -65,7 +65,7 @@ button.btn {
   background-color: hsl(140, 47%, 70%);
   padding: 8px 16px;
   border-radius: 3px;
-  margin-top: 16px;
+  // margin-top: 16px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
   margin-right: auto;
   transition: 3ms;
@@ -267,4 +267,15 @@ img.review-avatar {
   background-color: rgba(210,126,160, 1);
   border-color: rgba(210,126,160, 1);
   box-shadow: 0px 1px 3px #4B0526;
+}
+
+.twitch-icon {
+  height: 16px;
+  width: 16px;
+}
+
+.twitch-preview-container {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
 }
