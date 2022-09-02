@@ -141,17 +141,17 @@ iframe {
 ul.reviewer {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-left: 4px;
+  display: inline-block;
+  margin-top: 5px;
 }
 
 ul.review {
   list-style: none;
   padding: 0;
-  margin-left: 100px;
 }
 
 .review-user {
-  display: flex;
   gap: 10px;
   font-weight: bold;
   font-size: 25px;
@@ -167,7 +167,7 @@ ul.review {
 
 .review-content {
   font-size: 16px;
-  line-height: 16px;
+  line-height: 20px;
   font-weight: normal;
   margin: 0px;
   overflow: hidden;
@@ -178,7 +178,7 @@ img.review-avatar {
   width: 50px;
   border-radius: 50%;
   position: relative;
-  top: 10px;
+  top: -14px;
 }
 
 .recommended-game-cards {
