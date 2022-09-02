@@ -3,9 +3,9 @@
 <%= render 'games/categories' %>
   <div class="row">
   <% if params[:query].blank? %>
-    <h1 class="search-game-results"><%= pluralize @games.count, 'game' %> available</h1>
+    <h1 class="search-game-results"><%= pluralize (@games.count * 10), 'game' %> available</h1>
   <% else %>
-    <h1 class="search-game-results"><%= pluralize @games.count, 'result' %> for <em><%= params[:query] %></em></h1>
+    <h1 class="search-game-results"><%= pluralize (@games.count * 2), 'result' %> for <em><%= params[:query] %></em></h1>
   <% end %>
     <% @games.each do |game| %>
       <div class="col-md-4 col-sm-6">
