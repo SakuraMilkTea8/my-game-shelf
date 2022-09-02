@@ -52,13 +52,9 @@
               <% end %>
             </div>
           <% end %>
-          <div class="graph">
-            <h1>My shelf data</h1>
-            <!-- adding data attribute -->
-            <canvas id="myChart" width="220" height="220"
-            data-page-views="<%=@graph_array %>">
-            </canvas>
-          </div>
+          <h1>My shelf data</h1>
+          <!-- adding data attribute -->
+          <div class="graph"><canvas id="myChart" data-page-views="<%=@graph_array %>"></canvas></div>
         </div>
     </div>
   </div>
