@@ -1,6 +1,6 @@
 <div class="container">
   <div class="username-on-profile">
-    <h1><%if current_user.avatar.attached? %>
+    <h1><%if @user.avatar.attached? %>
           <%= cl_image_tag(@user.avatar.key, class: "avatar")%>
         <% else %>
           <%= image_tag "gamepad.png", class: "avatar" %>
