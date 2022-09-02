@@ -57,13 +57,11 @@
         <div class="twitch-preview-container">
           <% if @streams.empty? %>
             <div class="twitch-no-preview">
-              No one is streaming <%= @game.title %> right now...
-              <br>
-              Come back later! <%= image_tag('icons/twitch.svg', class: 'twitch-icon') %>
+              <%= image_tag('icons/twitch.svg', class: 'twitch-icon') %> No one is streaming <%= @game.title %> right now... Come back later!
             </div>
           <% else %>
               <a href="https://www.twitch.tv/<%= @preview_stream['user_login'] %>" class="twitch-preview" target="_blank">
-                Watch <%= @preview_stream['user_name'] %> play <%= @game.title %> <%= image_tag('icons/twitch.svg', class: 'twitch-icon') %>
+                <%= image_tag('icons/twitch.svg', class: 'twitch-icon') %> Watch <%= @preview_stream['user_name'] %> play <%= @game.title %>
               <%= image_tag(@thumbnail_url, class: 'preview-thumbnail') %>
               </a>
           <% end %>
