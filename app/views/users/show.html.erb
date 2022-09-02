@@ -7,31 +7,31 @@
         <% end %><%= @user.name %>'s profile
     </h1>
   </div>
-      <div class="row">
+
+  <div class="row">
     <div class="col-6">
+<!-- This shows the user's reviews -->
       <h1>Reviews</h1>
       <% @user.reviews.each do |review| %>
-        <!-- this line needs to be put in the controller -->
-        <% @game = Game.find(review.game.id) %>
-        <div class="rounded-box-reviews col-lg-12 col-md-4">
-          <ul class="list-group list-group-flush col-6">
-            <p class ="review-user">
-              <%= review.game.title %>
-              <%= link_to "Visit", game_path(@game), class: 'btn btn-secondary btn-sm w-4px'  %>
-              <% review.rating.times do %>
-                <%= image_tag('icons/star-full.svg', class: "review-star") %>
-              <% end %>
-              <% (5 - review.rating).times do %>
-                <%= image_tag('icons/star-empty.svg', class: "review-star") %>
-              <% end %>
-            </p>
-            <p class ="review-time"> <small><%= time_ago_in_words(review.created_at) %> ago</small></p>
-            <p class="review-content">"<%= review.content %>"</p>
-          </ul>
-          <%= image_tag @game.image_url, class: "review-image" %>
+        <div class="rounded-box-reviews">
+              <b><%= link_to review.game.title, game_path(review.game), class: 'review-title' %></b>
+              <%= image_tag review.game.image_url, class: "review-image" %>
+              <div class="review-stars">
+                <% review.rating.times do %>
+                  <%= image_tag('icons/star-full.svg', class: "review-star") %>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <%= image_tag('icons/star-empty.svg', class: "review-star") %>
+                <% end %>
+                <div class ="review-time"><small><%= time_ago_in_words(review.created_at) %> ago</small></div>
+              </div>
+            <div class="my-review-content">
+              "<%= review.content %>"
+            </div>
         </div>
       <% end %>
     </div>
+
     <div class="col-6">
         <div class="row">
           <% if @user != current_user  %>
