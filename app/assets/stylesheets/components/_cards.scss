@@ -40,13 +40,10 @@
 
 .game-card:hover {
   box-shadow: 0px 0px 10px $hover-darker-gray;
-  // background-color: $hover-darker-gray;
 }
 
 .game-card:hover img {
   filter: brightness(110%);
-  // lower one increases contrast which looks cool on some images
-  // filter: contrast(120%);
 }
 
 
