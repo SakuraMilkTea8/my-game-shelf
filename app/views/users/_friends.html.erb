@@ -1,8 +1,6 @@
 <div class="tab-content p-0"> </div>
 <h1>Users</h1>
 <div class="tab-pane fade active show" id="profile-friends">
-  <%# <%= cl_image_tag(current_user.avatar.key) %>
-  <%# <%current_user.avatar.attached? %>
   <div class="m-b-10"><b>My game shelf users(<%= @users.count %>)</b></div>
   <% @users.each do |user| %>
     <!-- this line needs to be put in the controller -->

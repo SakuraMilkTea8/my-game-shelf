@@ -27,7 +27,7 @@
         </div>
 
         <% if user_signed_in? %>
-          <!--adding games to users' shelves-->
+          <!-- adding games to users' shelves-->
           <div data-controller="show-button">
             <p class="add-shelf-label">Add to My Game Shelf</p>
             <div class ="shelf-buttons-container">
@@ -44,8 +44,8 @@
                 <%= f.button :submit, "Completed", class: "btn #{(@shelf_game.category == 'completed') ? 'btn-outline-primary' : 'btn-primary'}"%>
               <% end %>
             </div>
-            <!--Checking status of game (make into a partial) -->
-            <!--persisted checks if it is saved -->
+            <!-- Checking status of game (make into a partial) -->
+            <!-- persisted checks if it is saved -->
             <% if @shelf_game.persisted? %>
               <div data-show-button-target="content" class="show-shelf-content">
                 This game is on your shelf under <%= @shelf_game.category %>
@@ -92,10 +92,10 @@
   <div class="game-row-reviews">
     <% if user_signed_in? %>
       <h3>Leave a review for <%= @game.title %></h3>
-      <!--partial for the review form -->
+      <!-- partial for the review form -->
       <%= render 'reviews/form', game: @game, review: @review %>
     <% end %>
-    <!--partial for the shelf of reviews -->
+    <!-- partial for the shelf of reviews -->
     <br>
     <h4>Reviews from other users</h4>
     <%= render 'reviews/review' %>
