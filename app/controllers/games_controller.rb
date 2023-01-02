@@ -23,9 +23,9 @@ class GamesController < ApplicationController
     if params[:query].present?
       @users = policy_scope(User).search_by_name(params[:query])
     else
-    @users = User.all
-    @users = policy_scope(User).order(created_at: :desc)
-  end
+      @users = User.all
+      @users = policy_scope(User).order(created_at: :desc)
+    end
   end
 
   def show
@@ -70,7 +70,7 @@ class GamesController < ApplicationController
     service = Google::Apis::YoutubeV3::YouTubeService.new
     service.key = ENV['GOOGLE_API_KEY']
     next_page_token = nil
-    opt = {q: keyword}
+    opt = { q: keyword }
     results = service.list_searches(:snippet, q: keyword)
     results.items.each do |item|
       id = item.id
@@ -124,7 +124,6 @@ class GamesController < ApplicationController
       http.request(request)
     end
     resp = JSON.parse(response.body)["data"]
-    puts resp
     if resp.nil? || resp.first.nil?
       return []
     end
@@ -144,17 +143,5 @@ class GamesController < ApplicationController
     end
     stream_resp = JSON.parse(stream_response.body)["data"]
     return stream_resp
-
-    # if !resp.empty?
-    #   user = resp.select{ |user| user["broadcaster_login"] == "#{query}" }[0]
-    #   p user
-    #   if user["is_live"] == true
-    #     return "El usuario #{query} está transmitiendo en vivo jugando #{user["game_name"]}!!! 🔴\nMíralo en https://www.twitch.tv/#{query}"
-    #   else
-    #     return "El usuario #{query} no está transmitiendo en este momento, en su última transmición jugó #{user["game_name"]}.\nSíguelo en https://www.twitch.tv/#{query}"
-    #   end
-    # else
-    #   return "#{query}? Quién te conoce papá?."
-    # end
   end
 end
