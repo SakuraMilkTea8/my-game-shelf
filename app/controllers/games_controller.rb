@@ -124,6 +124,7 @@ class GamesController < ApplicationController
       http.request(request)
     end
     resp = JSON.parse(response.body)["data"]
+    puts resp
     if resp.nil? || resp.first.nil?
       return []
     end
