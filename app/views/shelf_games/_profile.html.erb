@@ -77,16 +77,20 @@
 
       <div class="latest-shelf-update-container">
         <h1>Latest shelf update</h1>
-        <ul class="list-group latest-shelf-update">
-          <li>
-            <p class="shelf-update-title">
-              <% @latest_game.each do |content| %>
-              <%= content.title %>
-            </p>
-          </li>
-          <li><%= image_tag content.image_url, class: "review-image" %></li>
-              <% end %>
-        </ul>
+        <% unless @latest_game.nil? %>
+          <% @latest_game.each do |content| %>
+            <ul class="list-group latest-shelf-update">
+              <li>
+                <p class="shelf-update-title">
+                  <%= content.title %>
+                </p>
+              </li>
+              <li>
+                <%= image_tag content.image_url, class: "review-image" %>
+              </li>
+            </ul>
+          <% end %>
+        <% end %>
       </div>
       <!-- graph -->
         <h1>My shelf data</h1>

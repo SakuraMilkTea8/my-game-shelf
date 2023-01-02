@@ -124,7 +124,7 @@ class GamesController < ApplicationController
       http.request(request)
     end
     resp = JSON.parse(response.body)["data"]
-    if resp.first.nil?
+    if resp.nil? || resp.first.nil?
       return []
     end
     game_id = resp.first['id']
