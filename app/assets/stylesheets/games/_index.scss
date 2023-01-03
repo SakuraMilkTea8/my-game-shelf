@@ -29,16 +29,14 @@ width: 720px;
 }
 
 .categories {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100px;
-  padding: 0px 26px;
+  padding: 16px 26px;
 }
 .categories-links {
   display: flex;
   align-items: center;
   width: 100%;
+  flex-flow: row wrap;
+  row-gap: 8px;
 }
 .categories-links a {
   color: black;
@@ -50,6 +48,7 @@ width: 720px;
 .categories-links a:hover {
   opacity: 1;
 }
+
 .categories .fa-heart {
   color: #D23333;
 }
