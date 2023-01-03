@@ -1,6 +1,6 @@
 <div class="container">
-<!-- categories partial -->
-<%= render 'games/categories' %>
+  <!-- categories partial -->
+  <%= render 'games/categories' %>
   <div class="row">
   <% if params[:query].blank? %>
     <h1 class="search-game-results"><%= pluralize (@games.count * 10), 'game' %> available</h1>
@@ -56,4 +56,4 @@
         </div>
       </div>
   <% end %>
-    </div>
+</div>
