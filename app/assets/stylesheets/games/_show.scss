@@ -199,6 +199,11 @@ img.review-avatar {
     width: 400px;
     height: 220px;
   }
+
+  .recommended-game-cards .game-card {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 @media (max-width: 790px) {
@@ -209,6 +214,15 @@ img.review-avatar {
   .show-game-image {
     width: 100%;
     aspect-ratio: 3 / 2;
+  }
+
+  .recommended-game-cards .game-card {
+    width: 350px;
+    height: 350px;
+  }
+
+  .recommended-game-cards {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
