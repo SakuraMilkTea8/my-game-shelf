@@ -201,8 +201,19 @@ img.review-avatar {
   }
 }
 
+@media (max-width: 790px) {
+  .game-row-first {
+    flex-direction: column;
+  }
 
-// I have no idea what these are, I think they are CSS for the another page...
+  .show-game-image {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+  }
+}
+
+
+// I have no idea what these are, I think they are CSS for another page...
 .shelf-select {
   display: flex;
   width: 100%;

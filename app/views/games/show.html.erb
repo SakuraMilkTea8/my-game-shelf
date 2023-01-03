@@ -1,11 +1,11 @@
 <div class="container">
 
   <div class="game-row-first">
-    <div class="col-lg-8 col-sm-12">
+    <div class="col-lg-8 col-md-6 col-sm-12">
       <%= image_tag @game.image_url, class: "show-game-image" %>
     </div>
 
-    <div class="col-lg-4 col-sm-12">
+    <div class="col-lg-4 col-md-6 col-sm-12">
       <div class="card ratings-card p-2">
       <h2 class="game-title"><%= @game.title %></h2>
         <div class="star-container">
@@ -71,7 +71,7 @@
   </div>
 
   <div class="row">
-    <div class="col-6">
+    <div class="col-lg-6 col-md-12">
       <div class="game-row-second-left">
         <p><em><%= @game.genre.split(",").join(", ")%></em></p>
         <p><b><%= @game.developer.split(",").join(", ")%></b></p>
@@ -80,7 +80,7 @@
       </div>
     </div>
     <!-- youtube trailer -->
-    <div class="col-6">
+    <div class="col-lg-6 col-md-12">
       <div class="game-row-second-right">
         <iframe width="100%" height="397"
       src="https://www.youtube.com/embed/<%= @one_game_id %>?controls=1&mute=1", class="trailer-image">
