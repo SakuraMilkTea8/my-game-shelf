@@ -80,7 +80,9 @@
 
       <div class="latest-shelf-update-container">
         <h1>Latest shelf update</h1>
-        <% unless @latest_game.nil? %>
+        <% if @latest_game.nil? %>
+          <p>You haven't added any games to your shelves. When you do, the latest addition will be shown here.</p>
+        <% else %>
           <% @latest_game.each do |content| %>
             <ul class="list-group latest-shelf-update">
               <li>
