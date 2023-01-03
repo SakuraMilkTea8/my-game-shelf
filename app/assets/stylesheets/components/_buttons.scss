@@ -19,7 +19,7 @@
 
 .category-btn {
   font-family: $body-font;
-  background-color: $card-light-gray;
+  background-color: $category-btn;
   width: 100%;
   font-size: 16px;
   border: 1px solid black;
@@ -27,7 +27,7 @@
 }
 
 .category-btn:hover {
-  background-color: $hover-darker-gray;
+  background-color: $category-hover;
   font-weight: bold;
   color: $not-white-white;
 }
