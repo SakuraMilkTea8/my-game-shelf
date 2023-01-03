@@ -16,9 +16,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
+      <li class="nav-item dropdown">
         <%= form_tag games_path, method: :get, class: "form-inline" do %>
           <%= text_field_tag :query, params[:query], placeholder: "Search Games, Users" %>
-          <%= submit_tag "Search", class: "btn search-btn my-2 my-sm-0" %>
+          <%= submit_tag "Search", class: "btn search-btn my-lg-2 my-md-0" %>
+          </li>
         <% end %>
 
 
@@ -37,8 +39,10 @@
             </div>
           </li>
       <% else %>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <%= link_to "Login", new_user_session_path, class: 'btn search-btn my-2 my-sm-0' %>
           <%= link_to "Sign up", new_user_registration_path, class: 'btn search-btn my-2 my-sm-0' %>
+        </div>
       <% end %>
     </ul>
   </div>

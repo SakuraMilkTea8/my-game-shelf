@@ -28,7 +28,7 @@
   font-family: $body-font;
   flex-grow: 0;
   color: $not-white-white;
-  background-color: $raspberry;
+  // background-color: $raspberry;
   border-radius: 4px;
   box-shadow: 1px 1px 10px rgb(87, 31, 23);
   border-radius: 4px;
@@ -47,7 +47,6 @@ input.btn.search-btn, a.btn.search-btn {
   background-color: $raspberry;
   border-radius: 4px;
   box-shadow: 0px 0px 5px #854136;
-  margin-right: 15px;
   transition: 0.3s;
 }
 .search-btn:hover {
@@ -83,4 +82,28 @@ a.dropdown-item:hover  {
 
 #navbarSupportedContent {
   align-items: center;
+}
+
+@media screen and (max-width: 575px) {
+  .nav-item {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  #query {
+    width: 70%;
+  }
+
+  .search-btn {
+    width: 25%;
+    margin-right: unset;
+  }
+
+  .navbar-collapse {
+    width: 100%;
+  }
+
+  .navbar-nav {
+    padding: 0 8px;
+  }
 }
