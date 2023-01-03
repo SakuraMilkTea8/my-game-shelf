@@ -1,3 +1,11 @@
 .main-shelf {
   min-height: 410px;
 }
+
+.empty-shelf-notification {
+  height: 410px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

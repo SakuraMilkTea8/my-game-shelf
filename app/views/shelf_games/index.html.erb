@@ -14,6 +14,9 @@
     </div>
     <div id="wants" data-shelf-categories-target="wants" hidden>
       <div class="row" data-shelf-categories-target="wantsRow">
+        <% if @want_to_play.empty? %>
+          <p class="empty-shelf-notification">You haven't added any games to your Want to Play shelf yet. Add them to find them here.</p>
+        <% end %>
         <% @want_to_play.each do |shelf_game| %>
           <div class="col-md-4 col-sm-6" data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
             <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');">
@@ -50,6 +53,9 @@
     </div>
     <div id="plays" data-shelf-categories-target="plays" hidden>
       <div class="row" data-shelf-categories-target="playsRow">
+        <% if @now_playing.empty? %>
+          <p class="empty-shelf-notification">You haven't added any games to your Now Playing shelf yet. Add them to find them here.</p>
+        <% end %>
         <% @now_playing.each do |shelf_game| %>
           <div class="col-md-4 col-sm-6"   data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
             <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');">
@@ -90,6 +96,9 @@
     </div>
     <div id="completes" data-shelf-categories-target="completes" hidden>
       <div class="row" data-shelf-categories-target="completesRow">
+        <% if @completed.empty? %>
+          <p class="empty-shelf-notification">You haven't added any games to your Completed shelf yet. Add them to find them here.</p>
+        <% end %>
         <% @completed.each do |shelf_game| %>
           <div class="col-md-4 col-sm-6"   data-shelf-categories-target="shelfcard" id='<%= shelf_game.id %>'>
             <div class="shelf-card" style="background-image: url('<%= shelf_game.game.image_url %>');">

@@ -11,7 +11,10 @@
   <div class="row">
     <div class="col-6">
 <!-- This shows the user's reviews -->
-      <h1>Reviews</h1>
+      <h2>Reviews</h2>
+      <% if @user.reviews.empty? %>
+        <h3>This user hasn't written any reviews yet.</h3>
+      <% end %>
       <% @user.reviews.each do |review| %>
         <div class="rounded-box-reviews">
               <b><%= link_to review.game.title, game_path(review.game), class: 'review-title' %></b>
