@@ -1,11 +1,11 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <% if user_signed_in? %>
     <%= link_to shelf_games_path(current_user), class: "navbar-brand" do %>
-      <%= image_tag "logo2.png" %>
+      <%= image_tag "logo2.png", alt: "My Game Shelf" %>
       <% end %>
   <% else %>
-  <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "logo2.png" %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "logo2.png", alt: "My Game Shelf" %>
     <% end %>
   <% end %>
 
@@ -61,7 +61,7 @@
             </div>
           </li>
       <% else %>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div>
           <%= link_to "Login", new_user_session_path, class: 'btn search-btn my-2 my-sm-0' %>
           <%= link_to "Sign up", new_user_registration_path, class: 'btn search-btn my-2 my-sm-0' %>
         </div>

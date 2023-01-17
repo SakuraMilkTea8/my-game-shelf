@@ -40,17 +40,19 @@
 
 
 .btn-ghost {
-  color: #4A4A4A;
-  border: 1px solid #4A4A4A;
+  color: #2d2d2d;
+  border: 1px solid #2d2d2d;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
-  opacity: 0.6;
+  opacity: 0.8;
   transition: opacity 0.3s ease;
   width: 100%;
 }
 
 .btn-ghost:hover {
+  color: black;
+  border: 1px solid black;
   opacity: 1;
 }
 
