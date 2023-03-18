@@ -66,13 +66,28 @@ if ENV['super'] == 'yes'
     developers = []
     game['developers'].each { |dev| developers << dev['name'] }
     # should probably join all of them by comma, no space maybe
-    # if using detailed game all keys are the same, 'description' gives a description with p tags and breaks 'description_raw' has breaks but no html
+    # if using detailed game all keys are the same:
+    # 'description' gives a description with p tags and breaks 'description_raw' has breaks but no html
     genres = []
     game['genres'].each { |genre| genres << genre['name'] }
     platforms = []
     game['platforms'].each { |platform| platforms << platform['platform']['name'] }
-    # add   description: game['description_raw']    after migrating
-    this = Game.new(title: game['name'], description: game['description_raw'], genre: genres.join(","), developer: developers.join(','), console: platforms.join(","), release_date: game['released'], image_url: game['background_image'])
+    title = game['name']
+    # If for God of War Ragnarök and elsif for games with dual language titles
+    if title.match?('ö')
+      title = title.gsub('ö', 'o')
+    elsif title.match?(/[^a-zA-Z\s]/)
+      title = title.gsub(/[^a-zA-Z\s]/, '').strip
+    end
+    this = Game.new(
+      title: title,
+      description: game['description_raw'],
+      genre: genres.join(","),
+      developer: developers.join(','),
+      console: platforms.join(","),
+      release_date: game['released'],
+      image_url: game['background_image']
+    )
     this.save
     p this.title
   end
